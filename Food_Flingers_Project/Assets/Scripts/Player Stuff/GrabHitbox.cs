@@ -57,7 +57,7 @@ public class GrabHitbox : MonoBehaviour
             if (foodList.Count > 0)
             {
                 isHolding = true;
-                Debug.Log("Gonna grab the" + foodList[0]);
+                //Debug.Log("Gonna grab the" + foodList[0]);
                 foodHeld = foodList[0];
                 if (foodHeld != null)
                 {
@@ -67,15 +67,11 @@ public class GrabHitbox : MonoBehaviour
                     foodHeld.GetComponent<SphereCollider>().enabled = false;
                 }
             }
-            // What this doe
-            //
-            //
     }
 
     private void LetGo()
     {
-            Debug.Log("Gonna throw the" + foodHeld);
-
+            //Debug.Log("Gonna throw the" + foodHeld);
             isHolding = false;
             foodList.Clear();
             if (foodHeld != null)
@@ -83,7 +79,10 @@ public class GrabHitbox : MonoBehaviour
                 foodHeld.transform.SetParent(null);
                 foodHeld.GetComponent<SphereCollider>().enabled = true;
                 foodHeld.GetComponent<Rigidbody>().isKinematic = false;
-                foodHeld.GetComponent<Rigidbody>().AddForce(transform.forward * forceAmount, ForceMode.Impulse);
+                foodHeld.GetComponent<Rigidbody>().useGravity = false;
+
+                foodHeld.GetComponent<ProjectileBehaviour>().isThrown = true;
+                //foodHeld.GetComponent<Rigidbody>().AddForce(transform.forward * forceAmount, ForceMode.Impulse);
                 foodHeld = null;
                 foodList.Remove(foodHeld);
             }
