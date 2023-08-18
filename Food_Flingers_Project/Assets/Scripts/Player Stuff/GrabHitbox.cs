@@ -24,7 +24,7 @@ public class GrabHitbox : MonoBehaviour
         if (other.tag == "Food" && !isHolding)
         {
             foodList.Add(other.gameObject);
-            Debug.Log(other + "was added to the list");
+            //Debug.Log(other + "was added to the list");
         }
     }
 
@@ -34,7 +34,7 @@ public class GrabHitbox : MonoBehaviour
         if (other.tag == "Food")
         {
             foodList.Remove(other.gameObject);
-            Debug.Log(other + "was removed from the list");
+            //Debug.Log(other + "was removed from the list");
         }
     }
     public void OnFire(InputAction.CallbackContext context)
@@ -61,8 +61,11 @@ public class GrabHitbox : MonoBehaviour
                 foodHeld = foodList[0];
                 if (foodHeld != null)
                 {
-                    foodHeld.transform.SetParent(this.transform);
-                    foodHeld.transform.position = (this.transform.position);
+                    Transform foodTransform = foodHeld.transform;
+
+                    foodTransform.SetParent(transform);
+                    foodTransform.position = transform.position;
+                    foodTransform.rotation = transform.rotation;
                     foodHeld.GetComponent<Rigidbody>().isKinematic = true;
                     foodHeld.GetComponent<SphereCollider>().enabled = false;
                 }

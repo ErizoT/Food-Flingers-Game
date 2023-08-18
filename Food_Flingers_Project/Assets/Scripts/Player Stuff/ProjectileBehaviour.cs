@@ -32,6 +32,13 @@ public class ProjectileBehaviour : MonoBehaviour
             Debug.Log(this + "hit a wall");
             gameObject.SetActive(false);
         }
+
+        if (isThrown && col.gameObject.tag == "Player")
+        {
+            Debug.Log(this + "hit" + col);
+            col.gameObject.GetComponent<PlayerHealth>().OnHit();
+            gameObject.SetActive(false);
+        }
         
     }
 
