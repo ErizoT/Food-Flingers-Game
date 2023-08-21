@@ -7,12 +7,15 @@ public class GrabHitbox : MonoBehaviour
 {
     public List<GameObject> foodList;
     private bool isHolding;
-
+    
     private GameObject foodHeld;
+
+    [SerializeField] Material grabMaterial;
+    [SerializeField] Material neutralMaterial;
 
     // Parameters for the projectile force
     // Soon will be changed when tool for projectile is done
-    [SerializeField] private float forceAmount = 10f;
+    //[SerializeField] private float forceAmount = 10f;
 
     private void Start()
     {
@@ -24,6 +27,7 @@ public class GrabHitbox : MonoBehaviour
         if (other.tag == "Food" && !isHolding)
         {
             foodList.Add(other.gameObject);
+            other.GetComponent<MeshRenderer>().material = grabMaterial;
             //Debug.Log(other + "was added to the list");
         }
     }
@@ -34,6 +38,7 @@ public class GrabHitbox : MonoBehaviour
         if (other.tag == "Food")
         {
             foodList.Remove(other.gameObject);
+            other.GetComponent<MeshRenderer>().material = neutralMaterial;
             //Debug.Log(other + "was removed from the list");
         }
     }
@@ -59,7 +64,7 @@ public class GrabHitbox : MonoBehaviour
                 isHolding = true;
                 //Debug.Log("Gonna grab the" + foodList[0]);
                 foodHeld = foodList[0];
-                if (foodHeld != null)
+                if (foodHeld != null && foodHeld.GetComponent<ProjectileBehaviour>().isThrown == false)
                 {
                     Transform foodTransform = foodHeld.transform;
 

@@ -10,6 +10,16 @@ public class CameraTrack : MonoBehaviour
     // Allows us to offset the position of the camera sicne the camera
     // will be directly inside our players.
     public Vector3 offset;
+    public Vector3 rotationOffset;
+    private Vector3 velocity;
+
+    // The interpolation smoothness between positions on the camera
+    public float smoothTime = .5f;
+
+    // For zooming
+    public float minZoom = 90f;
+    public float maxZoom = 40f;
+    public float zoomLimiter = 50f;
 
     //public Vector3 rotation;
 
@@ -30,6 +40,17 @@ public class CameraTrack : MonoBehaviour
             return;
         }
 
+        Move();
+        Zoom();
+    }
+    void Zoom()
+    {
+        float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance() / zoomLimiter);
+        this.GetComponent<Camera>().fieldOfView = Mathf.Lerp(GetComponent<Camera>().fieldOfView, newZoom, Time.deltaTime);
+    }
+
+    void Move()
+    {
         // We want the camera to occupy the center of all the targets
         Vector3 centerPoint = GetCenterPoint();
 
@@ -37,7 +58,19 @@ public class CameraTrack : MonoBehaviour
         Vector3 newPosition = centerPoint + offset;
 
         // Apply new position to camera position
-        transform.position = newPosition;
+        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
+        transform.rotation = Quaternion.Euler(rotationOffset);
+    }
+
+    float GetGreatestDistance()
+    {
+        var bounds = new Bounds(targets[0].transform.position, Vector3.zero);
+        for (int i = 0; i < targets.Length; i++)
+        {
+            bounds.Encapsulate(targets[i].transform.position);
+        }
+
+        return bounds.size.x;
     }
 
     // Returns a Vector3 | Function name is GetCenterPoint

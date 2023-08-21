@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour
 {
     // Bunch of movement values I can adjust
     [SerializeField] private float playerSpeed = 2.0f;
-    [SerializeField] private float jumpHeight = 1.0f;
-    [SerializeField] private float gravityValue = -9.81f;
+    //[SerializeField] private float jumpHeight = 1.0f;
+    //[SerializeField] private float gravityValue = -9.81f;
     [SerializeField] private float rotationInterpolation = 10f;
 
     public Rigidbody rb;
+
+    public bool canMove = true;
 
     // The variable that contains the character controller I had assigned at the start
     private CharacterController controller;
@@ -39,7 +41,10 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         //Shit that happens when moving
-        movementInput = context.ReadValue<Vector2>();
+        if (canMove)
+        {
+            movementInput = context.ReadValue<Vector2>();
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)

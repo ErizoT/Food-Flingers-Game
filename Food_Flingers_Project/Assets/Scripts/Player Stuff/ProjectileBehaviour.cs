@@ -7,9 +7,9 @@ public class ProjectileBehaviour : MonoBehaviour
     public float projectileVelocity;
     public bool isThrown;
     public Rigidbody rb;
+    public GameObject userThrowing;
 
-    // The length of time in which the projectile
-    [SerializeField] float projectileTime;
+
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
