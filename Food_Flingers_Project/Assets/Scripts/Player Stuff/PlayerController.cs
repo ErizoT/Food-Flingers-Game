@@ -5,6 +5,12 @@ using UnityEngine.InputSystem;
 // upon the presence of this script. This is so that I don't need to painstakingly add a character
 // controller everytime I use this script.
 //[RequireComponent(typeof(CharacterController))]
+
+//get all fruit in an array
+//iterate through em and raycast to each one
+//get the closest one in a threshold and set it as an object reference
+//when pplayer click button use that object reference to kno what to pick up 
+
 public class PlayerController : MonoBehaviour
 {
     // Bunch of movement values I can adjust

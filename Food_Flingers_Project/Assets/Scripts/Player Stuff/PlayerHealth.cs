@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int playerHealth = 2;
     public ParticleSystem deathEffect;
     public RespawnManager respawnManager;
+    public TextMeshPro healthText;
 
+    private void Update()
+    {
+        healthText.text = playerHealth.ToString();
+    }
     public void OnHit()
     {
         playerHealth -= 1;

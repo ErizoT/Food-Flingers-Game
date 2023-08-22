@@ -21,6 +21,18 @@ public class RespawnManager : MonoBehaviour
             isGameStarted = true;
             InitialiseGame();
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            InitialiseGame();
+            GameObject[] foodToDestroy = GameObject.FindGameObjectsWithTag("Food");
+            StartCoroutine(GameCountdown());
+
+            for (int i = 0; i < foodToDestroy.Length; i++)
+            {
+                Destroy(foodToDestroy[i]);
+            }
+        }
     }
 
     void InitialiseGame()

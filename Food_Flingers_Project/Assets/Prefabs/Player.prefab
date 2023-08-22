@@ -353,6 +353,7 @@ MonoBehaviour:
   playerHealth: 2
   deathEffect: {fileID: 2698453284129532700}
   respawnManager: {fileID: 0}
+  healthText: {fileID: 975933952429066411}
 --- !u!199 &2698453284129532703
 ParticleSystemRenderer:
   serializedVersion: 6
