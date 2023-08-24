@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         //controller.Move(move * Time.deltaTime * playerSpeed);
 
         // The force is both the direction AND the magnitude (both lenght and direction)
-        GetComponent<Rigidbody>().AddForce(move * playerSpeed, ForceMode.Force);
+        GetComponent<Rigidbody>().AddForce(move * playerSpeed * 10f, ForceMode.Force);
 
         if (move.magnitude != 0)
         {
