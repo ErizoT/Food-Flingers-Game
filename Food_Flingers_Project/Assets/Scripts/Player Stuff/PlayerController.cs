@@ -14,7 +14,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     // Bunch of movement values I can adjust
-    [SerializeField] private float playerSpeed = 2.0f;
+    public float playerSpeed = 11f;
     //[SerializeField] private float jumpHeight = 1.0f;
     //[SerializeField] private float gravityValue = -9.81f;
     [SerializeField] private float rotationInterpolation = 10f;

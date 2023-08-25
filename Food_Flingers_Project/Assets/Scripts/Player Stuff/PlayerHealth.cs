@@ -10,6 +10,15 @@ public class PlayerHealth : MonoBehaviour
     public RespawnManager respawnManager;
     public TextMeshPro healthText;
 
+    private GameObject manager;
+
+    public void Start()
+    {
+        // OnStart, look for an object in the scene called "Respawn Manager"
+        manager = GameObject.Find("Respawn Manager");
+        respawnManager = manager.GetComponent<RespawnManager>();
+    }
+
     private void Update()
     {
         healthText.text = playerHealth.ToString();
@@ -37,6 +46,7 @@ public class PlayerHealth : MonoBehaviour
         deathEffect.Play();
 
         GetComponent<PlayerController>().canMove = false;
+        GetComponent<PlayerController>().playerSpeed = 0f;
 
         //Rotate the character so it looks dead
         Vector3 deathRotation = new Vector3(0, 180, 90);
@@ -55,6 +65,7 @@ public class PlayerHealth : MonoBehaviour
 
         // Re-enable movement
         GetComponent<PlayerController>().canMove = true;
+        GetComponent<PlayerController>().playerSpeed = 11f;
 
         // Reset rotation
         Vector3 deathRotation = new Vector3(0, 0, 0);
