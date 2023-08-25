@@ -6,9 +6,23 @@ using UnityEngine.InputSystem;
 public class GrabHitbox : MonoBehaviour
 {
     public List<GameObject> foodList;
-    private bool isHolding;
     
     private GameObject foodHeld;
+    private bool IsHolding => foodHeld != null;
+
+    /*private bool isHolding;
+    private bool IsHolding
+    {
+        get
+        {
+            return isHolding;
+        }
+        set
+        {
+            isHolding = value;
+            SomeOtherFunction();
+        }
+    }*/
 
     [SerializeField] Material grabMaterial;
     [SerializeField] Material neutralMaterial;
@@ -24,7 +38,7 @@ public class GrabHitbox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Food" && !isHolding)
+        if (other.tag == "Food" && !IsHolding)
         {
             foodList.Add(other.gameObject);
             other.GetComponent<MeshRenderer>().material = grabMaterial;
@@ -46,7 +60,7 @@ public class GrabHitbox : MonoBehaviour
     {
         if (context.performed)
         {
-            if (isHolding)
+            if (IsHolding)
             {
                 LetGo();
             }
@@ -55,13 +69,15 @@ public class GrabHitbox : MonoBehaviour
                 Grab();
             }
         }
+
+        //IsHolding = true;
     }
 
     private void Grab()
     {
             if (foodList.Count > 0)
             {
-                isHolding = true;
+                //isHolding = true;
                 //Debug.Log("Gonna grab the" + foodList[0]);
                 foodHeld = foodList[0];
                 if (foodHeld != null && foodHeld.GetComponent<ProjectileBehaviour>().isThrown == false)
@@ -73,6 +89,7 @@ public class GrabHitbox : MonoBehaviour
                     foodTransform.rotation = transform.rotation;
                     foodHeld.GetComponent<Rigidbody>().isKinematic = true;
                     foodHeld.GetComponent<SphereCollider>().enabled = false;
+                    foodList.Remove(foodHeld);
                 }
             }
     }
@@ -80,7 +97,7 @@ public class GrabHitbox : MonoBehaviour
     private void LetGo()
     {
             //Debug.Log("Gonna throw the" + foodHeld);
-            isHolding = false;
+            //isHolding = false;
             foodList.Clear();
             if (foodHeld != null)
             {
@@ -92,7 +109,6 @@ public class GrabHitbox : MonoBehaviour
                 foodHeld.GetComponent<ProjectileBehaviour>().isThrown = true;
                 //foodHeld.GetComponent<Rigidbody>().AddForce(transform.forward * forceAmount, ForceMode.Impulse);
                 foodHeld = null;
-                foodList.Remove(foodHeld);
             }
         }
 

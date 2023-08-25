@@ -1,22 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// Require component essentially adds the 'character controller' component to the gameobject
-// upon the presence of this script. This is so that I don't need to painstakingly add a character
-// controller everytime I use this script.
-//[RequireComponent(typeof(CharacterController))]
-
-//get all fruit in an array
-//iterate through em and raycast to each one
-//get the closest one in a threshold and set it as an object reference
-//when pplayer click button use that object reference to kno what to pick up 
-
 public class PlayerController : MonoBehaviour
 {
     // Bunch of movement values I can adjust
     public float playerSpeed = 11f;
-    //[SerializeField] private float jumpHeight = 1.0f;
-    //[SerializeField] private float gravityValue = -9.81f;
     [SerializeField] private float rotationInterpolation = 10f;
 
     public Rigidbody rb;
@@ -35,8 +23,9 @@ public class PlayerController : MonoBehaviour
     // the two-axis variable that tracks the player input of X and Y
     private Vector2 movementInput = Vector2.zero;
 
-    // Self explanatory
-    private bool jumped = false;
+    // Raycast Stuff
+    [SerializeField] LayerMask projectiles;
+    
 
     private void Start()
     {
@@ -44,32 +33,24 @@ public class PlayerController : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    private void Update()
     {
-        //Shit that happens when moving
-        if (canMove)
+        // Call Spherecast on update
+        // Object hit by raycast will change colour to green | otherwise will change back to orange
+        // Upon grabbing (OnGrab)...
+        // - If holding a food already, throw the food
+        // - If not holding food, pick up
+
+        RaycastHit hit;
+
+        if (Physics.SphereCast(transform.position, 2f, transform.forward, out hit, 3f, projectiles))
         {
-            movementInput = context.ReadValue<Vector2>();
+            hit.transform.gameObject.GetComponent<MeshRenderer>
         }
-    }
-
-    public void OnJump(InputAction.CallbackContext context)
-    {
-        // Shit that happens when jumping
-
-        jumped = context.action.triggered;
     }
 
     void FixedUpdate()
     {
-        /*groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }*/
-
-        //Debug.Log(movementInput);
-
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized;
         //controller.Move(move * Time.deltaTime * playerSpeed);
 
@@ -81,21 +62,19 @@ public class PlayerController : MonoBehaviour
             // Rotating the player to the direction they are inputting movement
             transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.LookRotation(move),Time.deltaTime*rotationInterpolation);
         }
-        
-
-        /*if (move != Vector3.zero)
+    }
+    
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        //Shit that happens when moving
+        if (canMove)
         {
-            gameObject.transform.forward = move;
-        }*/
-
-        // Changes the height position of the player..
-        /*if (jumped && groundedPlayer)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            movementInput = context.ReadValue<Vector2>();
         }
-
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);*/
     }
 
+    public void OnGrab()
+    {
+
+    }
 }
