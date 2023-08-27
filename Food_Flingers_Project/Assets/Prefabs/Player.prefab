@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2654691209686334476
 Transform:
   m_ObjectHideFlags: 0
@@ -167,9 +167,9 @@ MonoBehaviour:
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta,/Pen/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2654691209686334478}
-        m_TargetAssemblyTypeName: GrabHitbox, Assembly-CSharp
-        m_MethodName: OnFire
+      - m_Target: {fileID: 2698453284129532716}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnGrab
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -258,6 +258,13 @@ MonoBehaviour:
   rotationInterpolation: 10
   rb: {fileID: 0}
   canMove: 1
+  projectiles:
+    serializedVersion: 2
+    m_Bits: 0
+  selectedProjectile: {fileID: 0}
+  heldProjectile: {fileID: 0}
+  sphereRadius: 0.4
+  hitboxDistance: 1.6
 --- !u!33 &2698453284129532719
 MeshFilter:
   m_ObjectHideFlags: 0

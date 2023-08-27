@@ -11,29 +11,27 @@ public class PlayerController : MonoBehaviour
 
     public bool canMove = true;
 
-    // The variable that contains the character controller I had assigned at the start
-    private CharacterController controller;
-
-    // playerVelocity is essentially just the movement of the player
-    private Vector3 playerVelocity;
-
-    // Boolean that determines whether a player is on the ground
-    private bool groundedPlayer;
-
     // the two-axis variable that tracks the player input of X and Y
     private Vector2 movementInput = Vector2.zero;
 
     // Raycast Stuff
     [SerializeField] LayerMask projectiles;
-    
+
+    // Throwing Stuff and Hitbox Stuff
+    public GameObject selectedProjectile = null;
+    [SerializeField] GameObject heldProjectile;
+    [SerializeField] float sphereRadius = 2f;
+    [SerializeField] float hitboxDistance = 3f;
+    private bool isHolding;
 
     private void Start()
     {
-        controller = gameObject.GetComponent<CharacterController>();
         rb = this.GetComponent<Rigidbody>();
+
+        projectiles = LayerMask.GetMask("Projectiles");
     }
 
-    private void Update()
+   /* public void Update()
     {
         // Call Spherecast on update
         // Object hit by raycast will change colour to green | otherwise will change back to orange
@@ -43,11 +41,17 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.SphereCast(transform.position, 2f, transform.forward, out hit, 3f, projectiles))
+        if (Physics.SphereCast(transform.position, sphereRadius, transform.forward, out hit, hitboxDistance, projectiles))
         {
-            hit.transform.gameObject.GetComponent<MeshRenderer>
+            selectedProjectile = hit.transform.gameObject;
+            selectedProjectile.GetComponent<ProjectileBehaviour>().userThrowing = this.gameObject;
         }
-    }
+        else
+        {
+            selectedProjectile = null;
+        }
+    }*/
+    
 
     void FixedUpdate()
     {
@@ -62,8 +66,34 @@ public class PlayerController : MonoBehaviour
             // Rotating the player to the direction they are inputting movement
             transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.LookRotation(move),Time.deltaTime*rotationInterpolation);
         }
+
+        // Call Spherecast on update
+        // Object hit by raycast will change colour to green | otherwise will change back to orange
+        // Upon grabbing (OnGrab)...
+        // - If holding a food already, throw the food
+        // - If not holding food, pick up
+
+        RaycastHit hit;
+
+        if (Physics.SphereCast(transform.position, sphereRadius, transform.forward, out hit, hitboxDistance, projectiles))
+        {
+            selectedProjectile = hit.transform.gameObject;
+            selectedProjectile.GetComponent<ProjectileBehaviour>().userThrowing = this.gameObject;
+        }
+        else
+        {
+            selectedProjectile = null;
+        }
     }
-    
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(0.0f, 0.0f, 1.0f, 0.5f); // Blue color with 50% opacity
+        Vector3 spherePosition = transform.position + transform.forward * hitboxDistance;
+        Gizmos.DrawSphere(spherePosition, sphereRadius);
+        Gizmos.DrawLine(transform.position, spherePosition);
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         //Shit that happens when moving
@@ -73,8 +103,58 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnGrab()
+    public void OnGrab(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (isHolding)
+            {
+                Throw();
+            }
+            else
+            {
+                Hold();
+            }
+        }
+    }
+
+    void Hold()
     {
 
+        if (selectedProjectile != null)
+        {
+            heldProjectile = selectedProjectile;
+
+            Transform foodTransform = heldProjectile.transform;
+
+            foodTransform.SetParent(transform);
+            foodTransform.position = transform.position + new Vector3(0, 2, 0);
+            foodTransform.rotation = transform.rotation;
+            heldProjectile.GetComponent<Rigidbody>().isKinematic = true;
+            heldProjectile.GetComponent<SphereCollider>().enabled = false;
+
+            isHolding = true;
+        } 
+        else
+        {
+            return;
+        }
+    }
+
+    void Throw()
+    {
+        if (heldProjectile != null)
+        {
+            heldProjectile.transform.SetParent(null);
+            heldProjectile.transform.position = this.transform.position + transform.forward * 2;
+            heldProjectile.GetComponent<SphereCollider>().enabled = true;
+            heldProjectile.GetComponent<Rigidbody>().isKinematic = false;
+            heldProjectile.GetComponent<Rigidbody>().useGravity = false;
+            heldProjectile.GetComponent<ProjectileBehaviour>().isThrown = true;
+
+            heldProjectile = null;
+            isHolding = false;
+        }
+            
     }
 }
