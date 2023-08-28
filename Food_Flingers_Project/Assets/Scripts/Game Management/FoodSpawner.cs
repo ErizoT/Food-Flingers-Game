@@ -25,7 +25,9 @@ public class FoodSpawner : MonoBehaviour
     private void Start()
     {
         respawnManager = GameObject.Find("Respawn Manager");
-        //spawnedProjectiles = new GameObject[spawnLimit];
+
+        rectangleBottomLeft = new Vector2(cornerPoints[2].transform.position.x, cornerPoints[2].transform.position.z);
+        rectangleTopRight = new Vector3(cornerPoints[1].transform.position.x, cornerPoints[1].transform.position.z);
     }
 
     private void Update()
@@ -45,15 +47,10 @@ public class FoodSpawner : MonoBehaviour
         float rectangleHeight = transform.position.y; // Will remove later, want to adjust it with the gameobject instead of hardcoded.
         points = new Vector3[4]
         {
-            new Vector3(cornerPoints[0].transform.position.x, rectangleHeight, cornerPoints[0].transform.position.z),
-            new Vector3(cornerPoints[1].transform.position.x, rectangleHeight, cornerPoints[1].transform.position.z),
-            new Vector3(cornerPoints[2].transform.position.x, rectangleHeight, cornerPoints[2].transform.position.z),
-            new Vector3(cornerPoints[3].transform.position.x, rectangleHeight, cornerPoints[3].transform.position.z),
-
-            //new Vector3(rectangleBottomLeft.x, rectangleHeight, rectangleBottomLeft.y), // Bottom Left
-            //new Vector3(rectangleTopRight.x, rectangleHeight, rectangleTopRight.y),     // Top Right
-            //new Vector3(rectangleBottomLeft.x, rectangleHeight, rectangleTopRight.y),
-            //new Vector3(rectangleTopRight.x, rectangleHeight, rectangleBottomLeft.y),
+            new Vector3(cornerPoints[0].transform.position.x, rectangleHeight, cornerPoints[0].transform.position.z), // Top Left Corner
+            new Vector3(cornerPoints[1].transform.position.x, rectangleHeight, cornerPoints[1].transform.position.z), //Top Right Corner
+            new Vector3(cornerPoints[2].transform.position.x, rectangleHeight, cornerPoints[2].transform.position.z), // Bottom Left Corner
+            new Vector3(cornerPoints[3].transform.position.x, rectangleHeight, cornerPoints[3].transform.position.z), // Bottom Right Corner
         };
 
         // Draws two parallel blue lines
@@ -64,10 +61,10 @@ public class FoodSpawner : MonoBehaviour
         Gizmos.DrawSphere(points[2], .5f);
         Gizmos.DrawSphere(points[3], .5f);
 
-        Gizmos.DrawLine(points[0], points[2]);
-        Gizmos.DrawLine(points[2], points[1]);
+        Gizmos.DrawLine(points[0], points[1]);
         Gizmos.DrawLine(points[1], points[3]);
-        Gizmos.DrawLine(points[3], points[0]);
+        Gizmos.DrawLine(points[3], points[2]);
+        Gizmos.DrawLine(points[2], points[0]);
     }
 
     // Spawning Shit
