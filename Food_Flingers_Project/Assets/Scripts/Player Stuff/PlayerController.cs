@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     // Bunch of movement values I can adjust
     public float playerSpeed = 11f;
+    [SerializeField] float invulnerabilityTime = 0.5f;
     [SerializeField] private float rotationInterpolation = 10f;
 
     public Rigidbody rb;
@@ -13,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     // the two-axis variable that tracks the player input of X and Y
     private Vector2 movementInput = Vector2.zero;
+    private bool dashing = false;
 
     // Raycast Stuff
     [SerializeField] LayerMask projectiles;
@@ -28,7 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody>();
 
-        projectiles = LayerMask.GetMask("Projectiles");
+        projectiles = LayerMask.GetMask("Items");
     }
     
 
@@ -38,7 +41,10 @@ public class PlayerController : MonoBehaviour
         //controller.Move(move * Time.deltaTime * playerSpeed);
 
         // The force is both the direction AND the magnitude (both lenght and direction)
-        GetComponent<Rigidbody>().AddForce(move * playerSpeed * 10f, ForceMode.Force);
+        if (!dashing)
+        {
+            GetComponent<Rigidbody>().AddForce(move * playerSpeed * 10f, ForceMode.Force);
+        }
 
         if (move.magnitude != 0)
         {
@@ -79,6 +85,15 @@ public class PlayerController : MonoBehaviour
         if (canMove)
         {
             movementInput = context.ReadValue<Vector2>();
+        }
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            dashing = true;
+            StartCoroutine(Dash());
         }
     }
 
@@ -135,5 +150,19 @@ public class PlayerController : MonoBehaviour
             isHolding = false;
         }
             
+    }
+
+    IEnumerator Dash()
+    {
+        Debug.Log("Dashing...");
+        playerSpeed = playerSpeed * 2;
+        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized;
+        GetComponent<Rigidbody>().AddForce(move * playerSpeed * 10f, ForceMode.Force);
+        gameObject.layer = LayerMask.NameToLayer("Invulnerable");
+        yield return new WaitForSeconds(invulnerabilityTime);
+
+        playerSpeed = playerSpeed / 2; // Reset the player's speed after the dash
+        gameObject.layer = LayerMask.NameToLayer("Default"); // Reset the player's layer
+        dashing = false;
     }
 }

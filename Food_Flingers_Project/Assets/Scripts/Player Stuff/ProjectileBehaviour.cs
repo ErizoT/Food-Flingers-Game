@@ -61,6 +61,8 @@ public class ProjectileBehaviour : MonoBehaviour
 
         if (isThrown)
         {
+            gameObject.layer = LayerMask.NameToLayer("Projectiles"); // Changes the layer to the 'Projectile' layer so it doesn't collide with shit on the floor
+
             switch (projectileType)
             {
                 case projectileBehaviour.straightforward:
@@ -125,10 +127,5 @@ public class ProjectileBehaviour : MonoBehaviour
         Debug.Log(this + "hit a wall");
         Destroy(this.gameObject);
         spawnZone.GetComponent<FoodSpawner>().spawnedProjectiles.Remove(this.gameObject);
-    }
-
-    void Rebound()
-    {
-        
     }
 }

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 public class FoodSpawner : MonoBehaviour
 {
-    public GameObject objectToSpawn;
-    public Vector2 rectangleBottomLeft; // Bottom-left corner of the rectangle
-    public Vector2 rectangleTopRight;   // Top-right corner of the rectangle
+    [SerializeField] ScriptExercise foodArray;
+    private Vector2 rectangleBottomLeft; // Bottom-left corner of the rectangle
+    private Vector2 rectangleTopRight;   // Top-right corner of the rectangle
 
     [HideInInspector] public GameObject respawnManager;
     private bool startSpawning;
 
-    public Vector3[] points; // Used to determine the points for the debug gizmos
+    private Vector3[] points; // Used to determine the points for the debug gizmos
 
     [SerializeField] int spawnLimit = 10;
     [SerializeField] int spawnCount = 0;
@@ -20,7 +20,7 @@ public class FoodSpawner : MonoBehaviour
     // Have a list of GameObjects (4 to be specific)
     // Get their transform.poitions
 
-    [SerializeField] GameObject[] cornerPoints;
+    private GameObject[] cornerPoints;
 
     private void Start()
     {
@@ -74,17 +74,34 @@ public class FoodSpawner : MonoBehaviour
 
     public void SpawnRandomObject()
     {
-       if (spawnCount < spawnLimit)
+       if (spawnCount < spawnLimit) // Checks to see if the number of projectiles spawned is less than the limit
        {
-            GameObject instantiatedObject;
+            float totalProbability = 0f;
+            foreach (float probability in foodArray.LikelihoodList)
+            {
+                totalProbability += probability;
+            }
 
-            float randomX = Random.Range(rectangleBottomLeft.x, rectangleTopRight.x);
-            float randomY = Random.Range(rectangleBottomLeft.y, rectangleTopRight.y);
-            Vector3 randomPosition = new Vector3(randomX, transform.position.y, randomY);
-            instantiatedObject = Instantiate(objectToSpawn, randomPosition, Quaternion.identity);
-            instantiatedObject.GetComponent<ProjectileBehaviour>().spawnZone = this.gameObject;
-            spawnedProjectiles.Add(instantiatedObject);
-            spawnCount++;
+            float randomValue = Random.Range(0f, totalProbability);
+            float cumulativeProbability = 0f;
+
+            for (int i = 0; i < foodArray.FoodList.Count; i++)
+            {
+                cumulativeProbability += foodArray.LikelihoodList[i];
+                if (randomValue < cumulativeProbability)
+                {
+                    GameObject instantiatedObject;
+
+                    float randomX = Random.Range(rectangleBottomLeft.x, rectangleTopRight.x);   // Get a random X position
+                    float randomY = Random.Range(rectangleBottomLeft.y, rectangleTopRight.y);   // Get a random Y position
+                    Vector3 randomPosition = new Vector3(randomX, transform.position.y, randomY);   // Get those random XYs and turn them into random position
+                    instantiatedObject = Instantiate(foodArray.FoodList[i], randomPosition, Quaternion.identity);   // Instantiate that random object according to probbability
+                    instantiatedObject.GetComponent<ProjectileBehaviour>().spawnZone = this.gameObject; // Assign the projectile's spawn zone
+                    spawnedProjectiles.Add(instantiatedObject); // Add the projectile to the spawnedProjectiles list
+                    spawnCount++;   // Add to the spawn zone's spawncount
+                    break;
+                }
+            }
        }
     }
 
