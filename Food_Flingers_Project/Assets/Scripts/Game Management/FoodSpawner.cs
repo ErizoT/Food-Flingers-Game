@@ -10,7 +10,7 @@ public class FoodSpawner : MonoBehaviour
     [HideInInspector] public GameObject respawnManager;
     private bool startSpawning;
 
-    private Vector3[] points; // Used to determine the points for the debug gizmos
+    public Vector3[] points; // Used to determine the points for the debug gizmos
 
     [SerializeField] int spawnLimit = 10;
     [SerializeField] int spawnCount = 0;
