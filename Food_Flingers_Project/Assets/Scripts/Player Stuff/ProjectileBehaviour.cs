@@ -13,16 +13,12 @@ public class ProjectileBehaviour : MonoBehaviour
     [SerializeField] Material neutralMaterial;
     [SerializeField] Material selectedMaterial;
 
-    private Vector3 direction;
-    private int numberOfBounces;
-    private int maxBounces = 3; // Gonna make this configurable later
-
     enum projectileBehaviour
     {
-        straightforward,
-        rebound,
-        homing,
-        splash
+        Straightforward,
+        Bouncing,
+        Homing,
+        Splash
     }
 
     [SerializeField] projectileBehaviour projectileType;
@@ -50,37 +46,14 @@ public class ProjectileBehaviour : MonoBehaviour
         
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, transform.position + transform.forward * 10);
-    }
-
     private void FixedUpdate ()
     {
-
         if (isThrown)
         {
-            gameObject.layer = LayerMask.NameToLayer("Projectiles"); // Changes the layer to the 'Projectile' layer so it doesn't collide with shit on the floor
-
             switch (projectileType)
             {
-                case projectileBehaviour.straightforward:
+                case projectileBehaviour.Straightforward:
                     rb.MovePosition(transform.position + transform.forward * projectileVelocity * Time.deltaTime);
-                    break;
-
-                case projectileBehaviour.rebound:
-                    if (numberOfBounces == 0)
-                    {
-                        direction = transform.forward;
-                    } 
-                    else if (numberOfBounces == maxBounces)
-                    {
-                        DefaultDestroy();
-                        return;
-                    }
-
-                    rb.MovePosition(transform.position + direction * projectileVelocity * Time.deltaTime);
                     break;
 
                 // Add more switch cases here once more projectile behaviours are developed!
@@ -95,20 +68,9 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         if (isThrown)
         {
-            switch (projectileType)
-            {
-                case projectileBehaviour.straightforward:
-                    DefaultDestroy();
-                    break;
-
-                case projectileBehaviour.rebound:
-                    direction = Vector3.Reflect(direction, col.contacts[0].normal);
-                    numberOfBounces++;
-                    transform.rotation = Quaternion.FromToRotation(Vector3.forward, direction);
-                    Debug.Log(numberOfBounces);
-                    break;
-
-            }
+            Debug.Log(this + "hit a wall");
+            Destroy(this.gameObject);
+            spawnZone.GetComponent<FoodSpawner>().spawnedProjectiles.Remove(this.gameObject);
         }
 
         if (isThrown && col.gameObject.tag == "Player")
@@ -122,10 +84,9 @@ public class ProjectileBehaviour : MonoBehaviour
         
     }
 
-    void DefaultDestroy()
+    void HitVFX()
     {
-        Debug.Log(this + "hit a wall");
-        Destroy(this.gameObject);
-        spawnZone.GetComponent<FoodSpawner>().spawnedProjectiles.Remove(this.gameObject);
+        // This function will be called when the projectile hits anything
+        // Set up here so that VFX and particles will fall out
     }
 }
