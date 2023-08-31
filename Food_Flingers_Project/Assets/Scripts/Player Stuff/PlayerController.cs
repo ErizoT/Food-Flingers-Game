@@ -30,6 +30,27 @@ public class PlayerController : MonoBehaviour
 
         projectiles = LayerMask.GetMask("Projectiles");
     }
+
+   /* public void Update()
+    {
+        // Call Spherecast on update
+        // Object hit by raycast will change colour to green | otherwise will change back to orange
+        // Upon grabbing (OnGrab)...
+        // - If holding a food already, throw the food
+        // - If not holding food, pick up
+
+        RaycastHit hit;
+
+        if (Physics.SphereCast(transform.position, sphereRadius, transform.forward, out hit, hitboxDistance, projectiles))
+        {
+            selectedProjectile = hit.transform.gameObject;
+            selectedProjectile.GetComponent<ProjectileBehaviour>().userThrowing = this.gameObject;
+        }
+        else
+        {
+            selectedProjectile = null;
+        }
+    }*/
     
 
     void FixedUpdate()

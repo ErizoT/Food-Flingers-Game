@@ -37,7 +37,7 @@ public class RespawnManager : MonoBehaviour
 
     void InitialiseGame()
     {
-        //Debug.Log("game started");
+        Debug.Log("game started");
 
         for (int i = 0; i < playerList.Length; i++)
         {
@@ -52,7 +52,7 @@ public class RespawnManager : MonoBehaviour
 
         for (int i = 3; i >= 0; i--)
         {
-            //Debug.Log("Countdown: " + i);
+            Debug.Log("Countdown: " + i);
             titleText.text = (i.ToString());
             yield return new WaitForSeconds(1f);
 
