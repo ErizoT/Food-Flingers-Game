@@ -20,7 +20,7 @@ public class FoodSpawner : MonoBehaviour
     // Have a list of GameObjects (4 to be specific)
     // Get their transform.poitions
 
-    private GameObject[] cornerPoints;
+    public GameObject[] cornerPoints;
 
     private void Start()
     {
