@@ -15,7 +15,12 @@ public class ProjectileBehaviour : MonoBehaviour
 
     private Vector3 direction;
     private int numberOfBounces;
-    private int maxBounces = 3; // Gonna make this configurable later
+    private int maxBounces = 4; // Gonna make this configurable later
+
+    // Homing projectile values
+    public GameObject[] targets;
+    private GameObject closestPlayer;
+    [SerializeField] float rotationSpeed = 50f;
 
     enum projectileBehaviour
     {
@@ -44,12 +49,43 @@ public class ProjectileBehaviour : MonoBehaviour
             else
             {
                 GetComponent<MeshRenderer>().material = neutralMaterial;
-                userThrowing = this.gameObject;
+
+                if (!isThrown)
+                {
+                    userThrowing = this.gameObject;
+                }
             }
         }
-        
+
+        // Finding the closest player
+        targets = GameObject.FindGameObjectsWithTag("Player");
+        closestPlayer = ClosestPlayer();
     }
 
+    GameObject ClosestPlayer()
+    {
+        GameObject closestHere = gameObject;
+        float leastDistance = Mathf.Infinity;
+
+        foreach (var player in targets)
+        {
+            if (player != userThrowing)
+            {
+                float distanceHere = Vector3.Distance(transform.position, player.transform.position);
+
+                if (distanceHere < leastDistance)
+                {
+                    leastDistance = distanceHere;
+                    closestHere = player;
+                }
+            }
+
+        }
+
+        return closestHere;
+    }
+
+    // Drawing the debug forward line of direction of the projectile 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
@@ -83,6 +119,24 @@ public class ProjectileBehaviour : MonoBehaviour
                     rb.MovePosition(transform.position + direction * projectileVelocity * Time.deltaTime);
                     break;
 
+                case projectileBehaviour.homing:
+                    Vector3 homingDirection = (closestPlayer.transform.position - rb.position).normalized; // Gets the direction of the homing projectile to the closest player
+
+                    // Calculate the rotation to gradually face the target using cross product
+                    Quaternion targetRotation = Quaternion.LookRotation(homingDirection);
+                    Vector3 rotationAxis = Vector3.Cross(transform.forward, homingDirection);
+                    float rotationAngle = Vector3.Angle(transform.forward, homingDirection);
+
+                    // Calculate rotation step based on rotation speed
+                    float step = rotationSpeed * Time.deltaTime;
+
+                    // Apply rotation along the calculated axis using Slerp
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step / rotationAngle);
+
+                    // Move the projectile towards the target
+                    rb.velocity = transform.forward * projectileVelocity;
+                    break;
+
                 // Add more switch cases here once more projectile behaviours are developed!
 
                 default:
@@ -106,6 +160,10 @@ public class ProjectileBehaviour : MonoBehaviour
                     numberOfBounces++;
                     transform.rotation = Quaternion.FromToRotation(Vector3.forward, direction);
                     Debug.Log(numberOfBounces);
+                    break;
+
+                case projectileBehaviour.homing:
+                    DefaultDestroy();
                     break;
 
             }

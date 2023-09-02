@@ -259,6 +259,8 @@ MonoBehaviour:
   rotationInterpolation: 10
   rb: {fileID: 0}
   canMove: 1
+  defMat: {fileID: 2100000, guid: 53347d00f796def42ada1f83e5bd4aae, type: 2}
+  transpMat: {fileID: 2100000, guid: 1a84b5c358a562747a97db53bae7550e, type: 2}
   projectiles:
     serializedVersion: 2
     m_Bits: 0

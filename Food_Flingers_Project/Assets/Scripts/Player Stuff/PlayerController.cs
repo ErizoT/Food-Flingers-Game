@@ -8,10 +8,13 @@ public class PlayerController : MonoBehaviour
     public float playerSpeed = 11f;
     [SerializeField] float invulnerabilityTime = 0.5f;
     [SerializeField] private float rotationInterpolation = 10f;
+    
 
-    public Rigidbody rb;
-
+    private Rigidbody rb;
     public bool canMove = true;
+
+    [SerializeField] Material defMat;
+    [SerializeField] Material transpMat;
 
     // the two-axis variable that tracks the player input of X and Y
     private Vector2 movementInput = Vector2.zero;
@@ -30,7 +33,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = this.GetComponent<Rigidbody>();
-
         projectiles = LayerMask.GetMask("Items");
     }
     
@@ -90,7 +92,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !dashing && !isHolding)
         {
             dashing = true;
             StartCoroutine(Dash());
@@ -155,13 +157,16 @@ public class PlayerController : MonoBehaviour
     IEnumerator Dash()
     {
         Debug.Log("Dashing...");
-        playerSpeed = playerSpeed * 2;
-        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized;
-        GetComponent<Rigidbody>().AddForce(move * playerSpeed * 10f, ForceMode.Force);
+        
+        Vector3 dashDirection = transform.forward; // Calculate the dash direction (e.g., forward).
+        float dashForce = 50f;
+        rb.AddForce(dashDirection * dashForce, ForceMode.Impulse); // Apply the dash force to the player's Rigidbody.
         gameObject.layer = LayerMask.NameToLayer("Invulnerable");
+        GetComponent<MeshRenderer>().material = transpMat;
+
         yield return new WaitForSeconds(invulnerabilityTime);
 
-        playerSpeed = playerSpeed / 2; // Reset the player's speed after the dash
+        GetComponent<MeshRenderer>().material = defMat;
         gameObject.layer = LayerMask.NameToLayer("Default"); // Reset the player's layer
         dashing = false;
     }
