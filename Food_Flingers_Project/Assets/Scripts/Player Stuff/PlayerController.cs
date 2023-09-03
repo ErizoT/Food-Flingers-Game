@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private bool dashing = false;
 
     // Raycast Stuff
-    [SerializeField] LayerMask projectiles;
+    [HideInInspector] LayerMask projectiles;
 
     // Throwing Stuff and Hitbox Stuff
     public GameObject selectedProjectile = null;
