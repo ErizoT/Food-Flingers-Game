@@ -6,6 +6,7 @@ using TMPro;
 public class PlayerHealth : MonoBehaviour
 {
     public int playerHealth = 2;
+    public int kills;
     public ParticleSystem deathEffect;
     public RespawnManager respawnManager;
     public TextMeshPro healthText;
@@ -22,7 +23,10 @@ public class PlayerHealth : MonoBehaviour
     private void Update()
     {
         healthText.text = playerHealth.ToString();
+        healthText.transform.LookAt(Camera.main.transform);
+        healthText.transform.Rotate(Vector3.up, 180.0f);
     }
+
     public void OnHit()
     {
         playerHealth -= 1;
@@ -53,6 +57,8 @@ public class PlayerHealth : MonoBehaviour
         Quaternion newRotation = Quaternion.Euler(deathRotation);
         transform.rotation = newRotation;
 
+        gameObject.layer = LayerMask.NameToLayer("Invulnerable");
+
         StartCoroutine(Respawn());
     }
 
@@ -62,6 +68,8 @@ public class PlayerHealth : MonoBehaviour
 
         // Wait 3 seconds before respawning
         yield return new WaitForSeconds(3f);
+
+        gameObject.layer = LayerMask.NameToLayer("Default"); // Reset the player's layer
 
         // Re-enable movement
         GetComponent<PlayerController>().canMove = true;

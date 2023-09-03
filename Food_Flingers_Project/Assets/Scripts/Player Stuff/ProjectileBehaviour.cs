@@ -175,6 +175,12 @@ public class ProjectileBehaviour : MonoBehaviour
 
             Debug.Log(this + "hit" + col);
             col.gameObject.GetComponent<PlayerHealth>().OnHit();
+
+            if (col.gameObject.GetComponent<PlayerHealth>().playerHealth <= 0 && col.gameObject != userThrowing)
+            {
+                Debug.Log(userThrowing + " awarded a kill");
+                userThrowing.GetComponent<PlayerHealth>().kills += 1;
+            }
             Destroy(this.gameObject);
         }
         
