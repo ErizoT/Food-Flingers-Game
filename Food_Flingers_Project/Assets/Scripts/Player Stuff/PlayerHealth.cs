@@ -6,9 +6,11 @@ using TMPro;
 public class PlayerHealth : MonoBehaviour
 {
     public int playerHealth = 2;
+    public int kills;
     public ParticleSystem deathEffect;
     public RespawnManager respawnManager;
     public TextMeshPro healthText;
+    public TextMeshProUGUI scoreText;
 
     private GameObject manager;
 
@@ -17,12 +19,47 @@ public class PlayerHealth : MonoBehaviour
         // OnStart, look for an object in the scene called "Respawn Manager"
         manager = GameObject.Find("Respawn Manager");
         respawnManager = manager.GetComponent<RespawnManager>();
+
+        //================================= Will remove this shit soon, this annoys me ================= 
+
+        // Detect other players in the scene by tag
+        GameObject[] otherPlayers = GameObject.FindGameObjectsWithTag("Player");
+
+        // Check the number of other players
+        int numberOfOtherPlayers = otherPlayers.Length;
+
+        // Change color based on the number of other players
+        if (numberOfOtherPlayers == 1)
+        {
+            return;
+        }
+        else if (numberOfOtherPlayers == 2)
+        {
+            RectTransform textRectTransform = scoreText.rectTransform;
+            textRectTransform.anchoredPosition = new Vector2(-341f, -409f);
+        }
+        else if (numberOfOtherPlayers == 3)
+        {
+            RectTransform textRectTransform = scoreText.rectTransform;
+            textRectTransform.anchoredPosition = new Vector2(-141f, -409f);
+        }
+        else if (numberOfOtherPlayers == 4)
+        {
+            RectTransform textRectTransform = scoreText.rectTransform;
+            textRectTransform.anchoredPosition = new Vector2(141f, -409f);
+        }
+        // ==============================================================================
     }
 
     private void Update()
     {
         healthText.text = playerHealth.ToString();
+        healthText.transform.LookAt(Camera.main.transform);
+        healthText.transform.Rotate(Vector3.up, 180.0f);
+
+        scoreText.text = kills.ToString();
     }
+
     public void OnHit()
     {
         playerHealth -= 1;
@@ -53,6 +90,8 @@ public class PlayerHealth : MonoBehaviour
         Quaternion newRotation = Quaternion.Euler(deathRotation);
         transform.rotation = newRotation;
 
+        gameObject.layer = LayerMask.NameToLayer("Invulnerable");
+
         StartCoroutine(Respawn());
     }
 
@@ -62,6 +101,8 @@ public class PlayerHealth : MonoBehaviour
 
         // Wait 3 seconds before respawning
         yield return new WaitForSeconds(3f);
+
+        gameObject.layer = LayerMask.NameToLayer("Default"); // Reset the player's layer
 
         // Re-enable movement
         GetComponent<PlayerController>().canMove = true;

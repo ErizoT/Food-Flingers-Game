@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public class FoodSpawner : MonoBehaviour
 {
-    public GameObject objectToSpawn;
-    public Vector2 rectangleBottomLeft; // Bottom-left corner of the rectangle
-    public Vector2 rectangleTopRight;   // Top-right corner of the rectangle
+    [SerializeField] ScriptExercise foodArray;
+    private Vector2 rectangleBottomLeft; // Bottom-left corner of the rectangle
+    private Vector2 rectangleTopRight;   // Top-right corner of the rectangle
 
     [HideInInspector] public GameObject respawnManager;
     private bool startSpawning;
@@ -20,12 +20,14 @@ public class FoodSpawner : MonoBehaviour
     // Have a list of GameObjects (4 to be specific)
     // Get their transform.poitions
 
-    [SerializeField] GameObject[] cornerPoints;
+    public GameObject[] cornerPoints;
 
     private void Start()
     {
         respawnManager = GameObject.Find("Respawn Manager");
-        //spawnedProjectiles = new GameObject[spawnLimit];
+
+        rectangleBottomLeft = new Vector2(cornerPoints[2].transform.position.x, cornerPoints[2].transform.position.z);
+        rectangleTopRight = new Vector3(cornerPoints[1].transform.position.x, cornerPoints[1].transform.position.z);
     }
 
     private void Update()
@@ -45,15 +47,10 @@ public class FoodSpawner : MonoBehaviour
         float rectangleHeight = transform.position.y; // Will remove later, want to adjust it with the gameobject instead of hardcoded.
         points = new Vector3[4]
         {
-            new Vector3(cornerPoints[0].transform.position.x, rectangleHeight, cornerPoints[0].transform.position.z),
-            new Vector3(cornerPoints[1].transform.position.x, rectangleHeight, cornerPoints[1].transform.position.z),
-            new Vector3(cornerPoints[2].transform.position.x, rectangleHeight, cornerPoints[2].transform.position.z),
-            new Vector3(cornerPoints[3].transform.position.x, rectangleHeight, cornerPoints[3].transform.position.z),
-
-            //new Vector3(rectangleBottomLeft.x, rectangleHeight, rectangleBottomLeft.y), // Bottom Left
-            //new Vector3(rectangleTopRight.x, rectangleHeight, rectangleTopRight.y),     // Top Right
-            //new Vector3(rectangleBottomLeft.x, rectangleHeight, rectangleTopRight.y),
-            //new Vector3(rectangleTopRight.x, rectangleHeight, rectangleBottomLeft.y),
+            new Vector3(cornerPoints[0].transform.position.x, rectangleHeight, cornerPoints[0].transform.position.z), // Top Left Corner
+            new Vector3(cornerPoints[1].transform.position.x, rectangleHeight, cornerPoints[1].transform.position.z), //Top Right Corner
+            new Vector3(cornerPoints[2].transform.position.x, rectangleHeight, cornerPoints[2].transform.position.z), // Bottom Left Corner
+            new Vector3(cornerPoints[3].transform.position.x, rectangleHeight, cornerPoints[3].transform.position.z), // Bottom Right Corner
         };
 
         // Draws two parallel blue lines
@@ -64,10 +61,10 @@ public class FoodSpawner : MonoBehaviour
         Gizmos.DrawSphere(points[2], .5f);
         Gizmos.DrawSphere(points[3], .5f);
 
-        Gizmos.DrawLine(points[0], points[2]);
-        Gizmos.DrawLine(points[2], points[1]);
+        Gizmos.DrawLine(points[0], points[1]);
         Gizmos.DrawLine(points[1], points[3]);
-        Gizmos.DrawLine(points[3], points[0]);
+        Gizmos.DrawLine(points[3], points[2]);
+        Gizmos.DrawLine(points[2], points[0]);
     }
 
     // Spawning Shit
@@ -77,17 +74,34 @@ public class FoodSpawner : MonoBehaviour
 
     public void SpawnRandomObject()
     {
-       if (spawnCount < spawnLimit)
+       if (spawnCount < spawnLimit) // Checks to see if the number of projectiles spawned is less than the limit
        {
-            GameObject instantiatedObject;
+            float totalProbability = 0f;
+            foreach (float probability in foodArray.LikelihoodList)
+            {
+                totalProbability += probability;
+            }
 
-            float randomX = Random.Range(rectangleBottomLeft.x, rectangleTopRight.x);
-            float randomY = Random.Range(rectangleBottomLeft.y, rectangleTopRight.y);
-            Vector3 randomPosition = new Vector3(randomX, transform.position.y, randomY);
-            instantiatedObject = Instantiate(objectToSpawn, randomPosition, Quaternion.identity);
-            instantiatedObject.GetComponent<ProjectileBehaviour>().spawnZone = this.gameObject;
-            spawnedProjectiles.Add(instantiatedObject);
-            spawnCount++;
+            float randomValue = Random.Range(0f, totalProbability);
+            float cumulativeProbability = 0f;
+
+            for (int i = 0; i < foodArray.FoodList.Count; i++)
+            {
+                cumulativeProbability += foodArray.LikelihoodList[i];
+                if (randomValue < cumulativeProbability)
+                {
+                    GameObject instantiatedObject;
+
+                    float randomX = Random.Range(rectangleBottomLeft.x, rectangleTopRight.x);   // Get a random X position
+                    float randomY = Random.Range(rectangleBottomLeft.y, rectangleTopRight.y);   // Get a random Y position
+                    Vector3 randomPosition = new Vector3(randomX, transform.position.y, randomY);   // Get those random XYs and turn them into random position
+                    instantiatedObject = Instantiate(foodArray.FoodList[i], randomPosition, Quaternion.identity);   // Instantiate that random object according to probbability
+                    instantiatedObject.GetComponent<ProjectileBehaviour>().spawnZone = this.gameObject; // Assign the projectile's spawn zone
+                    spawnedProjectiles.Add(instantiatedObject); // Add the projectile to the spawnedProjectiles list
+                    spawnCount++;   // Add to the spawn zone's spawncount
+                    break;
+                }
+            }
        }
     }
 

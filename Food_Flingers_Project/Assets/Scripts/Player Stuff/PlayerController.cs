@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,17 +6,18 @@ public class PlayerController : MonoBehaviour
 {
     // Bunch of movement values I can adjust
     public float playerSpeed = 11f;
+    [SerializeField] float invulnerabilityTime = 0.5f;
     [SerializeField] private float rotationInterpolation = 10f;
 
-    public Rigidbody rb;
-
+    private Rigidbody rb;
     public bool canMove = true;
 
     // the two-axis variable that tracks the player input of X and Y
     private Vector2 movementInput = Vector2.zero;
+    private bool dashing = false;
 
     // Raycast Stuff
-    [SerializeField] LayerMask projectiles;
+    [HideInInspector] LayerMask projectiles;
 
     // Throwing Stuff and Hitbox Stuff
     public GameObject selectedProjectile = null;
@@ -27,8 +29,39 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = this.GetComponent<Rigidbody>();
+        projectiles = LayerMask.GetMask("Items");
 
-        projectiles = LayerMask.GetMask("Projectiles");
+        // Detect other players in the scene by tag
+        GameObject[] otherPlayers = GameObject.FindGameObjectsWithTag("Player");
+
+        // Check the number of other players
+        int numberOfOtherPlayers = otherPlayers.Length;
+
+        // Change color based on the number of other players
+        if (numberOfOtherPlayers == 1)
+        {
+            // No other players in the scene, change color to something
+            // appropriate for a solo player.
+            return;
+        }
+        else if (numberOfOtherPlayers == 2)
+        {
+            // One other player in the scene, change color to something
+            // appropriate for a two-player game.
+            ChangeColor(Color.blue);
+        }
+        else if (numberOfOtherPlayers == 3)
+        {
+            // More than one other player in the scene, change color to
+            // something appropriate for a multiplayer game.
+            ChangeColor(Color.yellow);
+        }
+        else if (numberOfOtherPlayers == 4)
+        {
+            // More than one other player in the scene, change color to
+            // something appropriate for a multiplayer game.
+            ChangeColor(Color.green);
+        }
     }
     
 
@@ -38,7 +71,10 @@ public class PlayerController : MonoBehaviour
         //controller.Move(move * Time.deltaTime * playerSpeed);
 
         // The force is both the direction AND the magnitude (both lenght and direction)
-        GetComponent<Rigidbody>().AddForce(move * playerSpeed * 10f, ForceMode.Force);
+        if (!dashing)
+        {
+            GetComponent<Rigidbody>().AddForce(move * playerSpeed * 10f, ForceMode.Force);
+        }
 
         if (move.magnitude != 0)
         {
@@ -46,12 +82,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.LookRotation(move),Time.deltaTime*rotationInterpolation);
         }
 
-        // Call Spherecast on update
-        // Object hit by raycast will change colour to green | otherwise will change back to orange
-        // Upon grabbing (OnGrab)...
-        // - If holding a food already, throw the food
-        // - If not holding food, pick up
-
+        // Spherecasting item pickup range
         RaycastHit hit;
 
         if (Physics.SphereCast(transform.position, sphereRadius, transform.forward, out hit, hitboxDistance, projectiles))
@@ -79,6 +110,19 @@ public class PlayerController : MonoBehaviour
         if (canMove)
         {
             movementInput = context.ReadValue<Vector2>();
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.performed && !dashing && !isHolding && rb != null)
+        {
+            dashing = true;
+            StartCoroutine(Dash());
         }
     }
 
@@ -135,5 +179,38 @@ public class PlayerController : MonoBehaviour
             isHolding = false;
         }
             
+    }
+
+    // Helper method to change the player's color
+    private void ChangeColor(Color newColor)
+    {
+        // Assuming you have a MeshRenderer component on your player object
+        MeshRenderer rend = GetComponent<MeshRenderer>();
+        Material mat = rend.material;
+        mat.color = newColor;
+    }
+
+    IEnumerator Dash()
+    {
+        Debug.Log("Dashing...");
+        
+        Vector3 dashDirection = transform.forward; // Calculate the dash direction (e.g., forward).
+        float dashForce = 50f;
+        rb.AddForce(dashDirection * dashForce, ForceMode.Impulse); // Apply the dash force to the player's Rigidbody.
+        gameObject.layer = LayerMask.NameToLayer("Invulnerable");
+
+        MeshRenderer rend = GetComponent<MeshRenderer>();
+        Material mat = rend.material;
+        Color matColor = mat.color;
+        matColor.a = 0.5f;
+        mat.color = matColor;
+
+        yield return new WaitForSeconds(invulnerabilityTime);
+
+        matColor.a = 1f;
+        mat.color = matColor;
+
+        gameObject.layer = LayerMask.NameToLayer("Default"); // Reset the player's layer
+        dashing = false;
     }
 }
