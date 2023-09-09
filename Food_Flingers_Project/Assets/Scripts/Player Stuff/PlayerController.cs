@@ -119,10 +119,19 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed && !dashing && !isHolding && rb != null)
+        if (context.performed && !dashing && rb != null)
         {
             dashing = true;
             StartCoroutine(Dash());
+
+            if (isHolding)
+            {
+                heldProjectile.transform.SetParent(null);
+                heldProjectile.GetComponent<SphereCollider>().enabled = true;
+                heldProjectile.GetComponent<Rigidbody>().isKinematic = false;
+                heldProjectile = null;
+                isHolding = false;
+            }
         }
     }
 
@@ -197,20 +206,20 @@ public class PlayerController : MonoBehaviour
         Vector3 dashDirection = transform.forward; // Calculate the dash direction (e.g., forward).
         float dashForce = 50f;
         rb.AddForce(dashDirection * dashForce, ForceMode.Impulse); // Apply the dash force to the player's Rigidbody.
-        gameObject.layer = LayerMask.NameToLayer("Invulnerable");
+        //gameObject.layer = LayerMask.NameToLayer("Invulnerable");
 
-        MeshRenderer rend = GetComponent<MeshRenderer>();
-        Material mat = rend.material;
-        Color matColor = mat.color;
-        matColor.a = 0.5f;
-        mat.color = matColor;
+        //MeshRenderer rend = GetComponent<MeshRenderer>();
+        //Material mat = rend.material;
+        //Color matColor = mat.color;
+        //matColor.a = 0.5f;
+        //mat.color = matColor;
 
         yield return new WaitForSeconds(invulnerabilityTime);
 
-        matColor.a = 1f;
-        mat.color = matColor;
+        //matColor.a = 1f;
+        //mat.color = matColor;
 
-        gameObject.layer = LayerMask.NameToLayer("Default"); // Reset the player's layer
+        //gameObject.layer = LayerMask.NameToLayer("Default"); // Reset the player's layer
         dashing = false;
     }
 }
