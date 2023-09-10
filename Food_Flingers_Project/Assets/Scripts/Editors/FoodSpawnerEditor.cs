@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+#if UNITY_EDITOR
 [CustomEditor(typeof(ScriptExercise))]
 public class FoodSpawnerEditor : Editor
 {
@@ -60,3 +60,4 @@ public class FoodSpawnerEditor : Editor
     }
 
 }
+#endif

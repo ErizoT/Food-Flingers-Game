@@ -196,13 +196,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ea8e0094eb79142aff4d61c4832ddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileVelocity: 15
+  projectileVelocity: 20
   isThrown: 0
   rb: {fileID: 0}
   userThrowing: {fileID: 0}
   spawnZone: {fileID: 0}
   neutralMaterial: {fileID: 2100000, guid: 58bec3c49f7b9a74ba8aea891ad48e04, type: 2}
   selectedMaterial: {fileID: 2100000, guid: 1f5f52aeef94c0a4da7de50fb40ec969, type: 2}
+  targets: []
+  rotationSpeed: 50
   projectileType: 1
 --- !u!135 &6692087723148909768
 SphereCollider:

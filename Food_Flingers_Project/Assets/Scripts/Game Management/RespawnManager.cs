@@ -9,6 +9,7 @@ public class RespawnManager : MonoBehaviour
     public int maxPlayers = 2;
     public Transform[] respawnPoints;
     public TextMeshProUGUI titleText;
+    public TextMeshProUGUI winnerText;
 
     public bool isGameStarted;
 
@@ -40,11 +41,18 @@ public class RespawnManager : MonoBehaviour
             InitialiseGame();
             isGameStarted = true;
             GameObject[] foodToDestroy = GameObject.FindGameObjectsWithTag("Food");
+            currentTime = totalTime;
+            isCounting = false;
             StartCoroutine(GameCountdown());
 
             for (int i = 0; i < foodToDestroy.Length; i++)
             {
                 Destroy(foodToDestroy[i]);
+            }
+
+            for (int i = 0; i < playerList.Length; i++)
+            {
+                playerList[i].GetComponent<PlayerHealth>().kills = 0;
             }
         }
 
@@ -57,6 +65,7 @@ public class RespawnManager : MonoBehaviour
             {
                 currentTime = 0.0f;
                 isCounting = false;
+                EndGame();
             }
 
             UpdateTimerDisplay();
@@ -75,11 +84,13 @@ public class RespawnManager : MonoBehaviour
     void InitialiseGame()
     {
         //Debug.Log("game started");
+        winnerText.text = "";
 
         for (int i = 0; i < playerList.Length; i++)
         {
             playerList[i].transform.position = respawnPoints[i].position;
             playerList[i].GetComponent<PlayerController>().canMove = false;
+            playerList[i].GetComponent<PlayerController>().playerSpeed = 0f;
         }
 
         StartCoroutine(GameCountdown());
@@ -95,7 +106,22 @@ public class RespawnManager : MonoBehaviour
 
     void EndGame()
     {
+        titleText.text = "Game Over!";
+        isGameStarted = false;
 
+        GameObject topPlayer = null;
+        int highestKills = 0;
+
+        for (int i = 0; i < playerList.Length; i++)
+        {
+            if (playerList[i].GetComponent<PlayerHealth>().kills > highestKills)
+            {
+                highestKills = playerList[i].GetComponent<PlayerHealth>().kills;
+                topPlayer = playerList[i];
+                int playerNumber = i + 1;
+                winnerText.text = "Player " + playerNumber.ToString() + " wins!"; // Corrected ToString() call
+            }
+        }
     }
 
     IEnumerator GameCountdown()
@@ -117,6 +143,7 @@ public class RespawnManager : MonoBehaviour
                 for (int e = 0; e < playerList.Length; e++)
                 {
                     playerList[e].GetComponent<PlayerController>().canMove = true;
+                    playerList[e].GetComponent<PlayerController>().playerSpeed = 11f; // This is hardcoded and I don't like it
                 }
             }
         }

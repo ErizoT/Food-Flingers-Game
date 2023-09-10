@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float hitboxDistance = 3f;
     private bool isHolding;
 
+    [SerializeField] MeshRenderer rend;
+
     private void Start()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -119,7 +121,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed && !dashing && rb != null)
+        if (context.performed && !dashing && rb != null && canMove)
         {
             dashing = true;
             StartCoroutine(Dash());
@@ -194,7 +196,7 @@ public class PlayerController : MonoBehaviour
     private void ChangeColor(Color newColor)
     {
         // Assuming you have a MeshRenderer component on your player object
-        MeshRenderer rend = GetComponent<MeshRenderer>();
+        //MeshRenderer rend = GetComponent<MeshRenderer>();
         Material mat = rend.material;
         mat.color = newColor;
     }
