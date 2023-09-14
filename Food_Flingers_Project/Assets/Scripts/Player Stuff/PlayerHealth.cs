@@ -6,6 +6,7 @@ using TMPro;
 public class PlayerHealth : MonoBehaviour
 {
     public int playerHealth = 2;
+    [SerializeField] float invulnerabilityTime = 1f;
     public int kills;
     public ParticleSystem deathEffect;
     public RespawnManager respawnManager;
@@ -58,6 +59,8 @@ public class PlayerHealth : MonoBehaviour
         healthText.transform.Rotate(Vector3.up, 180.0f);
 
         scoreText.text = kills.ToString();
+
+        deathEffect.transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 0));
     }
 
     public void OnHit()
@@ -70,6 +73,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
+            StartCoroutine(InvulnerabilityWindow());
             deathEffect.Stop(); // Stop emitting particles
             deathEffect.Clear(); // Clear existing particles
             deathEffect.Play();
@@ -99,6 +103,13 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Respawning");
 
+        // Change to trasnparent material
+        MeshRenderer rend = GetComponent<MeshRenderer>();
+        Material mat = rend.material;
+        Color matColor = mat.color;
+        matColor.a = 0.5f;
+        mat.color = matColor;
+
         // Wait 3 seconds before respawning
         yield return new WaitForSeconds(3f);
 
@@ -119,5 +130,25 @@ public class PlayerHealth : MonoBehaviour
 
         // Reset Health
         playerHealth = 2;
+
+        // Reset material transparency
+        matColor.a = 1f;
+        mat.color = matColor;
+    }
+
+    IEnumerator InvulnerabilityWindow()
+    {
+        gameObject.layer = LayerMask.NameToLayer("Invulnerable");
+        MeshRenderer rend = GetComponent<MeshRenderer>();
+        Material mat = rend.material;
+        Color matColor = mat.color;
+        matColor.a = 0.5f;
+        mat.color = matColor;
+
+        yield return new WaitForSeconds(invulnerabilityTime);
+
+        gameObject.layer = LayerMask.NameToLayer("Default");
+        matColor.a = 1f;
+        mat.color = matColor;
     }
 }
