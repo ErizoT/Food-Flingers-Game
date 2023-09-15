@@ -5071,10 +5071,11 @@ MonoBehaviour:
   invulnerabilityTime: 0.5
   rotationInterpolation: 10
   canMove: 1
+  dashForce: 80
   selectedProjectile: {fileID: 0}
   heldProjectile: {fileID: 0}
-  sphereRadius: 0.54
-  hitboxDistance: 1.6
+  sphereRadius: 0.5
+  hitboxDistance: 1.75
   rend: {fileID: 8419349642097122414}
 --- !u!114 &2698453284129532701
 MonoBehaviour:

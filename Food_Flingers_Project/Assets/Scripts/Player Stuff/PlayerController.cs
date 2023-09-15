@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     // the two-axis variable that tracks the player input of X and Y
     private Vector2 movementInput = Vector2.zero;
     private bool dashing = false;
+    [SerializeField] float dashForce = 80f;
 
     // Raycast Stuff
     [HideInInspector] LayerMask projectiles;
@@ -95,6 +96,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             selectedProjectile = null;
+            //StartCoroutine(CoyoteGrab());     - See notes under CoyoteGrab() below
         }
     }
 
@@ -152,6 +154,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /*IEnumerator CoyoteGrab()
+    {
+        yield return new WaitForSeconds(1f);
+        selectedProjectile = null;
+    }*/
+
+    // Thought the frustration with the grab was due to the finickiness of
+    // the spherecast, hence why I thought a 'Coyote Grab' would be good.
+    // However, this resulted in the 'flashing' of held projectiles, which was super weird.
+
     void Hold()
     {
 
@@ -206,7 +218,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Dashing...");
         
         Vector3 dashDirection = transform.forward; // Calculate the dash direction (e.g., forward).
-        float dashForce = 50f;
         rb.AddForce(dashDirection * dashForce, ForceMode.Impulse); // Apply the dash force to the player's Rigidbody.
         //gameObject.layer = LayerMask.NameToLayer("Invulnerable");
 
