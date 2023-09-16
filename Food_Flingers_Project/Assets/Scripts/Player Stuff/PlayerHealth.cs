@@ -6,12 +6,13 @@ using TMPro;
 public class PlayerHealth : MonoBehaviour
 {
     public int playerHealth = 2;
-    [SerializeField] float invulnerabilityTime = 1f;
+    [SerializeField] float invulnerabilityTime = 2f;
     public int kills;
     public ParticleSystem deathEffect;
     public RespawnManager respawnManager;
     public TextMeshPro healthText;
     public TextMeshProUGUI scoreText;
+    [SerializeField] MeshRenderer rend;
     [HideInInspector] public PlayerController playerController;
 
     private GameObject manager;
@@ -108,7 +109,7 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Respawning");
 
         // Change to trasnparent material
-        MeshRenderer rend = GetComponent<MeshRenderer>();
+        //MeshRenderer rend = GetComponent<MeshRenderer>();
         Material mat = rend.material;
         Color matColor = mat.color;
         matColor.a = 0.5f;
@@ -138,12 +139,14 @@ public class PlayerHealth : MonoBehaviour
         // Reset material transparency
         matColor.a = 1f;
         mat.color = matColor;
+
+        StartCoroutine(InvulnerabilityWindow());
     }
 
     IEnumerator InvulnerabilityWindow()
     {
         gameObject.layer = LayerMask.NameToLayer("Invulnerable");
-        MeshRenderer rend = GetComponent<MeshRenderer>();
+        //MeshRenderer rend = GetComponent<MeshRenderer>();
         Material mat = rend.material;
         Color matColor = mat.color;
         matColor.a = 0.5f;

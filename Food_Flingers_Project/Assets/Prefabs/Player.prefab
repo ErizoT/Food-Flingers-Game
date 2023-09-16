@@ -5090,12 +5090,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 2
-  invulnerabilityTime: 1
+  invulnerabilityTime: 3
   kills: 0
   deathEffect: {fileID: 3296010231882474734}
   respawnManager: {fileID: 0}
   healthText: {fileID: 975933952429066411}
   scoreText: {fileID: 545558557887770894}
+  rend: {fileID: 8419349642097122414}
+  playerController: {fileID: 0}
 --- !u!33 &2698453284129532719
 MeshFilter:
   m_ObjectHideFlags: 0
