@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     public RespawnManager respawnManager;
     public TextMeshPro healthText;
     public TextMeshProUGUI scoreText;
+    [HideInInspector] public PlayerController playerController;
 
     private GameObject manager;
 
@@ -20,6 +21,8 @@ public class PlayerHealth : MonoBehaviour
         // OnStart, look for an object in the scene called "Respawn Manager"
         manager = GameObject.Find("Respawn Manager");
         respawnManager = manager.GetComponent<RespawnManager>();
+
+        playerController = GetComponent<PlayerController>();
 
         //================================= Will remove this shit soon, this annoys me ================= 
 
@@ -86,8 +89,9 @@ public class PlayerHealth : MonoBehaviour
         deathEffect.Clear(); // Clear existing particles
         deathEffect.Play();
 
-        GetComponent<PlayerController>().canMove = false;
-        GetComponent<PlayerController>().playerSpeed = 0f;
+        playerController.canMove = false;
+        playerController.playerSpeed = 0f;
+        playerController.Drop();
 
         //Rotate the character so it looks dead
         Vector3 deathRotation = new Vector3(0, 180, 90);

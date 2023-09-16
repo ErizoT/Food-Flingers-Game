@@ -130,11 +130,7 @@ public class PlayerController : MonoBehaviour
 
             if (isHolding)
             {
-                heldProjectile.transform.SetParent(null);
-                heldProjectile.GetComponent<SphereCollider>().enabled = true;
-                heldProjectile.GetComponent<Rigidbody>().isKinematic = false;
-                heldProjectile = null;
-                isHolding = false;
+                Drop();
             }
         }
     }
@@ -153,16 +149,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-    /*IEnumerator CoyoteGrab()
-    {
-        yield return new WaitForSeconds(1f);
-        selectedProjectile = null;
-    }*/
-
-    // Thought the frustration with the grab was due to the finickiness of
-    // the spherecast, hence why I thought a 'Coyote Grab' would be good.
-    // However, this resulted in the 'flashing' of held projectiles, which was super weird.
 
     void Hold()
     {
@@ -184,6 +170,18 @@ public class PlayerController : MonoBehaviour
         else
         {
             return;
+        }
+    }
+
+    public void Drop()
+    {
+        if (isHolding)
+        {
+            heldProjectile.transform.SetParent(null);
+            heldProjectile.GetComponent<SphereCollider>().enabled = true;
+            heldProjectile.GetComponent<Rigidbody>().isKinematic = false;
+            heldProjectile = null;
+            isHolding = false;
         }
     }
 
