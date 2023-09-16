@@ -186,9 +186,8 @@ public class ProjectileBehaviour : MonoBehaviour
         
     }
 
-    void DefaultDestroy()
+    public void DefaultDestroy()
     {
-        Debug.Log(this + "hit a wall");
         Destroy(this.gameObject);
         spawnZone.GetComponent<FoodSpawner>().spawnedProjectiles.Remove(this.gameObject);
     }

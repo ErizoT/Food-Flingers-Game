@@ -40,6 +40,8 @@ public class FoodSpawner : MonoBehaviour
         }
 
         spawnCount = spawnedProjectiles.Count;
+
+        //Debug.Log(startSpawning);
     }
 
     void OnDrawGizmos()

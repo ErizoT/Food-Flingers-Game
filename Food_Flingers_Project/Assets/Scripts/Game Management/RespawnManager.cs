@@ -47,7 +47,7 @@ public class RespawnManager : MonoBehaviour
 
             for (int i = 0; i < foodToDestroy.Length; i++)
             {
-                Destroy(foodToDestroy[i]);
+                foodToDestroy[i].GetComponent<ProjectileBehaviour>().DefaultDestroy();
             }
 
             for (int i = 0; i < playerList.Length; i++)
@@ -65,11 +65,13 @@ public class RespawnManager : MonoBehaviour
             {
                 currentTime = 0.0f;
                 isCounting = false;
-                EndGame();
+                StartCoroutine(EndGame());
             }
 
             UpdateTimerDisplay();
         }
+
+        Debug.Log(isGameStarted);
     }
 
     private void OnDrawGizmos()
@@ -85,7 +87,7 @@ public class RespawnManager : MonoBehaviour
     {
         //Debug.Log("game started");
         winnerText.text = "";
-
+        Time.timeScale = 1;
         for (int i = 0; i < playerList.Length; i++)
         {
             playerList[i].transform.position = respawnPoints[i].position;
@@ -104,11 +106,15 @@ public class RespawnManager : MonoBehaviour
         timerText.text = minutes + ":" + seconds;
     }
 
-    void EndGame()
+    IEnumerator EndGame()
     {
-        titleText.text = "Game Over!";
-        isGameStarted = false;
+        titleText.text = "TIME!";
+        Time.timeScale = 0.5f;
+        //isGameStarted = false;
 
+        yield return new WaitForSeconds(2f);
+
+        titleText.text = "Game Over!";
         GameObject topPlayer = null;
         int highestKills = 0;
 
