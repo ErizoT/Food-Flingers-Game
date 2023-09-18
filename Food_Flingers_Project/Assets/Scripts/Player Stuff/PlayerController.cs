@@ -2,34 +2,38 @@ using System.Collections;
 //using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
-//using UnityEngine.
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     // Bunch of movement values I can adjust
+    [Header("Movement")]
     public float playerSpeed = 11f;
     [SerializeField] float invulnerabilityTime = 0.5f;
     [SerializeField] private float rotationInterpolation = 10f;
-
-    private Rigidbody rb;
+    [SerializeField] float dashForce = 80f;
     public bool canMove = true;
 
-    // the two-axis variable that tracks the player input of X and Y
+    private Rigidbody rb; // This variable was missing from the original response
+
     private Vector2 movementInput = Vector2.zero;
     private bool dashing = false;
-    [SerializeField] float dashForce = 80f;
 
     // Raycast Stuff
     [HideInInspector] LayerMask projectiles;
 
-    // Throwing Stuff and Hitbox Stuff
-    public GameObject selectedProjectile = null;
-    [SerializeField] GameObject heldProjectile;
+    [Header("Spherecast Stuff")]
     [SerializeField] float sphereRadius = 2f;
     [SerializeField] float hitboxDistance = 3f;
+    [HideInInspector] public GameObject selectedProjectile = null;
+    GameObject heldProjectile;
     private bool isHolding;
 
+    [Header("Pause Menu Variables")]
+    [SerializeField] GameObject pauseMenu;
     [SerializeField] MeshRenderer rend;
+    public static bool isPaused = false;
+    [HideInInspector] public static GameObject playerPaused;
 
     private void Start()
     {
@@ -125,7 +129,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed && !dashing && rb != null && canMove)
+        if (context.performed && !dashing && rb != null && canMove && !isPaused)
         {
             dashing = true;
             StartCoroutine(Dash());
@@ -204,13 +208,7 @@ public class PlayerController : MonoBehaviour
             
     }
 
-    public void Pause(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            
-        }
-    }
+
 
     // Helper method to change the player's color
     private void ChangeColor(Color newColor)
@@ -242,5 +240,43 @@ public class PlayerController : MonoBehaviour
 
         //gameObject.layer = LayerMask.NameToLayer("Default"); // Reset the player's layer
         dashing = false;
+    }
+
+    // ============================= MENU STUFF ====================================
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if (context.performed && !isPaused)
+        {
+            Debug.Log("Pausing");
+            isPaused = true;
+
+            Time.timeScale = 0;
+            playerPaused = this.gameObject;
+            pauseMenu.SetActive(true);
+
+            // Play a pause sound here!
+        } 
+        else if (context.performed && isPaused && playerPaused == this.gameObject)
+        {
+            Unpause();
+        }
+    }
+
+    public void Unpause()
+    {
+        Debug.Log("Unpausing");
+        isPaused = false;
+
+        Time.timeScale = 1;
+        playerPaused = null;
+        pauseMenu.SetActive(false);
+
+        // Play a pause sound here!
+    }
+
+    public void Exit()
+    {
+        Unpause();
+        SceneManager.LoadScene("MainMenu");
     }
 }
