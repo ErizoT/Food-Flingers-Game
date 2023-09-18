@@ -1,6 +1,8 @@
 using System.Collections;
+//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+//using UnityEngine.
 
 public class PlayerController : MonoBehaviour
 {
@@ -202,6 +204,14 @@ public class PlayerController : MonoBehaviour
             
     }
 
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            
+        }
+    }
+
     // Helper method to change the player's color
     private void ChangeColor(Color newColor)
     {
@@ -214,7 +224,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator Dash()
     {
         Debug.Log("Dashing...");
-        
+
         Vector3 dashDirection = transform.forward; // Calculate the dash direction (e.g., forward).
         rb.AddForce(dashDirection * dashForce, ForceMode.Impulse); // Apply the dash force to the player's Rigidbody.
         //gameObject.layer = LayerMask.NameToLayer("Invulnerable");

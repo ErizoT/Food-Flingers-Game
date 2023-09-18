@@ -64,7 +64,7 @@ public class PlayerHealth : MonoBehaviour
 
         scoreText.text = kills.ToString();
 
-        deathEffect.transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 0));
+        //deathEffect.transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 0));
     }
 
     public void OnHit()

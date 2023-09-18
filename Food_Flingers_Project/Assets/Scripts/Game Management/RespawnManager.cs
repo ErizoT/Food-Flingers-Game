@@ -71,7 +71,6 @@ public class RespawnManager : MonoBehaviour
             UpdateTimerDisplay();
         }
 
-        Debug.Log(isGameStarted);
     }
 
     private void OnDrawGizmos()
