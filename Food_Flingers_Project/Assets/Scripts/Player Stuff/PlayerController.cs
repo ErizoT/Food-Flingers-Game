@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Pause Menu Variables")]
     [SerializeField] GameObject pauseMenu;
-    [SerializeField] MeshRenderer rend;
+    [SerializeField] SkinnedMeshRenderer rend;
     public static bool isPaused = false;
     [HideInInspector] public static GameObject playerPaused;
 

@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     public RespawnManager respawnManager;
     public TextMeshPro healthText;
     public TextMeshProUGUI scoreText;
-    [SerializeField] MeshRenderer rend;
+    [SerializeField] SkinnedMeshRenderer rend;
     [HideInInspector] public PlayerController playerController;
 
     private GameObject manager;
