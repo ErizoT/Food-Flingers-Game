@@ -4,12 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 
-// WHAT THIS SCRIPT DOES:
-// Everytime a player joins, a player menu prefab is created for them.
-
 public class SpawnPlayerSetupMenu : MonoBehaviour
 {
-    public GameObject playerMenuPrefab;
+    public GameObject playerSetupMenuPrefab;
     public PlayerInput input;
 
     private void Awake()
@@ -17,10 +14,9 @@ public class SpawnPlayerSetupMenu : MonoBehaviour
         var rootMenu = GameObject.Find("MainLayout");
         if (rootMenu != null)
         {
-            var menu = Instantiate(playerMenuPrefab, rootMenu.transform);
+            var menu = Instantiate(playerSetupMenuPrefab, rootMenu.transform);
             input.uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
             menu.GetComponent<PlayerSetupMenuController>().SetPlayerIndex(input.playerIndex);
-
         }
     }
 }

@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class PlayerSetupMenuController : MonoBehaviour
 {
@@ -16,19 +16,19 @@ public class PlayerSetupMenuController : MonoBehaviour
 
     [SerializeField] private Button readyButton;
 
-    private float ignorInputTime = 1.5f;
+    private float ignoreInputTime = 1.5f;
     private bool inputEnabled;
 
     public void SetPlayerIndex(int pi)
     {
         PlayerIndex = pi;
-        titleText.SetText("Player" + (pi + 1).ToString());
-        ignorInputTime = Time.deltaTime + ignorInputTime;
+        titleText.SetText("Player " + (pi + 1).ToString());
+        ignoreInputTime = Time.time + ignoreInputTime;
     }
 
     private void Update()
     {
-        if(Time.time > ignorInputTime)
+        if(Time.time > ignoreInputTime)
         {
             inputEnabled = true;
         }
@@ -36,7 +36,10 @@ public class PlayerSetupMenuController : MonoBehaviour
 
     public void SetColor(Material color)
     {
-        if(!inputEnabled) { return; }
+        if(!inputEnabled) 
+        {
+            return;
+        }
 
         PlayerConfigurationManager.Instance.SetPlayerColor(PlayerIndex, color);
         readyPanel.SetActive(true);
@@ -51,6 +54,4 @@ public class PlayerSetupMenuController : MonoBehaviour
         PlayerConfigurationManager.Instance.ReadyPlayer(PlayerIndex);
         readyButton.gameObject.SetActive(false);
     }
-
-
 }
