@@ -10,6 +10,7 @@ public class RespawnManager : MonoBehaviour
     public Transform[] respawnPoints;
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI winnerText;
+    [SerializeField] GameObject playerPrefab;
 
     public bool isGameStarted;
 
@@ -23,6 +24,15 @@ public class RespawnManager : MonoBehaviour
     {
         currentTime = totalTime;
         UpdateTimerDisplay();
+
+        // Initialise player Configurations
+        var playerConfigs = PlayerConfigurationManager.Instance.GetPlayerConfigs().ToArray();
+
+        for(int i = 0; i < playerConfigs.Length; i++)
+        {
+            var player = Instantiate(playerPrefab, respawnPoints[i].position, respawnPoints[i].rotation, gameObject.transform);
+            player.GetComponent<PlayerInputHandler>().InitialisePlayer(playerConfigs[i]);
+        }
     }
 
     public void Update()

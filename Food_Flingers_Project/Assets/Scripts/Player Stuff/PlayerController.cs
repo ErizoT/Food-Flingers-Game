@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb; // This variable was missing from the original response
 
-    private Vector2 movementInput = Vector2.zero;
+    [HideInInspector] public Vector2 movementInput = Vector2.zero;
     private bool dashing = false;
 
     // Raycast Stuff
@@ -77,7 +77,6 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized;
-        //controller.Move(move * Time.deltaTime * playerSpeed);
 
         // The force is both the direction AND the magnitude (both lenght and direction)
         if (!dashing)
@@ -119,7 +118,7 @@ public class PlayerController : MonoBehaviour
         //Shit that happens when moving
         if (canMove)
         {
-            movementInput = context.ReadValue<Vector2>();
+            //movementInput = context.ReadValue<Vector2>();
         }
         else
         {
@@ -127,9 +126,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnDash(InputAction.CallbackContext context)
+    public void OnDash()
     {
-        if (context.performed && !dashing && rb != null && canMove && !isPaused)
+        if (!dashing && rb != null && canMove && !isPaused)
         {
             dashing = true;
             StartCoroutine(Dash());
@@ -141,18 +140,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnGrab(InputAction.CallbackContext context)
+    public void OnGrab()
     {
-        if (context.performed)
+        if (isHolding)
         {
-            if (isHolding)
-            {
-                Throw();
-            }
-            else
-            {
-                Hold();
-            }
+            Throw();
+        }
+        else
+        {
+            Hold();
         }
     }
 

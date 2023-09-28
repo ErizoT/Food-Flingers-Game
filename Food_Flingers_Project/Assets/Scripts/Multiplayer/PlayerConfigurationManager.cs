@@ -39,7 +39,7 @@ public class PlayerConfigurationManager : MonoBehaviour
     {
         playerConfigs[index].IsReady = true;
 
-        if (playerConfigs.All(p => p.IsReady == true))
+        if (playerConfigs.All(p => p.IsReady == true)) // BUG: Need to make sure game needs at least 2 players readied up
         {
             //Debug.Log("Load Scene");
             SceneManager.LoadScene("SampleScene");
@@ -55,6 +55,11 @@ public class PlayerConfigurationManager : MonoBehaviour
         {
             playerConfigs.Add(new PlayerConfiguration(pi)); // Creates a new PlayerConfig with the incoming player input
         }
+    }
+
+    public List<PlayerConfiguration> GetPlayerConfigs()
+    {
+        return playerConfigs;
     }
 
 }

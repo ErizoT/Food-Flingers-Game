@@ -104,6 +104,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   userThrowing: {fileID: 0}
   spawnZone: {fileID: 0}
+  model: {fileID: 0}
   neutralMaterial: {fileID: 2100000, guid: 58bec3c49f7b9a74ba8aea891ad48e04, type: 2}
   selectedMaterial: {fileID: 2100000, guid: 1f5f52aeef94c0a4da7de50fb40ec969, type: 2}
   targets: []
@@ -135,8 +136,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.55
-  m_Height: 1
+  m_Radius: 0.33
+  m_Height: 1.14
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5719554913207146801
