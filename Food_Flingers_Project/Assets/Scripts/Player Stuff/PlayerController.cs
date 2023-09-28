@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour
             foodTransform.position = transform.position + new Vector3(0, 2, 0);
             foodTransform.rotation = transform.rotation;
             heldProjectile.GetComponent<Rigidbody>().isKinematic = true;
-            heldProjectile.GetComponent<SphereCollider>().enabled = false;
+            heldProjectile.GetComponent<CapsuleCollider>().enabled = false;
 
             isHolding = true;
         } 
@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour
         {
             heldProjectile.transform.SetParent(null);
             heldProjectile.transform.position = this.transform.position + transform.forward * 2;
-            heldProjectile.GetComponent<SphereCollider>().enabled = true;
+            heldProjectile.GetComponent<CapsuleCollider>().enabled = true;
             heldProjectile.GetComponent<Rigidbody>().isKinematic = false;
             heldProjectile.GetComponent<Rigidbody>().useGravity = false;
             heldProjectile.GetComponent<ProjectileBehaviour>().isThrown = true;
