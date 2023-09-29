@@ -45,32 +45,6 @@ public class PlayerController : MonoBehaviour
 
         // Check the number of other players
         int numberOfOtherPlayers = otherPlayers.Length;
-
-        // Change color based on the number of other players
-        if (numberOfOtherPlayers == 1)
-        {
-            // No other players in the scene, change color to something
-            // appropriate for a solo player.
-            return;
-        }
-        else if (numberOfOtherPlayers == 2)
-        {
-            // One other player in the scene, change color to something
-            // appropriate for a two-player game.
-            ChangeColor(Color.blue);
-        }
-        else if (numberOfOtherPlayers == 3)
-        {
-            // More than one other player in the scene, change color to
-            // something appropriate for a multiplayer game.
-            ChangeColor(Color.yellow);
-        }
-        else if (numberOfOtherPlayers == 4)
-        {
-            // More than one other player in the scene, change color to
-            // something appropriate for a multiplayer game.
-            ChangeColor(Color.green);
-        }
     }
     
 
@@ -180,7 +154,7 @@ public class PlayerController : MonoBehaviour
         if (isHolding)
         {
             heldProjectile.transform.SetParent(null);
-            heldProjectile.GetComponent<SphereCollider>().enabled = true;
+            heldProjectile.GetComponent<CapsuleCollider>().enabled = true;
             heldProjectile.GetComponent<Rigidbody>().isKinematic = false;
             heldProjectile = null;
             isHolding = false;

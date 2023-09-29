@@ -9,7 +9,7 @@ public class ProjectileBehaviour : MonoBehaviour
     public Rigidbody rb;
     public GameObject userThrowing;
     public GameObject spawnZone;
-    [SerializeField] GameObject model;
+    //[SerializeField] GameObject model;
 
     [SerializeField] Material neutralMaterial;
     [SerializeField] Material selectedMaterial;
@@ -45,11 +45,11 @@ public class ProjectileBehaviour : MonoBehaviour
         {
             if (controller.selectedProjectile == this.gameObject)
             {
-                model.GetComponent<MeshRenderer>().material = selectedMaterial; // Doesn't work, would like to make a select shader
+                //model.GetComponent<MeshRenderer>().material = selectedMaterial; // Doesn't work, would like to make a select shader
             }
             else
             {
-                model.GetComponent<MeshRenderer>().material = neutralMaterial;
+                //model.GetComponent<MeshRenderer>().material = neutralMaterial;
 
                 if (!isThrown)
                 {

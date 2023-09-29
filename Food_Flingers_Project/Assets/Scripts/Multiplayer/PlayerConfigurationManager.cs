@@ -12,11 +12,12 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     private List<PlayerConfiguration> playerConfigs;
 
-    [SerializeField] int MaxPlayers = 4;
-
     public static PlayerConfigurationManager Instance { get; set; }
 
-    private void Awake()
+    public GameObject transitionObject;
+    [HideInInspector] public SceneTransition sceneTransition;
+
+    private void Start()
     {
         if (Instance != null) // Checks if there is another instance in the scene
         {
@@ -27,6 +28,11 @@ public class PlayerConfigurationManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(Instance);
             playerConfigs = new List<PlayerConfiguration>();
+
+            transitionObject = Instantiate(transitionObject, transform);
+            sceneTransition = transitionObject.GetComponent<SceneTransition>();
+            Debug.Log(sceneTransition);
+            //DontDestroyOnLoad(transitioner);
         }
     }
 
@@ -39,10 +45,10 @@ public class PlayerConfigurationManager : MonoBehaviour
     {
         playerConfigs[index].IsReady = true;
 
-        if (playerConfigs.All(p => p.IsReady == true)) // BUG: Need to make sure game needs at least 2 players readied up
+        if (playerConfigs.Count >= 2 && playerConfigs.All(p => p.IsReady == true))
         {
-            //Debug.Log("Load Scene");
-            SceneManager.LoadScene("SampleScene");
+            sceneTransition.targetSceneName = "SampleScene";
+            sceneTransition.LoadScene();
         }
     }
 

@@ -7,6 +7,7 @@ public class PlayerInputHandler : MonoBehaviour
 {
     private PlayerConfiguration playerConfig;
     private PlayerController controller;
+    [SerializeField] private SkinnedMeshRenderer playerMesh; // To be changed
 
     // User configured Material here
 
@@ -21,7 +22,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void InitialisePlayer(PlayerConfiguration pc)
     {
         playerConfig = pc;
-        // Apply player material
+        playerMesh.material = pc.PlayerMaterial; // Will be changed to Outline colour in full version
         playerConfig.Input.onActionTriggered += Input_onActionTriggered;
     }
 
@@ -32,12 +33,13 @@ public class PlayerInputHandler : MonoBehaviour
             OnMove(obj);
         }
 
-        if (obj.action.name == controls.Player.Fire.name)
+        if (obj.action.name == controls.Player.Fire.name && obj.performed)
         {
+            Debug.Log("is firing");
             OnFire(obj);
         }
 
-        if (obj.action.name == controls.Player.Jump.name)
+        if (obj.action.name == controls.Player.Jump.name && obj.performed)
         {
             OnDash(obj);
         }
