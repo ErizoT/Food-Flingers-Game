@@ -41,7 +41,7 @@ public class RespawnManager : MonoBehaviour
         playerList = GameObject.FindGameObjectsWithTag("Player");
         if (playerList.Length == maxPlayers && !isGameStarted)
         {
-            isGameStarted = true;
+            //isGameStarted = true;
             InitialiseGame();
         }
 
@@ -92,9 +92,10 @@ public class RespawnManager : MonoBehaviour
         }
     }
 
-    void InitialiseGame()
+    public void InitialiseGame()
     {
         //Debug.Log("game started");
+        isGameStarted = true;
         winnerText.text = "";
         Time.timeScale = 1;
         for (int i = 0; i < playerList.Length; i++)

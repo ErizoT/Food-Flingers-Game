@@ -61,7 +61,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   userThrowing: {fileID: 0}
   spawnZone: {fileID: 0}
-  model: {fileID: 8977481803479230024}
+  animator: {fileID: 9109812354712494279}
   neutralMaterial: {fileID: 2100000, guid: a2882a4d4881c8444814b6ede3d5b4ef, type: 2}
   selectedMaterial: {fileID: 2100000, guid: 1f5f52aeef94c0a4da7de50fb40ec969, type: 2}
   targets: []
@@ -176,3 +176,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3082079438784438159, guid: 7a9eb6214c61d1843b0c5c6c3b3920e3, type: 3}
   m_PrefabInstance: {fileID: 6220547271992392135}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &9109812354712494279
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977481803479230024}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a2c71adef2587b34a83db42453de1ab8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

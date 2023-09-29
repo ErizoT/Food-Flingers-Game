@@ -9,7 +9,7 @@ public class ProjectileBehaviour : MonoBehaviour
     public Rigidbody rb;
     public GameObject userThrowing;
     public GameObject spawnZone;
-    //[SerializeField] GameObject model;
+    [SerializeField] Animator animator;
 
     [SerializeField] Material neutralMaterial;
     [SerializeField] Material selectedMaterial;
@@ -95,10 +95,10 @@ public class ProjectileBehaviour : MonoBehaviour
 
     private void FixedUpdate ()
     {
-
         if (isThrown)
         {
             gameObject.layer = LayerMask.NameToLayer("Projectiles"); // Changes the layer to the 'Projectile' layer so it doesn't collide with shit on the floor
+            animator.SetBool("Throwing", true);
 
             switch (projectileType)
             {

@@ -104,7 +104,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   userThrowing: {fileID: 0}
   spawnZone: {fileID: 0}
-  model: {fileID: 0}
+  animator: {fileID: 7094007554643475487}
   neutralMaterial: {fileID: 2100000, guid: 58bec3c49f7b9a74ba8aea891ad48e04, type: 2}
   selectedMaterial: {fileID: 2100000, guid: 1f5f52aeef94c0a4da7de50fb40ec969, type: 2}
   targets: []
@@ -177,11 +177,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1410799634667070812, guid: 1a1555fb1f7883546aeab9ef4fd228be, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.8535177
       objectReference: {fileID: 0}
     - target: {fileID: 1410799634667070812, guid: 1a1555fb1f7883546aeab9ef4fd228be, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.52106386
       objectReference: {fileID: 0}
     - target: {fileID: 1410799634667070812, guid: 1a1555fb1f7883546aeab9ef4fd228be, type: 3}
       propertyPath: m_LocalRotation.y
@@ -193,7 +193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1410799634667070812, guid: 1a1555fb1f7883546aeab9ef4fd228be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 62.807
       objectReference: {fileID: 0}
     - target: {fileID: 1410799634667070812, guid: 1a1555fb1f7883546aeab9ef4fd228be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -209,6 +209,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a1555fb1f7883546aeab9ef4fd228be, type: 3}
+--- !u!1 &6305051041447143127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1792426499608199142, guid: 1a1555fb1f7883546aeab9ef4fd228be, type: 3}
+  m_PrefabInstance: {fileID: 5719554913207146801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7094007554643475487
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6305051041447143127}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a2c71adef2587b34a83db42453de1ab8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &6686677940762688621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1410799634667070812, guid: 1a1555fb1f7883546aeab9ef4fd228be, type: 3}
