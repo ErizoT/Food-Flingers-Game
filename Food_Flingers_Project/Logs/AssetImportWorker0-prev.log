@@ -15,7 +15,7 @@ D:/GitHub/Food-Flingers-Game/Food_Flingers_Project
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-51143
+63074
 Successfully changed project path to: D:/GitHub/Food-Flingers-Game/Food_Flingers_Project
 D:/GitHub/Food-Flingers-Game/Food_Flingers_Project
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,11 +47,11 @@ D:/GitHub/Food-Flingers-Game/Food_Flingers_Project
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [12384] Host "[IP] 192.168.0.39 [Port] 0 [Flags] 2 [Guid] 2958379236 [EditorId] 2958379236 [Version] 1048832 [Id] WindowsEditor(7,GianlucaPC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [12364] Host "[IP] 192.168.0.207 [Port] 0 [Flags] 2 [Guid] 3672535272 [EditorId] 3672535272 [Version] 1048832 [Id] WindowsEditor(7,GianlucaPC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [12384] Host "[IP] 192.168.0.39 [Port] 0 [Flags] 2 [Guid] 2958379236 [EditorId] 2958379236 [Version] 1048832 [Id] WindowsEditor(7,GianlucaPC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [12364] Host "[IP] 192.168.0.207 [Port] 0 [Flags] 2 [Guid] 3672535272 [EditorId] 3672535272 [Version] 1048832 [Id] WindowsEditor(7,GianlucaPC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 137.47 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 133.01 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.15f1 (e8e88683f834)
 [Subsystems] Discovering subsystems at path D:/2021.3.15f1/Editor/Data/Resources/UnitySubsystems
@@ -67,37 +67,37 @@ Initialize mono
 Mono path[0] = 'D:/2021.3.15f1/Editor/Data/Managed'
 Mono path[1] = 'D:/2021.3.15f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'D:/2021.3.15f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56920
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56524
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/2021.3.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.003478 seconds.
+Registered in 0.003878 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 120.21 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 135.15 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.987 seconds
+- Completed reload, in  1.076 seconds
 Domain Reload Profiling:
-	ReloadAssembly (988ms)
+	ReloadAssembly (1077ms)
 		BeginReloadAssembly (143ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (2ms)
-		EndReloadAssembly (690ms)
-			LoadAssemblies (141ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (759ms)
+			LoadAssemblies (143ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (162ms)
+			SetupTypeCache (183ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (43ms)
-			SetupLoadedEditorAssemblies (414ms)
+			RebuildScriptCaches (46ms)
+			SetupLoadedEditorAssemblies (449ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (9ms)
+				InitializePlatformSupportModulesInManaged (11ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (120ms)
+				RefreshPlugins (135ms)
 				BeforeProcessingInitializeOnLoad (2ms)
-				ProcessInitializeOnLoadAttributes (213ms)
+				ProcessInitializeOnLoadAttributes (231ms)
 				ProcessInitializeOnLoadMethodAttributes (70ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
@@ -105,51 +105,51 @@ Domain Reload Profiling:
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.012903 seconds.
+Registered in 0.011818 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image D:\GitHub\Food-Flingers-Game\Food_Flingers_Project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image D:\GitHub\Food-Flingers-Game\Food_Flingers_Project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 118.21 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 132.51 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.871 seconds
+- Completed reload, in  1.996 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1873ms)
-		BeginReloadAssembly (193ms)
+	ReloadAssembly (1997ms)
+		BeginReloadAssembly (212ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (9ms)
+			DisableScriptedObjects (8ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (26ms)
-		EndReloadAssembly (1501ms)
-			LoadAssemblies (173ms)
+			CreateAndSetChildDomain (34ms)
+		EndReloadAssembly (1595ms)
+			LoadAssemblies (186ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (436ms)
+			SetupTypeCache (470ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (97ms)
-			SetupLoadedEditorAssemblies (757ms)
+			RebuildScriptCaches (111ms)
+			SetupLoadedEditorAssemblies (790ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (6ms)
+				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (118ms)
-				BeforeProcessingInitializeOnLoad (120ms)
-				ProcessInitializeOnLoadAttributes (469ms)
-				ProcessInitializeOnLoadMethodAttributes (36ms)
-				AfterProcessingInitializeOnLoad (6ms)
+				RefreshPlugins (133ms)
+				BeforeProcessingInitializeOnLoad (122ms)
+				ProcessInitializeOnLoadAttributes (492ms)
+				ProcessInitializeOnLoadMethodAttributes (33ms)
+				AfterProcessingInitializeOnLoad (4ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (9ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 1.33 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Refreshing native plugins compatible for Editor in 1.40 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 4112 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 29 unused Assets / (103.5 KB). Loaded Objects now: 4574.
 Memory consumption went from 149.8 MB to 149.7 MB.
-Total: 7.280900 ms (FindLiveObjects: 0.528000 ms CreateObjectMapping: 0.201900 ms MarkObjects: 6.381300 ms  DeleteObjects: 0.167500 ms)
+Total: 5.072800 ms (FindLiveObjects: 0.536100 ms CreateObjectMapping: 0.218400 ms MarkObjects: 4.157100 ms  DeleteObjects: 0.159100 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -163,91 +163,37 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 7855.090756 seconds.
-  path: Assets/Audio/Sounds
-  artifactKey: Guid(b853efbb4d882b04ebe7455aa3e7bb9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Sounds using Guid(b853efbb4d882b04ebe7455aa3e7bb9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48ec98e0c0c3f8b5cb8d781bd876d401') in 0.020374 seconds 
+  Time since last request: 4263.212386 seconds.
+  path: Assets/Animations/FoodAnims
+  artifactKey: Guid(16f591c3f017feb469bff3cccca7a444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/FoodAnims using Guid(16f591c3f017feb469bff3cccca7a444) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '701f0f4d794a20feb776edb33e939daa') in 0.022403 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 17.857940 seconds.
-  path: Assets/Audio/Sounds/mapBell.mp3
-  artifactKey: Guid(57dfba1406444c54a9b0c4faaf248107) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Sounds/mapBell.mp3 using Guid(57dfba1406444c54a9b0c4faaf248107) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d6867ff4a7a04f6093802bea40eab5a') in 0.240507 seconds 
+  Time since last request: 3.724729 seconds.
+  path: Assets/Materials
+  artifactKey: Guid(83846646cb3644845b83832be015046b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials using Guid(83846646cb3644845b83832be015046b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d7c830d2d2837291d92c47cd12ad422') in 0.008797 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000045 seconds.
-  path: Assets/Audio/Sounds/matchThrow_02.wav
-  artifactKey: Guid(e076d709e6aeec74f996d917efc7c0a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Sounds/matchThrow_02.wav using Guid(e076d709e6aeec74f996d917efc7c0a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82b32511ff8bd0d6d907b0e3ca10e026') in 0.028292 seconds 
+  Time since last request: 34.254344 seconds.
+  path: Assets/Animations/RaccoonAnims/raccoonHurt.fbx
+  artifactKey: Guid(83da5522810abc547ac72bee1264bca2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/RaccoonAnims/raccoonHurt.fbx using Guid(83da5522810abc547ac72bee1264bca2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7cdcdb14cb3af613051be80e8a5db27') in 0.341802 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000042 seconds.
-  path: Assets/Audio/Sounds/mapPots_05.mp3
-  artifactKey: Guid(7dd24f09e5a07d54693ba965a4290514) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Sounds/mapPots_05.mp3 using Guid(7dd24f09e5a07d54693ba965a4290514) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '389d137b6515fa6ca670774a3c054144') in 0.015587 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000042 seconds.
-  path: Assets/Audio/Sounds/matchThrow.wav
-  artifactKey: Guid(b2cfa3d31343e6547a0612b9ae1f27fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Sounds/matchThrow.wav using Guid(b2cfa3d31343e6547a0612b9ae1f27fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98f39315f1e934a124acf75331786b41') in 0.018680 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000035 seconds.
-  path: Assets/Audio/Sounds/transitionSlideLower.wav
-  artifactKey: Guid(aa23eae07f2a656498c6d0ea73fa076b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Sounds/transitionSlideLower.wav using Guid(aa23eae07f2a656498c6d0ea73fa076b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cdb9d8792f38e65b34035aeb55f8aa2') in 0.017413 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000039 seconds.
-  path: Assets/Audio/Sounds/menuNavigate.wav
-  artifactKey: Guid(580528aa766077549a974d40bea1ca7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Sounds/menuNavigate.wav using Guid(580528aa766077549a974d40bea1ca7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d2aa79bad217ff2a85160d39f302558') in 0.015290 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000029 seconds.
-  path: Assets/Audio/Sounds/mapStove.mp3
-  artifactKey: Guid(7a2227dba6c7d7340a3bcbae7c3155d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Sounds/mapStove.mp3 using Guid(7a2227dba6c7d7340a3bcbae7c3155d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97b6b9f386a84a3a3533a892d0f469d8') in 0.023504 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000037 seconds.
-  path: Assets/Audio/Sounds/mapSteam_01.mp3
-  artifactKey: Guid(b9e7e7b353c44194796217da9327f408) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Sounds/mapSteam_01.mp3 using Guid(b9e7e7b353c44194796217da9327f408) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57e6468bb52d911de720dd645e805838') in 0.019660 seconds 
+  Time since last request: 0.000044 seconds.
+  path: Assets/Animations/RaccoonAnims/raccoonRun.fbx
+  artifactKey: Guid(ee4db28cd90b2fc45b1eaaa720b7b4e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/RaccoonAnims/raccoonRun.fbx using Guid(ee4db28cd90b2fc45b1eaaa720b7b4e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb9ab4e0be7c47fd84105991b454c1e7') in 0.049085 seconds 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000047 seconds.
-  path: Assets/Audio/Sounds/raccoonRun.mp3
-  artifactKey: Guid(90dddee6c9cee0d4c8b5f6958aae2d36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Sounds/raccoonRun.mp3 using Guid(90dddee6c9cee0d4c8b5f6958aae2d36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b0c07bb0d05da0276745fc2d84db1dd6') in 0.017118 seconds 
+  path: Assets/Animations/RaccoonAnims/raccoonThrow.fbx
+  artifactKey: Guid(24a60902ecdbe01499c854b2cea6d637) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/RaccoonAnims/raccoonThrow.fbx using Guid(24a60902ecdbe01499c854b2cea6d637) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a332ead2d834e32cd26053f5e9a2b1e') in 0.049771 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000040 seconds.
-  path: Assets/Audio/Sounds/mapPots_01.mp3
-  artifactKey: Guid(17694871fa9595542ba7001ea135dbda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Sounds/mapPots_01.mp3 using Guid(17694871fa9595542ba7001ea135dbda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8e81289443cab378baeae66fd1e4be6') in 0.019816 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000056 seconds.
-  path: Assets/Audio/Sounds/mapPots_02.mp3
-  artifactKey: Guid(a5de9bb1d1babc8488e201e1899fb7ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Sounds/mapPots_02.mp3 using Guid(a5de9bb1d1babc8488e201e1899fb7ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4201a4c56e8e511b65fa8d32736e9307') in 0.014729 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.185331 seconds.
-  path: Assets/Audio/Sounds/mapSounds
-  artifactKey: Guid(e0beff5d32dfd0c44b603b04a150e024) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Sounds/mapSounds using Guid(e0beff5d32dfd0c44b603b04a150e024) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0f3c1801931c6e34b3916e312b390b5') in 0.010423 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 14.553204 seconds.
-  path: Assets/Audio/Sounds/menuSounds
-  artifactKey: Guid(b95bd08cd4a7289419b5aa677a18b8f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Sounds/menuSounds using Guid(b95bd08cd4a7289419b5aa677a18b8f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a9718865901cc63a306d77e42527f95') in 0.010231 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 19.318729 seconds.
-  path: Assets/Audio/Sounds/matchSounds
-  artifactKey: Guid(1a06a05bfa7095740b1b4ce83e8c0a06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Sounds/matchSounds using Guid(1a06a05bfa7095740b1b4ce83e8c0a06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '597c3c740f73679a50c9f8637df89c4e') in 0.011310 seconds 
+  Time since last request: 0.000039 seconds.
+  path: Assets/Animations/RaccoonAnims/raccoonRunFood.fbx
+  artifactKey: Guid(15b5c3b3c765e0e44bbdd9d7d1d05901) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/RaccoonAnims/raccoonRunFood.fbx using Guid(15b5c3b3c765e0e44bbdd9d7d1d05901) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a7d1b21a77314ee228a6b04da744826') in 0.044960 seconds 
