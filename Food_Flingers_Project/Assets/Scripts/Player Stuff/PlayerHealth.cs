@@ -62,7 +62,7 @@ public class PlayerHealth : MonoBehaviour
         healthText.transform.LookAt(Camera.main.transform);
         healthText.transform.Rotate(Vector3.up, 180.0f);
 
-        scoreText.text = kills.ToString();
+        //scoreText.text = kills.ToString();
 
         //deathEffect.transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 0));
     }

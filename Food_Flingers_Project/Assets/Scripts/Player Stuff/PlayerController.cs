@@ -23,11 +23,13 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] LayerMask projectiles;
 
     [Header("Spherecast Stuff")]
+    [SerializeField] Vector3 offset;
+    private Vector3 raycastStartPos;
     [SerializeField] float sphereRadius = 2f;
     [SerializeField] float hitboxDistance = 3f;
     [HideInInspector] public GameObject selectedProjectile = null;
     GameObject heldProjectile;
-    private bool isHolding;
+    [HideInInspector] public bool isHolding;
 
     [Header("Pause Menu Variables")]
     [SerializeField] GameObject pauseMenu;
@@ -52,6 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized;
 
+
         // The force is both the direction AND the magnitude (both lenght and direction)
         if (!dashing)
         {
@@ -66,8 +69,9 @@ public class PlayerController : MonoBehaviour
 
         // Spherecasting item pickup range
         RaycastHit hit;
+        raycastStartPos = transform.position + offset;
 
-        if (Physics.SphereCast(transform.position, sphereRadius, transform.forward, out hit, hitboxDistance, projectiles))
+        if (Physics.SphereCast(raycastStartPos, sphereRadius, transform.forward, out hit, hitboxDistance, projectiles))
         {
             selectedProjectile = hit.transform.gameObject;
             selectedProjectile.GetComponent<ProjectileBehaviour>().userThrowing = this.gameObject;
@@ -82,9 +86,12 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(0.0f, 0.0f, 1.0f, 0.5f); // Blue color with 50% opacity
-        Vector3 spherePosition = transform.position + transform.forward * hitboxDistance;
+
+        Vector3 raycastStartPos = transform.position + offset;
+
+        Vector3 spherePosition = raycastStartPos + transform.forward * hitboxDistance;
         Gizmos.DrawSphere(spherePosition, sphereRadius);
-        Gizmos.DrawLine(transform.position, spherePosition);
+        Gizmos.DrawLine(raycastStartPos, spherePosition);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -114,19 +121,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnGrab()
-    {
-        if (isHolding)
-        {
-            Throw();
-        }
-        else
-        {
-            Hold();
-        }
-    }
-
-    void Hold()
+    public void Hold()
     {
 
         if (selectedProjectile != null)
@@ -136,7 +131,7 @@ public class PlayerController : MonoBehaviour
             Transform foodTransform = heldProjectile.transform;
 
             foodTransform.SetParent(transform);
-            foodTransform.position = transform.position + new Vector3(0, 2, 0);
+            foodTransform.position = transform.position + new Vector3(0, 3, 0);
             foodTransform.rotation = transform.rotation;
             heldProjectile.GetComponent<Rigidbody>().isKinematic = true;
             heldProjectile.GetComponent<CapsuleCollider>().enabled = false;
@@ -148,7 +143,22 @@ public class PlayerController : MonoBehaviour
             return;
         }
     }
+    public void Throw()
+    {
+        if (heldProjectile != null)
+        {
+            heldProjectile.transform.SetParent(null);
+            heldProjectile.transform.position = raycastStartPos + transform.forward * 2;
+            heldProjectile.GetComponent<CapsuleCollider>().enabled = true;
+            heldProjectile.GetComponent<Rigidbody>().isKinematic = false;
+            heldProjectile.GetComponent<Rigidbody>().useGravity = false;
+            heldProjectile.GetComponent<ProjectileBehaviour>().isThrown = true;
 
+            heldProjectile = null;
+            isHolding = false;
+        }
+            
+    }
     public void Drop()
     {
         if (isHolding)
@@ -161,22 +171,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Throw()
-    {
-        if (heldProjectile != null)
-        {
-            heldProjectile.transform.SetParent(null);
-            heldProjectile.transform.position = this.transform.position + transform.forward * 2;
-            heldProjectile.GetComponent<CapsuleCollider>().enabled = true;
-            heldProjectile.GetComponent<Rigidbody>().isKinematic = false;
-            heldProjectile.GetComponent<Rigidbody>().useGravity = false;
-            heldProjectile.GetComponent<ProjectileBehaviour>().isThrown = true;
 
-            heldProjectile = null;
-            isHolding = false;
-        }
-            
-    }
 
 
 

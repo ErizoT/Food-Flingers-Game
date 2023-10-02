@@ -11,6 +11,14 @@ public class PlayerInputHandler : MonoBehaviour
 
     // User configured Material here
 
+    [Header("AnimationStuff")]
+    [SerializeField] Animator animator;
+    [SerializeField] string holdingBoolName;
+    [SerializeField] string runningBoolName;
+    [SerializeField] string throwingBoolName;
+    [SerializeField] string hurtBoolName;
+    [SerializeField] string deadBoolName;
+
     private NewInput controls;
 
     private void Awake()
@@ -48,15 +56,42 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         controller.movementInput = context.ReadValue<Vector2>();
+        animator.SetBool(runningBoolName, true);
+
+        if (controller.movementInput.magnitude < 0.1f)
+        {
+            animator.SetBool(runningBoolName, false);
+        }
     }
 
     public void OnFire(InputAction.CallbackContext context)
     {
-        controller.OnGrab();
+        if(controller.isHolding)
+        {
+            controller.Throw();
+            animator.SetTrigger(throwingBoolName);
+            animator.SetBool(holdingBoolName, false);
+        }
+        else if (controller.selectedProjectile != null)
+            {
+            controller.Hold();
+            animator.SetBool(holdingBoolName, true);
+        }
     }
 
     public void OnDash(InputAction.CallbackContext context)
     {
         controller.OnDash();
+        animator.SetTrigger(throwingBoolName);
+    }
+
+    public void OnHit()
+    {
+        animator.SetTrigger(hurtBoolName);
+    }
+
+    public void OnDeath()
+    {
+        animator.SetTrigger(deadBoolName);
     }
 }

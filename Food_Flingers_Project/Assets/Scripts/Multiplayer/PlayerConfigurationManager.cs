@@ -17,6 +17,7 @@ public class PlayerConfigurationManager : MonoBehaviour
     public GameObject transitionObject;
     [HideInInspector] public SceneTransition sceneTransition;
 
+    [SerializeField] int requiredPlayers;
     private void Start()
     {
         if (Instance != null) // Checks if there is another instance in the scene
@@ -45,7 +46,7 @@ public class PlayerConfigurationManager : MonoBehaviour
     {
         playerConfigs[index].IsReady = true;
 
-        if (playerConfigs.Count >= 2 && playerConfigs.All(p => p.IsReady == true))
+        if (playerConfigs.Count >= requiredPlayers && playerConfigs.All(p => p.IsReady == true))
         {
             sceneTransition.targetSceneName = "SampleScene";
             sceneTransition.LoadScene();

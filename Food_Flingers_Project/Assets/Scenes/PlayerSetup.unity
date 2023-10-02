@@ -529,6 +529,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3705942255336175324, guid: fd7d993999cf8764bada0805c840610f, type: 3}
+      propertyPath: m_JoinBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705942255336175324, guid: fd7d993999cf8764bada0805c840610f, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_Id
+      value: 4772c2d7-e2bc-471b-b8eb-68791bf94d72
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705942255336175324, guid: fd7d993999cf8764bada0805c840610f, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_Name
+      value: Join
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705942255336175324, guid: fd7d993999cf8764bada0805c840610f, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705942255336175324, guid: fd7d993999cf8764bada0805c840610f, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 75f2a9d0-c2f0-4ce5-b3c4-a14b5e608ebb
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705942255336175324, guid: fd7d993999cf8764bada0805c840610f, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Join
+      objectReference: {fileID: 0}
     - target: {fileID: 7189512425067143308, guid: fd7d993999cf8764bada0805c840610f, type: 3}
       propertyPath: m_Name
       value: PlayerConfigurationManager
@@ -537,6 +561,10 @@ PrefabInstance:
       propertyPath: transitioner
       value: 
       objectReference: {fileID: 6093170511128307773, guid: d6e94ae9732626b4cbe99145944899c7, type: 3}
+    - target: {fileID: 7780493617980814922, guid: fd7d993999cf8764bada0805c840610f, type: 3}
+      propertyPath: requiredPlayers
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7780493617980814922, guid: fd7d993999cf8764bada0805c840610f, type: 3}
       propertyPath: transitionObject
       value: 
