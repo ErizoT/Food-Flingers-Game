@@ -140,6 +140,9 @@ public class PlayerHealth : MonoBehaviour
         matColor.a = 1f;
         mat.color = matColor;
 
+        // Resets animation
+        GetComponent<PlayerInputHandler>().Respawn();
+
         StartCoroutine(InvulnerabilityWindow());
     }
 

@@ -531,11 +531,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705942255336175324, guid: fd7d993999cf8764bada0805c840610f, type: 3}
       propertyPath: m_JoinBehavior
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3705942255336175324, guid: fd7d993999cf8764bada0805c840610f, type: 3}
+      propertyPath: m_JoinAction.m_Reference
+      value: 
+      objectReference: {fileID: -3056036726590255506, guid: 03aea5069d061634a8884367346545da, type: 3}
     - target: {fileID: 3705942255336175324, guid: fd7d993999cf8764bada0805c840610f, type: 3}
       propertyPath: m_JoinAction.m_Action.m_Id
       value: 4772c2d7-e2bc-471b-b8eb-68791bf94d72
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705942255336175324, guid: fd7d993999cf8764bada0805c840610f, type: 3}
+      propertyPath: m_JoinAction.m_UseReference
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3705942255336175324, guid: fd7d993999cf8764bada0805c840610f, type: 3}
       propertyPath: m_JoinAction.m_Action.m_Name
@@ -563,7 +571,7 @@ PrefabInstance:
       objectReference: {fileID: 6093170511128307773, guid: d6e94ae9732626b4cbe99145944899c7, type: 3}
     - target: {fileID: 7780493617980814922, guid: fd7d993999cf8764bada0805c840610f, type: 3}
       propertyPath: requiredPlayers
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7780493617980814922, guid: fd7d993999cf8764bada0805c840610f, type: 3}
       propertyPath: transitionObject

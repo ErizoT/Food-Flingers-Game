@@ -7,6 +7,7 @@ public class PlayerInputHandler : MonoBehaviour
 {
     private PlayerConfiguration playerConfig;
     private PlayerController controller;
+    private PlayerHealth healthController;
     [SerializeField] private SkinnedMeshRenderer playerMesh; // To be changed
 
     // User configured Material here
@@ -25,6 +26,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         controller = GetComponent<PlayerController>();
         controls = new NewInput();
+        healthController = GetComponent<PlayerHealth>();
     }
 
     public void InitialisePlayer(PlayerConfiguration pc)
@@ -51,6 +53,11 @@ public class PlayerInputHandler : MonoBehaviour
         {
             OnDash(obj);
         }
+    }
+
+    public void Respawn()
+    {
+        animator.SetBool(deadBoolName, false);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -83,15 +90,18 @@ public class PlayerInputHandler : MonoBehaviour
     {
         controller.OnDash();
         animator.SetTrigger(throwingBoolName);
+        animator.SetBool(holdingBoolName, false);
     }
 
     public void OnHit()
     {
-        animator.SetTrigger(hurtBoolName);
-    }
-
-    public void OnDeath()
-    {
-        animator.SetTrigger(deadBoolName);
+        if(healthController.playerHealth <= 0)
+        {
+            animator.SetBool(deadBoolName, true);
+            animator.SetBool(holdingBoolName, false);
+        } else
+        {
+            animator.SetTrigger(hurtBoolName);
+        }
     }
 }

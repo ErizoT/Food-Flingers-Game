@@ -121,7 +121,8 @@ public class ProjectileBehaviour : MonoBehaviour
                     break;
 
                 case projectileBehaviour.homing:
-                    Vector3 homingDirection = (closestPlayer.transform.position - rb.position).normalized; // Gets the direction of the homing projectile to the closest player
+                    Vector3 playerOffset = new Vector3(0, 1, 0); // This is an offset, because the 0,0 transform is on the floor as opposed to the middle of the body
+                    Vector3 homingDirection = (closestPlayer.transform.position + playerOffset - rb.position).normalized;
 
                     // Calculate the rotation to gradually face the target using cross product
                     Quaternion targetRotation = Quaternion.LookRotation(homingDirection);
@@ -182,7 +183,6 @@ public class ProjectileBehaviour : MonoBehaviour
             {
                 Debug.Log(userThrowing + " awarded a kill");
                 userThrowing.GetComponent<PlayerHealth>().kills += 1;
-                col.gameObject.GetComponent<PlayerInputHandler>().OnDeath();
             }
             Destroy(this.gameObject);
         }
