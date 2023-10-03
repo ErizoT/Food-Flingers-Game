@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1357.3334
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Project
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 350}
   m_MaxSize: {x: 10000, y: 10000}
@@ -94,8 +94,8 @@ MonoBehaviour:
     y: 0
     width: 332
     height: 827.3333
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -128,7 +128,7 @@ MonoBehaviour:
   - {fileID: 20}
   - {fileID: 13}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -494,21 +494,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Audio/Sounds/matchSounds
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Audio/Sounds/matchSounds
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Scratch\s3922972\Food-Flingers-Game\Food_Flingers_Project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 54.99994}
-    m_SelectedIDs: 14660000
-    m_LastClickedID: 26132
+    m_SelectedIDs: e0650000
+    m_LastClickedID: 26080
     m_ExpandedIDs: 00000000c0650000d66500001266000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -667,7 +667,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 30fbffff
+      m_ExpandedIDs: 28a0ffff6aa1ffff9aa7ffffa6bbffff30fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1000,11 +1000,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.39180794, y: 0.16693114, z: -0.07247069, w: 0.901926}
     speed: 2
-    m_Value: {x: 0.39314038, y: 0.16681373, z: -0.072717346, w: 0.9012914}
+    m_Value: {x: 0.391788, y: 0.16692264, z: -0.072467, w: 0.9018801}
   m_Size:
     m_Target: 31.68438
     speed: 2
-    m_Value: 2.5991242
+    m_Value: 31.68438
   m_Ortho:
     m_Target: 0
     speed: 2

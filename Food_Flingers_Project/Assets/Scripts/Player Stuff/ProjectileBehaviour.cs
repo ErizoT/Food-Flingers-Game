@@ -151,11 +151,14 @@ public class ProjectileBehaviour : MonoBehaviour
 
     public void OnCollisionEnter(Collision col)
     {
+
         if (isThrown)
         {
+
             switch (projectileType)
             {
                 case projectileBehaviour.straightforward:
+                    audioSource.Play();
                     DefaultDestroy();
                     break;
 
@@ -167,6 +170,7 @@ public class ProjectileBehaviour : MonoBehaviour
                     break;
 
                 case projectileBehaviour.homing:
+                    audioSource.Play();
                     DefaultDestroy();
                     break;
 
@@ -175,7 +179,6 @@ public class ProjectileBehaviour : MonoBehaviour
 
         if (isThrown && col.gameObject.tag == "Player")
         {
-            spawnZone.GetComponent<FoodSpawner>().spawnedProjectiles.Remove(this.gameObject);
 
             Debug.Log(this + "hit" + col);
             col.gameObject.GetComponent<PlayerHealth>().OnHit();
@@ -186,14 +189,15 @@ public class ProjectileBehaviour : MonoBehaviour
                 Debug.Log(userThrowing + " awarded a kill");
                 userThrowing.GetComponent<PlayerHealth>().kills += 1;
             }
-            Destroy(this.gameObject);
+            audioSource.Play();
+            DefaultDestroy();
         }
         
     }
 
     public void DefaultDestroy()
     {
-        Destroy(this.gameObject);
         spawnZone.GetComponent<FoodSpawner>().spawnedProjectiles.Remove(this.gameObject);
+        Destroy(this.gameObject);
     }
 }
