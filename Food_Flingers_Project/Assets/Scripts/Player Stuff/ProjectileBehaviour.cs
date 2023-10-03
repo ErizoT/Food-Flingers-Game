@@ -5,11 +5,11 @@ using UnityEngine;
 public class ProjectileBehaviour : MonoBehaviour
 {
     public float projectileVelocity;
-    public bool isThrown;
-    public Rigidbody rb;
+    [HideInInspector] public bool isThrown;
+    [HideInInspector] public Rigidbody rb;
     public GameObject userThrowing;
-    public GameObject spawnZone;
-    [SerializeField] Animator animator;
+    [HideInInspector] public GameObject spawnZone;
+    public Animator animator;
 
     [SerializeField] Material neutralMaterial;
     [SerializeField] Material selectedMaterial;
@@ -22,6 +22,8 @@ public class ProjectileBehaviour : MonoBehaviour
     public GameObject[] targets;
     private GameObject closestPlayer;
     [SerializeField] float rotationSpeed = 50f;
+
+    [SerializeField] AudioSource audioSource;
 
     enum projectileBehaviour
     {

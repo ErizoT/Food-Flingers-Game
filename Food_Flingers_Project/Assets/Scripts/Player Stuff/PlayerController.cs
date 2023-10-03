@@ -136,6 +136,8 @@ public class PlayerController : MonoBehaviour
             heldProjectile.GetComponent<Rigidbody>().isKinematic = true;
             heldProjectile.GetComponent<CapsuleCollider>().enabled = false;
 
+            heldProjectile.GetComponent<ProjectileBehaviour>().animator.SetBool("Holding", true);
+
             isHolding = true;
         } 
         else
