@@ -68,6 +68,9 @@ MonoBehaviour:
   targets: []
   rotationSpeed: 1
   audioSource: {fileID: 6764609519169414142}
+  meshes:
+  - {fileID: 312980906753678556}
+  - {fileID: 4781517896319318883}
   projectileType: 0
 --- !u!54 &4385446989848976977
 Rigidbody:
@@ -264,6 +267,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a9eb6214c61d1843b0c5c6c3b3920e3, type: 3}
+--- !u!23 &312980906753678556 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5909915341104473371, guid: 7a9eb6214c61d1843b0c5c6c3b3920e3, type: 3}
+  m_PrefabInstance: {fileID: 6220547271992392135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4781517896319318883 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1443561977076548260, guid: 7a9eb6214c61d1843b0c5c6c3b3920e3, type: 3}
+  m_PrefabInstance: {fileID: 6220547271992392135}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8637266979165175026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2417991301652301109, guid: 7a9eb6214c61d1843b0c5c6c3b3920e3, type: 3}

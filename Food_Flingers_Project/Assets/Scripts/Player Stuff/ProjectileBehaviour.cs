@@ -24,6 +24,8 @@ public class ProjectileBehaviour : MonoBehaviour
     [SerializeField] float rotationSpeed = 50f;
 
     [SerializeField] AudioSource audioSource;
+    [SerializeField] MeshRenderer[] meshes;
+    private bool hasCollided;
 
     enum projectileBehaviour
     {
@@ -97,7 +99,7 @@ public class ProjectileBehaviour : MonoBehaviour
 
     private void FixedUpdate ()
     {
-        if (isThrown)
+        if (isThrown && !hasCollided)
         {
             gameObject.layer = LayerMask.NameToLayer("Projectiles"); // Changes the layer to the 'Projectile' layer so it doesn't collide with shit on the floor
             animator.SetBool("Throwing", true);
@@ -152,13 +154,20 @@ public class ProjectileBehaviour : MonoBehaviour
     public void OnCollisionEnter(Collision col)
     {
 
-        if (isThrown)
+        if (isThrown && !hasCollided)
         {
 
             switch (projectileType)
             {
                 case projectileBehaviour.straightforward:
-                    audioSource.Play();
+                    hasCollided = true;
+                    GetComponent<CapsuleCollider>().enabled = false;
+
+                    foreach(MeshRenderer mesh in meshes) // Just in case it has two meshes
+                    {
+                        mesh.enabled = false;
+                    }
+
                     DefaultDestroy();
                     break;
 
@@ -170,7 +179,6 @@ public class ProjectileBehaviour : MonoBehaviour
                     break;
 
                 case projectileBehaviour.homing:
-                    audioSource.Play();
                     DefaultDestroy();
                     break;
 
@@ -179,8 +187,6 @@ public class ProjectileBehaviour : MonoBehaviour
 
         if (isThrown && col.gameObject.tag == "Player")
         {
-
-            Debug.Log(this + "hit" + col);
             col.gameObject.GetComponent<PlayerHealth>().OnHit();
             col.gameObject.GetComponent<PlayerInputHandler>().OnHit();
 
@@ -189,7 +195,6 @@ public class ProjectileBehaviour : MonoBehaviour
                 Debug.Log(userThrowing + " awarded a kill");
                 userThrowing.GetComponent<PlayerHealth>().kills += 1;
             }
-            audioSource.Play();
             DefaultDestroy();
         }
         
@@ -197,7 +202,10 @@ public class ProjectileBehaviour : MonoBehaviour
 
     public void DefaultDestroy()
     {
+        float randomPitch = Random.Range(0.8f, 1.2f);
+        audioSource.pitch = randomPitch;
+        audioSource.Play();
         spawnZone.GetComponent<FoodSpawner>().spawnedProjectiles.Remove(this.gameObject);
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, audioSource.clip.length);
     }
 }
