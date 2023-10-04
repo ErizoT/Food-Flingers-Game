@@ -15,7 +15,7 @@ C:/Scratch/s3922972/Food-Flingers-Game/Food_Flingers_Project
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-60402
+62125
 Successfully changed project path to: C:/Scratch/s3922972/Food-Flingers-Game/Food_Flingers_Project
 C:/Scratch/s3922972/Food-Flingers-Game/Food_Flingers_Project
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,11 +47,11 @@ C:/Scratch/s3922972/Food-Flingers-Game/Food_Flingers_Project
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [27796] Host "[IP] 10.215.156.190 [Port] 0 [Flags] 2 [Guid] 728159814 [EditorId] 728159814 [Version] 1048832 [Id] WindowsEditor(7,W8477204) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [11144] Host "[IP] 10.215.156.190 [Port] 0 [Flags] 2 [Guid] 3293699843 [EditorId] 3293699843 [Version] 1048832 [Id] WindowsEditor(7,W8477204) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [27796] Host "[IP] 10.215.156.190 [Port] 0 [Flags] 2 [Guid] 728159814 [EditorId] 728159814 [Version] 1048832 [Id] WindowsEditor(7,W8477204) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [11144] Host "[IP] 10.215.156.190 [Port] 0 [Flags] 2 [Guid] 3293699843 [EditorId] 3293699843 [Version] 1048832 [Id] WindowsEditor(7,W8477204) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 94.57 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 104.77 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.15f1 (e8e88683f834)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/Resources/UnitySubsystems
@@ -67,127 +67,42 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56896
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56208
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.006363 seconds.
+Registered in 0.006187 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 95.81 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 94.74 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.581 seconds
+- Completed reload, in  1.043 seconds
 Domain Reload Profiling:
-	ReloadAssembly (581ms)
-		BeginReloadAssembly (68ms)
+	ReloadAssembly (1043ms)
+		BeginReloadAssembly (140ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (417ms)
-			LoadAssemblies (65ms)
+		EndReloadAssembly (684ms)
+			LoadAssemblies (138ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (79ms)
+			SetupTypeCache (368ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (23ms)
-			SetupLoadedEditorAssemblies (270ms)
+			SetupLoadedEditorAssemblies (252ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (7ms)
+				InitializePlatformSupportModulesInManaged (6ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (96ms)
-				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (123ms)
-				ProcessInitializeOnLoadMethodAttributes (43ms)
+				RefreshPlugins (95ms)
+				BeforeProcessingInitializeOnLoad (2ms)
+				ProcessInitializeOnLoadAttributes (109ms)
+				ProcessInitializeOnLoadMethodAttributes (41ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.008941 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Scratch\s3922972\Food-Flingers-Game\Food_Flingers_Project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Scratch\s3922972\Food-Flingers-Game\Food_Flingers_Project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 95.32 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.236 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1237ms)
-		BeginReloadAssembly (94ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (16ms)
-		EndReloadAssembly (1045ms)
-			LoadAssemblies (90ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (261ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (57ms)
-			SetupLoadedEditorAssemblies (588ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (7ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (95ms)
-				BeforeProcessingInitializeOnLoad (111ms)
-				ProcessInitializeOnLoadAttributes (299ms)
-				ProcessInitializeOnLoadMethodAttributes (65ms)
-				AfterProcessingInitializeOnLoad (10ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.22 seconds
-Refreshing native plugins compatible for Editor in 0.75 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5886 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 39 unused Assets / (0.8 MB). Loaded Objects now: 6341.
-Memory consumption went from 234.1 MB to 233.3 MB.
-Total: 3.284500 ms (FindLiveObjects: 0.424300 ms CreateObjectMapping: 0.211400 ms MarkObjects: 2.325200 ms  DeleteObjects: 0.322700 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 29934.132302 seconds.
-  path: Assets/Prefabs/Homing Projectile.prefab
-  artifactKey: Guid(60feb19efd7d9a9429899ebf092ddb70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Homing Projectile.prefab using Guid(60feb19efd7d9a9429899ebf092ddb70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c87f87be78fffea7ef4b2fd7a8dd978') in 0.346686 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000039 seconds.
-  path: Assets/Prefabs/Rebound Projectile.prefab
-  artifactKey: Guid(7797c193be44cf546ab24a6c4a45ce3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Rebound Projectile.prefab using Guid(7797c193be44cf546ab24a6c4a45ce3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd29977034fa51240aa18d3d07a3f350') in 0.081635 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 110.913864 seconds.
-  path: Assets/raccoonIdleFood.fbx
-  artifactKey: Guid(42d8556d1dbd99b4f8eb311fd9728b29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/raccoonIdleFood.fbx using Guid(42d8556d1dbd99b4f8eb311fd9728b29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10b9e0db85b1d2f93b580bc819539d44') in 0.145396 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 55.946245 seconds.
-  path: Assets/Models/raccoon/raccoonRig.fbx
-  artifactKey: Guid(c76594130fc364e46b1aa8548573336e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/raccoon/raccoonRig.fbx using Guid(c76594130fc364e46b1aa8548573336e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df2969d98bfa98798c89800a2e66f92b') in 0.048228 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 11.803174 seconds.
-  path: Assets/Take 001.anim
-  artifactKey: Guid(08563f463e49f71419884a4e5b899fd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Take 001.anim using Guid(08563f463e49f71419884a4e5b899fd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbb1b8b81160afe1e2db82207e2d8dfe') in 0.032360 seconds 
+Registered in 0.008883 seconds.
