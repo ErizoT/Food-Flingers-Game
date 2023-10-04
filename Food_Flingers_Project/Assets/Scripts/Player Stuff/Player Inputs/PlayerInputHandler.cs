@@ -22,6 +22,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     private NewInput controls;
 
+    [Header("SoundLibrary")]
+    [SerializeField] AudioSource footstepSound;
     private void Awake()
     {
         controller = GetComponent<PlayerController>();
@@ -64,10 +66,12 @@ public class PlayerInputHandler : MonoBehaviour
     {
         controller.movementInput = context.ReadValue<Vector2>();
         animator.SetBool(runningBoolName, true);
+        footstepSound.Play();
 
         if (controller.movementInput.magnitude < 0.1f)
         {
             animator.SetBool(runningBoolName, false);
+            footstepSound.Stop();
         }
     }
 

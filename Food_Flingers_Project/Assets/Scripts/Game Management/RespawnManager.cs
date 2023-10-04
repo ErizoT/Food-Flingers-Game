@@ -126,16 +126,25 @@ public class RespawnManager : MonoBehaviour
 
         titleText.text = "Game Over!";
         GameObject topPlayer = null;
+        GameObject secondTopPlayer = null;
         int highestKills = 0;
+        int secondHighestKills = 0;
 
         for (int i = 0; i < playerList.Length; i++)
         {
             if (playerList[i].GetComponent<PlayerHealth>().kills > highestKills)
             {
+                secondTopPlayer = topPlayer;
+                secondHighestKills = highestKills;
+                
                 highestKills = playerList[i].GetComponent<PlayerHealth>().kills;
                 topPlayer = playerList[i];
                 int playerNumber = i + 1;
                 winnerText.text = "Player " + playerNumber.ToString() + " wins!"; // Corrected ToString() call
+            }
+            else if ( secondHighestKills == highestKills)
+            {
+                Debug.Log("Draw");
             }
         }
     }
