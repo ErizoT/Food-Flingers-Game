@@ -24,6 +24,8 @@ public class ProjectileBehaviour : MonoBehaviour
     [SerializeField] float rotationSpeed = 50f;
 
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip bounceSound;
+    [SerializeField] AudioClip[] splatSounds;
     [SerializeField] MeshRenderer[] meshes;
     private bool hasCollided;
 
@@ -111,16 +113,7 @@ public class ProjectileBehaviour : MonoBehaviour
                     break;
 
                 case projectileBehaviour.rebound:
-                    if (numberOfBounces == 0)
-                    {
-                        direction = transform.forward;
-                    } 
-                    else if (numberOfBounces == maxBounces)
-                    {
-                        DefaultDestroy();
-                        return;
-                    }
-
+                    direction = transform.forward;
                     rb.MovePosition(transform.position + direction * projectileVelocity * Time.deltaTime);
                     break;
 
@@ -161,24 +154,39 @@ public class ProjectileBehaviour : MonoBehaviour
             {
                 case projectileBehaviour.straightforward:
                     hasCollided = true;
-                    GetComponent<CapsuleCollider>().enabled = false;
-
-                    foreach(MeshRenderer mesh in meshes) // Just in case it has two meshes
-                    {
-                        mesh.enabled = false;
-                    }
-
                     DefaultDestroy();
                     break;
 
                 case projectileBehaviour.rebound:
-                    direction = Vector3.Reflect(direction, col.contacts[0].normal);
-                    numberOfBounces++;
-                    transform.rotation = Quaternion.FromToRotation(Vector3.forward, direction);
-                    Debug.Log(numberOfBounces);
+                    if (numberOfBounces < maxBounces)
+                    {
+                        direction = Vector3.Reflect(direction, col.contacts[0].normal);
+                        numberOfBounces++;
+                        transform.rotation = Quaternion.FromToRotation(Vector3.forward, direction);
+
+                        if (numberOfBounces == 1)
+                        {
+                            audioSource.pitch = 0.6f;
+                        }
+                        else
+                        {
+                            // Increase the pitch by 0.1 after each bounce
+                            audioSource.pitch += 0.1f;
+                        }
+
+                        audioSource.PlayOneShot(bounceSound);
+                    } 
+                    else if (numberOfBounces == maxBounces)
+                    {
+                        hasCollided = true;
+                        DefaultDestroy();
+                        return;
+                    }
+
                     break;
 
                 case projectileBehaviour.homing:
+                    hasCollided = true;
                     DefaultDestroy();
                     break;
 
@@ -205,6 +213,13 @@ public class ProjectileBehaviour : MonoBehaviour
         float randomPitch = Random.Range(0.8f, 1.2f);
         audioSource.pitch = randomPitch;
         audioSource.Play();
+        GetComponent<CapsuleCollider>().enabled = false;
+
+        foreach (MeshRenderer mesh in meshes) // Just in case it has two meshes
+        {
+            mesh.enabled = false;
+        }
+
         spawnZone.GetComponent<FoodSpawner>().spawnedProjectiles.Remove(this.gameObject);
         Destroy(this.gameObject, audioSource.clip.length);
     }
