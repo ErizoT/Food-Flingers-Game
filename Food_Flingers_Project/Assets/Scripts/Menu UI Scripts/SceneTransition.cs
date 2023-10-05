@@ -9,6 +9,11 @@ public class SceneTransition : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] bool animated;
 
+    [Header("Sound Library")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip wipeInSound;
+    [SerializeField] AudioClip wipeOutSound;
+
     void Awake()
     {
         if (SceneManager.GetActiveScene().name == "PlayerSetup")
@@ -32,12 +37,14 @@ public class SceneTransition : MonoBehaviour
     IEnumerator Transition()
     {
         anim.SetInteger("transitionState", 1);
+        audioSource.PlayOneShot(wipeInSound);
         yield return new WaitForSeconds(2.5f); // Example delay of 1 second
 
         SceneManager.LoadScene(targetSceneName);
         yield return new WaitForSeconds(1f); // Example delay of 1 second
 
         anim.SetInteger("transitionState", 2);
+        audioSource.PlayOneShot(wipeOutSound);
         yield return new WaitForSeconds(2f); // Example delay of 1 second
 
         anim.SetInteger("transitionState", 0);

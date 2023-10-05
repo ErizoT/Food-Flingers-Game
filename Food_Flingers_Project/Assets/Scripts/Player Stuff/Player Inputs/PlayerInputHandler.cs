@@ -22,8 +22,14 @@ public class PlayerInputHandler : MonoBehaviour
 
     private NewInput controls;
 
-    [Header("SoundLibrary")]
-    [SerializeField] AudioSource footstepSound;
+    [Header("Sound Library")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip[] throwSound;
+    [SerializeField] AudioClip dashSound;
+
+    [Header("Effects Library")]
+    [SerializeField] GameObject smokeTrail;
+    private bool trailExists;
     private void Awake()
     {
         controller = GetComponent<PlayerController>();
@@ -65,13 +71,14 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         controller.movementInput = context.ReadValue<Vector2>();
-        animator.SetBool(runningBoolName, true);
-        footstepSound.Play();
+        //animator.SetBool(runningBoolName, true);
+
+        GameObject trail = Instantiate(smokeTrail, transform.position, Quaternion.identity);
 
         if (controller.movementInput.magnitude < 0.1f)
         {
-            animator.SetBool(runningBoolName, false);
-            footstepSound.Stop();
+            //animator.SetBool(runningBoolName, false);
+            Destroy(trail);
         }
     }
 
@@ -82,6 +89,10 @@ public class PlayerInputHandler : MonoBehaviour
             controller.Throw();
             animator.SetTrigger(throwingBoolName);
             animator.SetBool(holdingBoolName, false);
+
+            audioSource.pitch = Random.Range(0.7f, 1.3f);
+            audioSource.PlayOneShot(throwSound[Random.Range(0, throwSound.Length)]);
+            
         }
         else if (controller.selectedProjectile != null)
             {
@@ -95,6 +106,9 @@ public class PlayerInputHandler : MonoBehaviour
         controller.OnDash();
         animator.SetTrigger(throwingBoolName);
         animator.SetBool(holdingBoolName, false);
+
+        audioSource.pitch = Random.Range(0.7f, 1.3f);
+        audioSource.PlayOneShot(dashSound);
     }
 
     public void OnHit()
