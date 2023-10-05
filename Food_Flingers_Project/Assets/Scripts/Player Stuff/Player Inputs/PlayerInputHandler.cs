@@ -71,13 +71,13 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         controller.movementInput = context.ReadValue<Vector2>();
-        //animator.SetBool(runningBoolName, true);
+        animator.SetBool(runningBoolName, true);
 
         GameObject trail = Instantiate(smokeTrail, transform.position, Quaternion.identity);
 
         if (controller.movementInput.magnitude < 0.1f)
         {
-            //animator.SetBool(runningBoolName, false);
+            animator.SetBool(runningBoolName, false);
             Destroy(trail);
         }
     }
