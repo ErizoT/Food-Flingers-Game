@@ -28,7 +28,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] AudioClip dashSound;
 
     [Header("Effects Library")]
-    [SerializeField] GameObject smokeTrail;
+    [SerializeField] ParticleSystem smokeTrail;
     private bool trailExists;
     private void Awake()
     {
@@ -73,12 +73,31 @@ public class PlayerInputHandler : MonoBehaviour
         controller.movementInput = context.ReadValue<Vector2>();
         animator.SetBool(runningBoolName, true);
 
-        GameObject trail = Instantiate(smokeTrail, transform.position, Quaternion.identity);
-
         if (controller.movementInput.magnitude < 0.1f)
         {
             animator.SetBool(runningBoolName, false);
-            Destroy(trail);
+            StopSmokeTrail(); // Stop the smoke trail when not moving
+        }
+        else
+        {
+            PlaySmokeTrail();
+        }
+    }
+    private void PlaySmokeTrail()
+    {
+        if (!trailExists)
+        {
+            smokeTrail.Play();
+            trailExists = true;
+        }
+    }
+
+    private void StopSmokeTrail()
+    {
+        if (trailExists)
+        {
+            smokeTrail.Stop();
+            trailExists = false;
         }
     }
 

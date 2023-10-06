@@ -5170,7 +5170,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e076d709e6aeec74f996d917efc7c0a2, type: 3}
   - {fileID: 8300000, guid: 9c4ef371fcefa1f4db76c6764b0ad730, type: 3}
   dashSound: {fileID: 8300000, guid: 082988e8ccf68b846aef7188ae0b447e, type: 3}
-  smokeTrail: {fileID: 1333945463083900309}
+  smokeTrail: {fileID: 6267880773886647212}
 --- !u!114 &2698453284129532716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6268,9 +6268,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2698453284129532706}
     m_Modifications:
+    - target: {fileID: 435688185081655792, guid: 8700c3ea843ac1746a7b7db9b18939eb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1217636023609952645, guid: 8700c3ea843ac1746a7b7db9b18939eb, type: 3}
       propertyPath: m_Name
       value: RunningSmoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 1217636023609952645, guid: 8700c3ea843ac1746a7b7db9b18939eb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1217636023609952645, guid: 8700c3ea843ac1746a7b7db9b18939eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4066024175653675728, guid: 8700c3ea843ac1746a7b7db9b18939eb, type: 3}
       propertyPath: m_RootOrder
@@ -6316,16 +6328,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5332222334919230418, guid: 8700c3ea843ac1746a7b7db9b18939eb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8700c3ea843ac1746a7b7db9b18939eb, type: 3}
---- !u!1 &1333945463083900309 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1217636023609952645, guid: 8700c3ea843ac1746a7b7db9b18939eb, type: 3}
-  m_PrefabInstance: {fileID: 173047564581573648}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4182615513695614656 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4066024175653675728, guid: 8700c3ea843ac1746a7b7db9b18939eb, type: 3}
+  m_PrefabInstance: {fileID: 173047564581573648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6267880773886647212 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6097088351144382396, guid: 8700c3ea843ac1746a7b7db9b18939eb, type: 3}
   m_PrefabInstance: {fileID: 173047564581573648}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4617775957502537419
