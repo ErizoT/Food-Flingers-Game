@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1357.3334
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Game
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 350}
   m_MaxSize: {x: 10000, y: 10000}
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 672
     height: 1307.3334
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -128,7 +128,7 @@ MonoBehaviour:
   - {fileID: 20}
   - {fileID: 13}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -396,9 +396,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 8b3bebd02afbaad40989e13aa4f6fa39, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 81840e4302a8ac64cb3e2518127bf453, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -2193108532044849887, guid: 8b3bebd02afbaad40989e13aa4f6fa39, type: 2}
+  - m_Target: {fileID: 6133397553631488934, guid: 81840e4302a8ac64cb3e2518127bf453, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -441,7 +441,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 36856
+  m_LastSelectedObjectID: 47208
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -511,22 +511,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Audio/Sounds/matchSounds/Foods/Carrot
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Audio/Sounds/matchSounds/Foods/Carrot
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Scratch\s3922972\Food-Flingers-Game\Food_Flingers_Project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 78.19995}
-    m_SelectedIDs: 68720000
-    m_LastClickedID: 29288
-    m_ExpandedIDs: 000000006872000080720000927200007890000000ca9a3bffffff7f
+    m_SelectedIDs: 5eb90000
+    m_LastClickedID: 47454
+    m_ExpandedIDs: 0000000084720000987200009a720000aa720000aa7b0000b07b0000b67b00005a8b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -554,7 +554,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000068720000
+    m_ExpandedIDs: 0000000084720000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -638,8 +638,9 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
-  m_ObjectsLockedBeforeSerialization: []
-  m_InstanceIDsLockedBeforeSerialization: 
+  m_ObjectsLockedBeforeSerialization:
+  - {fileID: 0}
+  m_InstanceIDsLockedBeforeSerialization: 4cbe0000
   m_PreviewResizer:
     m_CachedPref: 321
     m_ControlHash: -371814159
@@ -649,7 +650,7 @@ MonoBehaviour:
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
-    m_IsLocked: 0
+    m_IsLocked: 1
   m_PreviewWindow: {fileID: 0}
 --- !u!114 &17
 MonoBehaviour:
@@ -682,9 +683,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c4bcfeff
-      m_LastClickedID: -82748
-      m_ExpandedIDs: c4bcfeffe4bcfeffda9f000054a00000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: dc04feff3cbe00004cbe0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -966,9 +967,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 802.4372, y: 669.35724, z: -24.606243}
+    m_Target: {x: 6.240246, y: 4.840103, z: -9.956148}
     speed: 2
-    m_Value: {x: 802.4372, y: 669.35724, z: -24.606243}
+    m_Value: {x: 6.240246, y: 4.840103, z: -9.956148}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1015,13 +1016,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.17415087, y: 0.09292757, z: -0.016453989, w: 0.98030347}
+    m_Target: {x: -0.068105, y: -0.8763112, z: 0.13002422, w: -0.458885}
     speed: 2
-    m_Value: {x: 0.17413087, y: 0.0929169, z: -0.0164521, w: 0.98019093}
+    m_Value: {x: -0.06810359, y: -0.8762931, z: 0.13002154, w: -0.45887554}
   m_Size:
-    m_Target: 367.7596
+    m_Target: 1.8302381
     speed: 2
-    m_Value: 367.7596
+    m_Value: 1.8302381
   m_Ortho:
     m_Target: 0
     speed: 2

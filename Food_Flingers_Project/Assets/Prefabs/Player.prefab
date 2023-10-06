@@ -5169,7 +5169,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b2cfa3d31343e6547a0612b9ae1f27fa, type: 3}
   - {fileID: 8300000, guid: e076d709e6aeec74f996d917efc7c0a2, type: 3}
   - {fileID: 8300000, guid: 9c4ef371fcefa1f4db76c6764b0ad730, type: 3}
+  damageSound:
+  - {fileID: 8300000, guid: 1b1427c76ac7d5b4ba183ea1d8034cc6, type: 3}
+  - {fileID: 8300000, guid: a808fe8603ca54a47b56364932467cc5, type: 3}
+  - {fileID: 8300000, guid: 596894a282e59584c9debd399f293dad, type: 3}
+  knockoutSound:
+  - {fileID: 8300000, guid: 9e754fab08f181947a8c3d719957bcc8, type: 3}
+  - {fileID: 8300000, guid: 753597807346228488cb58a0e09f0456, type: 3}
+  - {fileID: 8300000, guid: 349185a447c5cb64896e33ff8be69530, type: 3}
   dashSound: {fileID: 8300000, guid: 082988e8ccf68b846aef7188ae0b447e, type: 3}
+  pickupSound: {fileID: 8300000, guid: 6d213222be2f39945995b8779613b10d, type: 3}
+  pickupVolume: 0.5
+  dashVolume: 0.5
+  knockoutVolume: 0.5
+  damageVolume: 0.5
+  throwVolume: 0.5
   smokeTrail: {fileID: 6267880773886647212}
 --- !u!114 &2698453284129532716
 MonoBehaviour:

@@ -25,7 +25,26 @@ public class PlayerInputHandler : MonoBehaviour
     [Header("Sound Library")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] throwSound;
+
+    [SerializeField] AudioClip[] damageSound;
+
+    [SerializeField] AudioClip[] knockoutSound;
+
     [SerializeField] AudioClip dashSound;
+
+    [SerializeField] AudioClip pickupSound;
+
+    [Header("Sound Volumes")]
+    [Range(0.1f, 1f)]
+    [SerializeField] float pickupVolume = 0.5f;
+    [Range(0.1f, 1f)]
+    [SerializeField] float dashVolume = 0.5f;    
+    [Range(0.1f, 1f)]
+    [SerializeField] float knockoutVolume = 0.5f;
+    [Range(0.1f, 1f)]
+    [SerializeField] float damageVolume = 0.5f;
+    [Range(0.1f, 1f)]
+    [SerializeField] float throwVolume = 0.5f;
 
     [Header("Effects Library")]
     [SerializeField] ParticleSystem smokeTrail;
@@ -109,6 +128,7 @@ public class PlayerInputHandler : MonoBehaviour
             animator.SetTrigger(throwingBoolName);
             animator.SetBool(holdingBoolName, false);
 
+            audioSource.volume = throwVolume;
             audioSource.pitch = Random.Range(0.7f, 1.3f);
             audioSource.PlayOneShot(throwSound[Random.Range(0, throwSound.Length)]);
             
@@ -117,6 +137,10 @@ public class PlayerInputHandler : MonoBehaviour
             {
             controller.Hold();
             animator.SetBool(holdingBoolName, true);
+
+            audioSource.volume = pickupVolume;
+            audioSource.pitch = Random.Range(0.8f, 1.2f);
+            audioSource.PlayOneShot(pickupSound);
         }
     }
 
@@ -126,18 +150,27 @@ public class PlayerInputHandler : MonoBehaviour
         animator.SetTrigger(throwingBoolName);
         animator.SetBool(holdingBoolName, false);
 
+        audioSource.volume = dashVolume;
         audioSource.pitch = Random.Range(0.7f, 1.3f);
         audioSource.PlayOneShot(dashSound);
     }
 
     public void OnHit()
     {
+
         if(healthController.playerHealth <= 0)
         {
             animator.SetBool(deadBoolName, true);
             animator.SetBool(holdingBoolName, false);
+
+            audioSource.volume = knockoutVolume;
+            int r = Random.Range(0, knockoutSound.Length);
+            audioSource.PlayOneShot(knockoutSound[r]);
         } else
         {
+            audioSource.volume = damageVolume;
+            int r = Random.Range(0, damageSound.Length);
+            audioSource.PlayOneShot(damageSound[r]);
             animator.SetTrigger(hurtBoolName);
         }
     }

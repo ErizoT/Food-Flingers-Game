@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ProjectileBehaviour : MonoBehaviour
 {
@@ -19,16 +20,25 @@ public class ProjectileBehaviour : MonoBehaviour
     private int maxBounces = 4; // Gonna make this configurable later
 
     // Homing projectile values
-    public GameObject[] targets;
+    [HideInInspector] public GameObject[] targets;
     private GameObject closestPlayer;
     [SerializeField] float rotationSpeed = 50f;
 
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip bounceSound;
-    [SerializeField] AudioClip[] splatSounds;
     [SerializeField] MeshRenderer[] meshes;
     private bool hasCollided;
 
+    [SerializeField] projectileBehaviour projectileType;
+
+    [Header("Sound Library")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip bounceSound;
+    [SerializeField] AudioClip[] splatSounds;
+
+    [Header("Volumes")]
+    [Range(0.1f, 1.0f)]
+    [SerializeField] float bounceVolume = 0.5f;
+    [Range(0.1f, 1.0f)]
+    [SerializeField] float splatVolume = 0.5f;
     enum projectileBehaviour
     {
         straightforward,
@@ -37,7 +47,7 @@ public class ProjectileBehaviour : MonoBehaviour
         splash
     }
 
-    [SerializeField] projectileBehaviour projectileType;
+
 
     private void OnEnable()
     {
@@ -174,7 +184,7 @@ public class ProjectileBehaviour : MonoBehaviour
                             audioSource.pitch += 0.1f;
                         }
 
-                        audioSource.PlayOneShot(bounceSound);
+                        audioSource.PlayOneShot(bounceSound, bounceVolume);
                     } 
                     else if (numberOfBounces == maxBounces)
                     {
@@ -212,7 +222,8 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         float randomPitch = Random.Range(0.8f, 1.2f);
         audioSource.pitch = randomPitch;
-        audioSource.Play();
+        int r = Random.Range(0, splatSounds.Length);
+        audioSource.PlayOneShot(splatSounds[r], splatVolume);
         GetComponent<CapsuleCollider>().enabled = false;
 
         foreach (MeshRenderer mesh in meshes) // Just in case it has two meshes

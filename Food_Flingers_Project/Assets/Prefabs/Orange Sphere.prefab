@@ -67,11 +67,16 @@ MonoBehaviour:
   selectedMaterial: {fileID: 2100000, guid: 1f5f52aeef94c0a4da7de50fb40ec969, type: 2}
   targets: []
   rotationSpeed: 1
-  audioSource: {fileID: 6764609519169414142}
   meshes:
   - {fileID: 312980906753678556}
   - {fileID: 4781517896319318883}
   projectileType: 0
+  audioSource: {fileID: 6764609519169414142}
+  bounceSound: {fileID: 0}
+  splatSounds:
+  - {fileID: 8300000, guid: 5b64ebc4632e6124fbfed382b6fd31d5, type: 3}
+  bounceVolume: 0.5
+  splatVolume: 0.5
 --- !u!54 &4385446989848976977
 Rigidbody:
   m_ObjectHideFlags: 0
