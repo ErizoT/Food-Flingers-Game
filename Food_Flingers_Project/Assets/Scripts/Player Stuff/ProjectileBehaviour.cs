@@ -29,6 +29,10 @@ public class ProjectileBehaviour : MonoBehaviour
 
     [SerializeField] projectileBehaviour projectileType;
 
+    [Header("Cool Stuff")]
+    [SerializeField] ParticleSystem splatParticle;
+    [SerializeField] TrailRenderer trailRenderer;
+
     [Header("Sound Library")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip bounceSound;
@@ -188,6 +192,7 @@ public class ProjectileBehaviour : MonoBehaviour
                     } 
                     else if (numberOfBounces == maxBounces)
                     {
+                        //splatParticle.Play();
                         hasCollided = true;
                         DefaultDestroy();
                         return;
