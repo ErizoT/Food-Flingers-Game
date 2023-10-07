@@ -64,7 +64,7 @@ public class PlayerHealth : MonoBehaviour
 
         //scoreText.text = kills.ToString();
 
-        //deathEffect.transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 0));
+        deathEffect.transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 0));
     }
 
     public void OnHit()
@@ -86,18 +86,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void OnDeath()
     {
-        deathEffect.Stop(); // Stop emitting particles
-        deathEffect.Clear(); // Clear existing particles
         deathEffect.Play();
 
         playerController.canMove = false;
         playerController.playerSpeed = 0f;
         playerController.Drop();
-
-        //Rotate the character so it looks dead
-        Vector3 deathRotation = new Vector3(0, 180, 90);
-        Quaternion newRotation = Quaternion.Euler(deathRotation);
-        transform.rotation = newRotation;
 
         gameObject.layer = LayerMask.NameToLayer("Invulnerable");
 
@@ -123,11 +116,6 @@ public class PlayerHealth : MonoBehaviour
         // Re-enable movement
         GetComponent<PlayerController>().canMove = true;
         GetComponent<PlayerController>().playerSpeed = 11f;
-
-        // Reset rotation
-        Vector3 deathRotation = new Vector3(0, 0, 0);
-        Quaternion newRotation = Quaternion.Euler(deathRotation);
-        transform.rotation = newRotation;
 
         // Respawn at a random spawn point
         int randomIndex = Random.Range(0, respawnManager.respawnPoints.Length);
