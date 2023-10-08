@@ -755,6 +755,8 @@ MonoBehaviour:
   hoverSound: {fileID: 8300000, guid: 580528aa766077549a974d40bea1ca7d, type: 3}
   confirmSound: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
   buttonVolume: 0.5
+  setupMenu: {fileID: 0}
+  playerBackgroundColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &270939865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1266,8 +1268,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 574c0904a9c21684e82fc0ec5bfbc89e, type: 2}
-  m_sharedMaterial: {fileID: 540378536632039435, guid: 574c0904a9c21684e82fc0ec5bfbc89e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7fc0201570c9de44281be93ffa4ccfaf, type: 2}
+  m_sharedMaterial: {fileID: 6950205651523419700, guid: 7fc0201570c9de44281be93ffa4ccfaf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1401,8 +1403,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Select
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 574c0904a9c21684e82fc0ec5bfbc89e, type: 2}
-  m_sharedMaterial: {fileID: 540378536632039435, guid: 574c0904a9c21684e82fc0ec5bfbc89e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7fc0201570c9de44281be93ffa4ccfaf, type: 2}
+  m_sharedMaterial: {fileID: 6950205651523419700, guid: 7fc0201570c9de44281be93ffa4ccfaf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1729,8 +1731,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Quit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 574c0904a9c21684e82fc0ec5bfbc89e, type: 2}
-  m_sharedMaterial: {fileID: 540378536632039435, guid: 574c0904a9c21684e82fc0ec5bfbc89e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7fc0201570c9de44281be93ffa4ccfaf, type: 2}
+  m_sharedMaterial: {fileID: 6950205651523419700, guid: 7fc0201570c9de44281be93ffa4ccfaf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1864,8 +1866,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Credits
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 574c0904a9c21684e82fc0ec5bfbc89e, type: 2}
-  m_sharedMaterial: {fileID: 540378536632039435, guid: 574c0904a9c21684e82fc0ec5bfbc89e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7fc0201570c9de44281be93ffa4ccfaf, type: 2}
+  m_sharedMaterial: {fileID: 6950205651523419700, guid: 7fc0201570c9de44281be93ffa4ccfaf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2380,6 +2382,8 @@ MonoBehaviour:
   hoverSound: {fileID: 8300000, guid: 580528aa766077549a974d40bea1ca7d, type: 3}
   confirmSound: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
   buttonVolume: 0.5
+  setupMenu: {fileID: 0}
+  playerBackgroundColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1524639929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2770,6 +2774,8 @@ MonoBehaviour:
   hoverSound: {fileID: 8300000, guid: 580528aa766077549a974d40bea1ca7d, type: 3}
   confirmSound: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
   buttonVolume: 0.5
+  setupMenu: {fileID: 0}
+  playerBackgroundColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1600395232
 MonoBehaviour:
   m_ObjectHideFlags: 0
