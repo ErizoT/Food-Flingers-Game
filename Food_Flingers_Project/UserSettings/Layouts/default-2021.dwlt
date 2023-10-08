@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2048
     height: 1068.8
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Project
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 350}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 100
+  controlID: 104
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -511,22 +511,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Models/Base
+    - Assets/Models
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Models/Base
+  - Assets/Models
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\2023\uni\sem 2\Team Project Studio\Food-Flingers-Game\Food_Flingers_Project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 947c0000
-    m_LastClickedID: 31892
-    m_ExpandedIDs: 000000003c7c00003e7c0000407c0000427c0000447c0000467c0000487c000000ca9a3b
+    m_SelectedIDs: 96780000
+    m_LastClickedID: 30870
+    m_ExpandedIDs: 00000000927800009478000096780000987800009a7800009c7800009e78000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -554,7 +554,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003c7c00003e7c0000407c0000427c0000447c0000467c0000487c0000
+    m_ExpandedIDs: 00000000927800009478000096780000987800009a7800009c7800009e780000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -682,9 +682,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 42e7ffff
+      m_SelectedIDs: 96780000
       m_LastClickedID: 0
-      m_ExpandedIDs: d2f8ffff9a740000a4750000
+      m_ExpandedIDs: 30fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -966,7 +966,7 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -9.244309, y: -6.4500937, z: -2.9596052}
+    m_Target: {x: -10.108889, y: -2.3953662, z: 0.41505718}
     speed: 2
     m_Value: {x: -9.244309, y: -6.4500937, z: -2.9596052}
   m_RenderMode: 0
@@ -1015,13 +1015,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.2965466, y: 0.1736396, z: -0.050001126, w: 0.93888474}
+    m_Target: {x: 0.27770513, y: 0.11486192, z: -0.028641216, w: 0.95444345}
     speed: 2
-    m_Value: {x: 0.29638493, y: 0.1706435, z: -0.049059894, w: 0.93841887}
+    m_Value: {x: -0.2965466, y: -0.1736396, z: 0.050001126, w: -0.93888474}
   m_Size:
-    m_Target: 24.102545
+    m_Target: 32.403725
     speed: 2
-    m_Value: 23.064636
+    m_Value: 24.102545
   m_Ortho:
     m_Target: 0
     speed: 2
