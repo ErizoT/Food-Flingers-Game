@@ -9,6 +9,8 @@ public class SceneTransition : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] bool animated;
 
+    public static bool inGame;
+
     [Header("Sound Library")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip wipeInSound;
@@ -26,6 +28,7 @@ public class SceneTransition : MonoBehaviour
     {
         if (animated && anim != null)
         {
+            inGame = true;
             StartCoroutine(Transition());
         }
         else

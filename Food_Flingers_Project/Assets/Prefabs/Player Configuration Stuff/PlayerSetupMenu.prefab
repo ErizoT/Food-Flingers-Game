@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.39215684, g: 1, b: 0.9143683, a: 1}
+  m_Color: {r: 0.09019608, g: 0.74509805, b: 0.73333335, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -127,7 +127,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1205424378195275336}
         m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
-        m_MethodName: SetColor
+        m_MethodName: SetMaterial
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2100000, guid: 8b61a23a2d5b9a74d87dc44448db15d9, type: 2}
@@ -144,6 +144,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1594637805479348915}
+        m_TargetAssemblyTypeName: ButtonFunctionality, Assembly-CSharp
+        m_MethodName: FuckingColour
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -194,6 +206,8 @@ MonoBehaviour:
   hoverSound: {fileID: 8300000, guid: 580528aa766077549a974d40bea1ca7d, type: 3}
   confirmSound: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
   buttonVolume: 0.5
+  setupMenu: {fileID: 1205424378195275336}
+  playerBackgroundColour: {r: 0.09019608, g: 0.74509805, b: 0.73333335, a: 1}
 --- !u!82 &2004497272306631019
 AudioSource:
   m_ObjectHideFlags: 0
@@ -628,7 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.41960788, b: 0.78980976, a: 1}
+  m_Color: {r: 1, g: 0.52156866, b: 0.7372549, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -691,7 +705,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1205424378195275336}
         m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
-        m_MethodName: SetColor
+        m_MethodName: SetMaterial
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2100000, guid: 4ebbf86086c352648aefacb10b9f1375, type: 2}
@@ -708,6 +722,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4725967669996138820}
+        m_TargetAssemblyTypeName: ButtonFunctionality, Assembly-CSharp
+        m_MethodName: FuckingColour
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -758,6 +784,8 @@ MonoBehaviour:
   hoverSound: {fileID: 8300000, guid: 580528aa766077549a974d40bea1ca7d, type: 3}
   confirmSound: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
   buttonVolume: 0.5
+  setupMenu: {fileID: 1205424378195275336}
+  playerBackgroundColour: {r: 1, g: 0.52156866, b: 0.7372549, a: 1}
 --- !u!82 &5375853193618559382
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1139,7 +1167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.99001515, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.7882353, b: 0.078431375, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1202,7 +1230,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1205424378195275336}
         m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
-        m_MethodName: SetColor
+        m_MethodName: SetMaterial
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2100000, guid: b5d45b98185e9db4595a8fdee438b8ad, type: 2}
@@ -1219,6 +1247,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5009490177502131876}
+        m_TargetAssemblyTypeName: ButtonFunctionality, Assembly-CSharp
+        m_MethodName: FuckingColour
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1269,6 +1309,8 @@ MonoBehaviour:
   hoverSound: {fileID: 8300000, guid: 580528aa766077549a974d40bea1ca7d, type: 3}
   confirmSound: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
   buttonVolume: 0.5
+  setupMenu: {fileID: 1205424378195275336}
+  playerBackgroundColour: {r: 1, g: 0.7882353, b: 0.078431375, a: 1}
 --- !u!82 &6372371184670484379
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1741,7 +1783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.42138356, b: 0.42138356, a: 1}
+  m_Color: {r: 0.89411765, g: 0.34117648, b: 0.18039216, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1804,7 +1846,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1205424378195275336}
         m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
-        m_MethodName: SetColor
+        m_MethodName: SetMaterial
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2100000, guid: f9d1e9f160da9764b8685f9625b66738, type: 2}
@@ -1821,6 +1863,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7488083443383123343}
+        m_TargetAssemblyTypeName: ButtonFunctionality, Assembly-CSharp
+        m_MethodName: FuckingColour
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1871,6 +1925,8 @@ MonoBehaviour:
   hoverSound: {fileID: 8300000, guid: 580528aa766077549a974d40bea1ca7d, type: 3}
   confirmSound: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
   buttonVolume: 0.5
+  setupMenu: {fileID: 1205424378195275336}
+  playerBackgroundColour: {r: 0.89411765, g: 0.34117648, b: 0.18039216, a: 1}
 --- !u!82 &6449759906171100082
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2305,7 +2361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.39308167, g: 0.64324445, b: 1, a: 1}
+  m_Color: {r: 0.3529412, g: 0.5019608, b: 0.7882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2368,7 +2424,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1205424378195275336}
         m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
-        m_MethodName: SetColor
+        m_MethodName: SetMaterial
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2100000, guid: e4c487ca85ecad543b03e3c3e4288e72, type: 2}
@@ -2385,6 +2441,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6325824427219126122}
+        m_TargetAssemblyTypeName: ButtonFunctionality, Assembly-CSharp
+        m_MethodName: FuckingColour
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2435,6 +2503,8 @@ MonoBehaviour:
   hoverSound: {fileID: 8300000, guid: 580528aa766077549a974d40bea1ca7d, type: 3}
   confirmSound: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
   buttonVolume: 0.5
+  setupMenu: {fileID: 1205424378195275336}
+  playerBackgroundColour: {r: 0.3529412, g: 0.5019608, b: 0.7882353, a: 1}
 --- !u!82 &7687082560227215771
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2595,7 +2665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.699424, g: 0.4039216, b: 1, a: 1}
+  m_Color: {r: 0.58431375, g: 0.3882353, b: 0.6666667, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2658,7 +2728,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1205424378195275336}
         m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
-        m_MethodName: SetColor
+        m_MethodName: SetMaterial
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2100000, guid: 99137e7b8c544e344b95412b62e3fe6e, type: 2}
@@ -2675,6 +2745,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5381209661912911306}
+        m_TargetAssemblyTypeName: ButtonFunctionality, Assembly-CSharp
+        m_MethodName: FuckingColour
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2725,6 +2807,8 @@ MonoBehaviour:
   hoverSound: {fileID: 8300000, guid: 580528aa766077549a974d40bea1ca7d, type: 3}
   confirmSound: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
   buttonVolume: 0.5
+  setupMenu: {fileID: 1205424378195275336}
+  playerBackgroundColour: {r: 0.58431375, g: 0.3882353, b: 0.6666667, a: 1}
 --- !u!82 &4356061148398828130
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4016,7 +4100,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1205424378195275336}
         m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
-        m_MethodName: SetColor
+        m_MethodName: SetMaterial
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2100000, guid: 3dcdbabe37c8c6941a27abd1b6372ebd, type: 2}
@@ -4033,6 +4117,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6166239917550423651}
+        m_TargetAssemblyTypeName: ButtonFunctionality, Assembly-CSharp
+        m_MethodName: FuckingColour
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4083,6 +4179,8 @@ MonoBehaviour:
   hoverSound: {fileID: 8300000, guid: 580528aa766077549a974d40bea1ca7d, type: 3}
   confirmSound: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
   buttonVolume: 0.5
+  setupMenu: {fileID: 1205424378195275336}
+  playerBackgroundColour: {r: 0.4627451, g: 0.6901961, b: 0.25490198, a: 1}
 --- !u!82 &5481675315481908480
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4243,7 +4341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7327272, b: 0.39308167, a: 1}
+  m_Color: {r: 0.9254902, g: 0.49411765, b: 0.08627451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4306,7 +4404,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1205424378195275336}
         m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
-        m_MethodName: SetColor
+        m_MethodName: SetMaterial
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2100000, guid: 73fceada90b5cb943a4aae6f2d79793b, type: 2}
@@ -4323,6 +4421,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 204182709549451186}
+        m_TargetAssemblyTypeName: ButtonFunctionality, Assembly-CSharp
+        m_MethodName: FuckingColour
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4373,6 +4483,8 @@ MonoBehaviour:
   hoverSound: {fileID: 8300000, guid: 580528aa766077549a974d40bea1ca7d, type: 3}
   confirmSound: {fileID: 8300000, guid: b9428f120c0200548aa63ce80748a36b, type: 3}
   buttonVolume: 0.5
+  setupMenu: {fileID: 1205424378195275336}
+  playerBackgroundColour: {r: 0.9254902, g: 0.49411765, b: 0.08627451, a: 1}
 --- !u!82 &3171216193704348474
 AudioSource:
   m_ObjectHideFlags: 0

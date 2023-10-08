@@ -1,6 +1,7 @@
 using System.Collections;
 //using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Pause Menu Variables")]
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] Button pauseButton;
     [SerializeField] SkinnedMeshRenderer rend;
     public static bool isPaused = false;
     [HideInInspector] public static GameObject playerPaused;
@@ -210,23 +212,20 @@ public class PlayerController : MonoBehaviour
     }
 
     // ============================= MENU STUFF ====================================
-    public void Pause(InputAction.CallbackContext context)
+    public void Pause()
     {
-        if (context.performed && !isPaused)
-        {
-            Debug.Log("Pausing");
-            isPaused = true;
-
-            Time.timeScale = 0;
-            playerPaused = this.gameObject;
-            pauseMenu.SetActive(true);
-
-            // Play a pause sound here!
-        } 
-        else if (context.performed && isPaused && playerPaused == this.gameObject)
+        if (isPaused && playerPaused == this.gameObject)
         {
             Unpause();
-        }
+        }     
+        isPaused = true;
+
+        Time.timeScale = 0;
+        playerPaused = this.gameObject;
+        pauseMenu.SetActive(true);
+        pauseButton.Select();
+        // Play a pause sound here!
+
     }
 
     public void Unpause()

@@ -40,6 +40,13 @@ public class PlayerConfigurationManager : MonoBehaviour
     public void SetPlayerColor(int index, Material color)
     {
         playerConfigs[index].PlayerMaterial = color;
+        playerConfigs[index].PlayerIndex = index;
+    }
+
+    public void SetPlayerBackground(int index, Color color)
+    {
+        Debug.Log("Color is set");
+        playerConfigs[index].PlayerColor = color;
     }
 
     public void ReadyPlayer(int index)
@@ -55,12 +62,15 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     public void HandlePlayerJoin(PlayerInput pi)
     {
-        Debug.Log("Player Joined" + pi.playerIndex);
-        pi.transform.SetParent(transform); // Parents the joining player to this PlayerConfigurationManager, so they go along for the ride to the next scene
-
-        if(!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex)) // Checking the player index to check if we haven't already added this player
+        if(!SceneTransition.inGame)
         {
-            playerConfigs.Add(new PlayerConfiguration(pi)); // Creates a new PlayerConfig with the incoming player input
+            Debug.Log("Player Joined" + pi.playerIndex);
+            pi.transform.SetParent(transform); // Parents the joining player to this PlayerConfigurationManager, so they go along for the ride to the next scene
+
+            if (!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex)) // Checking the player index to check if we haven't already added this player
+            {
+                playerConfigs.Add(new PlayerConfiguration(pi)); // Creates a new PlayerConfig with the incoming player input
+            }
         }
     }
 
@@ -86,5 +96,7 @@ public class PlayerConfiguration
     public bool IsReady { get; set; }
 
     public Material PlayerMaterial { get; set; }
+
+    public Color PlayerColor { get; set; }
 
 }

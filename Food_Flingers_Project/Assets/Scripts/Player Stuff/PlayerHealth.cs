@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class PlayerHealth : MonoBehaviour
@@ -10,12 +11,22 @@ public class PlayerHealth : MonoBehaviour
     public int kills;
     public ParticleSystem deathEffect;
     public RespawnManager respawnManager;
-    public TextMeshPro healthText;
-    public TextMeshProUGUI scoreText;
+    
     [SerializeField] SkinnedMeshRenderer rend;
     [HideInInspector] public PlayerController playerController;
 
+    [HideInInspector] public int playerIndex;
+    [HideInInspector] public Color playerColor;
+
     private GameObject manager;
+
+    [Header("HUD Stuff")]
+    [SerializeField] GameObject playerHUD;
+    [SerializeField] Image backgroundColor;
+    [SerializeField] TextMeshPro playerNumber;
+    public TextMeshProUGUI healthText;
+    [SerializeField] TextMeshPro playerText;
+    public TextMeshProUGUI scoreText;
 
     public void Start()
     {
@@ -25,44 +36,38 @@ public class PlayerHealth : MonoBehaviour
 
         playerController = GetComponent<PlayerController>();
 
-        //================================= Will remove this shit soon, this annoys me ================= 
+        // ============= Configure HUDS =============
+        backgroundColor.color = playerColor;
+        playerNumber.color = playerColor;
+        int p = playerIndex + 1;
+        playerText.SetText("P" + p.ToString());
 
-        // Detect other players in the scene by tag
-        GameObject[] otherPlayers = GameObject.FindGameObjectsWithTag("Player");
+        switch (playerIndex)
+        {
+            case 0:
+                playerHUD.GetComponent<RectTransform>().anchoredPosition = new Vector2(-847, 428);
+                break;
 
-        // Check the number of other players
-        int numberOfOtherPlayers = otherPlayers.Length;
+            case 1:
+                playerHUD.GetComponent<RectTransform>().anchoredPosition = new Vector2(847, 428);
+                break;
 
-        // Change color based on the number of other players
-        if (numberOfOtherPlayers == 1)
-        {
-            return;
+            case 2:
+                playerHUD.GetComponent<RectTransform>().anchoredPosition = new Vector2(-847, -372);
+                break;
+
+            case 3:
+                playerHUD.GetComponent<RectTransform>().anchoredPosition = new Vector2(847, -372);
+                break;
         }
-        else if (numberOfOtherPlayers == 2)
-        {
-            RectTransform textRectTransform = scoreText.rectTransform;
-            textRectTransform.anchoredPosition = new Vector2(-341f, -409f);
-        }
-        else if (numberOfOtherPlayers == 3)
-        {
-            RectTransform textRectTransform = scoreText.rectTransform;
-            textRectTransform.anchoredPosition = new Vector2(-141f, -409f);
-        }
-        else if (numberOfOtherPlayers == 4)
-        {
-            RectTransform textRectTransform = scoreText.rectTransform;
-            textRectTransform.anchoredPosition = new Vector2(141f, -409f);
-        }
-        // ==============================================================================
     }
 
     private void Update()
-    {
-        healthText.text = playerHealth.ToString();
-        healthText.transform.LookAt(Camera.main.transform);
-        healthText.transform.Rotate(Vector3.up, 180.0f);
+    {   
+        playerText.transform.LookAt(Camera.main.transform);
+        playerText.transform.Rotate(Vector3.up, 180.0f);
 
-        //scoreText.text = kills.ToString();
+        scoreText.text = kills.ToString(); // I hate this, i really dont want to calculate kills every frame, but i cbs changing it cus of deadline
 
         deathEffect.transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 0));
     }
@@ -70,6 +75,7 @@ public class PlayerHealth : MonoBehaviour
     public void OnHit()
     {
         playerHealth -= 1;
+        healthText.text = playerHealth.ToString();
 
         if (playerHealth <= 0)
         {

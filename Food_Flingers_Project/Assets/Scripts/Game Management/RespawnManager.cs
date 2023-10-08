@@ -32,18 +32,20 @@ public class RespawnManager : MonoBehaviour
         {
             var player = Instantiate(playerPrefab, respawnPoints[i].position, respawnPoints[i].rotation, gameObject.transform);
             player.GetComponent<PlayerInputHandler>().InitialisePlayer(playerConfigs[i]);
+            player.GetComponent<PlayerHealth>().playerIndex = playerConfigs[i].PlayerIndex;
+            player.GetComponent<PlayerHealth>().playerColor = playerConfigs[i].PlayerColor;
         }
     }
 
     public void Update()
     {
-        // Initialising player list and starting when players match the amount of max players
         playerList = GameObject.FindGameObjectsWithTag("Player");
+        /*// Initialising player list and starting when players match the amount of max players
         if (playerList.Length == maxPlayers && !isGameStarted)
         {
             //isGameStarted = true;
             InitialiseGame();
-        }
+        }*/
 
         // Resetting the game
         if (Input.GetKeyDown(KeyCode.R))
@@ -94,7 +96,7 @@ public class RespawnManager : MonoBehaviour
 
     public void InitialiseGame()
     {
-        //Debug.Log("game started");
+        Debug.Log("game started");
         isGameStarted = true;
         winnerText.text = "";
         Time.timeScale = 1;

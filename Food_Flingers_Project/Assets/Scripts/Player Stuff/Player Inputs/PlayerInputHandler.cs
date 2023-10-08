@@ -80,6 +80,11 @@ public class PlayerInputHandler : MonoBehaviour
         {
             OnDash(obj);
         }
+
+        if (obj.action.name == controls.Player.Pause.name && obj.performed)
+        {
+            OnPause(obj);
+        }
     }
 
     public void Respawn()
@@ -173,5 +178,10 @@ public class PlayerInputHandler : MonoBehaviour
             audioSource.PlayOneShot(damageSound[r]);
             animator.SetTrigger(hurtBoolName);
         }
+    }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        controller.Pause();
     }
 }
