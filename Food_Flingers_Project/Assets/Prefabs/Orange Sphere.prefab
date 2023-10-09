@@ -217,6 +217,22 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2945881597958191463, guid: de2edbed23490664d8d9dcdd8461e969, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945881597958191463, guid: de2edbed23490664d8d9dcdd8461e969, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945881597958191463, guid: de2edbed23490664d8d9dcdd8461e969, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.2553585
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945881597958191463, guid: de2edbed23490664d8d9dcdd8461e969, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3125424219116781610, guid: de2edbed23490664d8d9dcdd8461e969, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -265,6 +281,18 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3184509108923780004, guid: de2edbed23490664d8d9dcdd8461e969, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3184509108923780004, guid: de2edbed23490664d8d9dcdd8461e969, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.30269474
+      objectReference: {fileID: 0}
+    - target: {fileID: 3184509108923780004, guid: de2edbed23490664d8d9dcdd8461e969, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6223249738238932614, guid: de2edbed23490664d8d9dcdd8461e969, type: 3}
       propertyPath: m_Name
       value: Droplet_Particle_System 1
@@ -272,6 +300,18 @@ PrefabInstance:
     - target: {fileID: 8953634741626625234, guid: de2edbed23490664d8d9dcdd8461e969, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953634741626625234, guid: de2edbed23490664d8d9dcdd8461e969, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953634741626625234, guid: de2edbed23490664d8d9dcdd8461e969, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.30269474
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953634741626625234, guid: de2edbed23490664d8d9dcdd8461e969, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de2edbed23490664d8d9dcdd8461e969, type: 3}

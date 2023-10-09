@@ -9,8 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: SKATERDUDES SDF Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ValidKeywords:
-  - UNDERLAY_ON
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -68,7 +67,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.5
+    - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
@@ -116,11 +115,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: SKATERDUDES SDF
+  m_Name: SKATERDUDES SDF 1
   m_EditorClassIdentifier: 
-  hashCode: -175602808
+  hashCode: 2042071449
   material: {fileID: -1644542567459858217}
-  materialHashCode: 1618444840
+  materialHashCode: 1686500505
   m_Version: 1.1.0
   m_SourceFontFileGUID: 4ecae457f0333114a8515d73682f2149
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 4ecae457f0333114a8515d73682f2149, type: 3}
