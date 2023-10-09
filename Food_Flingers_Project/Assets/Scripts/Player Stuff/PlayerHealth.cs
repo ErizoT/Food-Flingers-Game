@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public int kills;
     public ParticleSystem deathEffect;
     public RespawnManager respawnManager;
+    private bool invulnerable;
     
     [SerializeField] SkinnedMeshRenderer rend;
     [HideInInspector] public PlayerController playerController;
@@ -114,8 +115,13 @@ public class PlayerHealth : MonoBehaviour
         matColor.a = 0.5f;
         mat.color = matColor;
         healthText.text = playerHealth.ToString();
+        invulnerable = true;
+        StartCoroutine(InvulnerabilityFlash());
+
         // Wait 3 seconds before respawning
         yield return new WaitForSeconds(3f);
+
+        invulnerable = false;
 
         gameObject.layer = LayerMask.NameToLayer("Default"); // Reset the player's layer
 
@@ -143,16 +149,26 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator InvulnerabilityWindow()
     {
         gameObject.layer = LayerMask.NameToLayer("Invulnerable");
-        //MeshRenderer rend = GetComponent<MeshRenderer>();
-        Material mat = rend.material;
-        Color matColor = mat.color;
-        matColor.a = 0.5f;
-        mat.color = matColor;
-
+        invulnerable = true;
+        StartCoroutine(InvulnerabilityFlash());
         yield return new WaitForSeconds(invulnerabilityTime);
 
+        invulnerable = false;
         gameObject.layer = LayerMask.NameToLayer("Default");
-        matColor.a = 1f;
-        mat.color = matColor;
+    }
+
+    IEnumerator InvulnerabilityFlash()
+    {
+        Debug.Log("Should be invulnerable");
+        
+        rend.enabled = false;
+        yield return new WaitForSeconds(0.01f);
+        rend.enabled = true;
+        yield return new WaitForSeconds(0.01f);
+
+        if(invulnerable)
+        {
+            StartCoroutine(InvulnerabilityFlash());
+        }
     }
 }
