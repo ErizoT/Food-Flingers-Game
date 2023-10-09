@@ -113,7 +113,7 @@ public class PlayerHealth : MonoBehaviour
         Color matColor = mat.color;
         matColor.a = 0.5f;
         mat.color = matColor;
-
+        healthText.text = playerHealth.ToString();
         // Wait 3 seconds before respawning
         yield return new WaitForSeconds(3f);
 
