@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class RespawnManager : MonoBehaviour
@@ -19,6 +20,11 @@ public class RespawnManager : MonoBehaviour
     private float currentTime;
     private bool isCounting = false;
     [SerializeField] TextMeshProUGUI timerText;
+
+    [Header("Music")]
+    [SerializeField] AudioSource levelTheme;
+    [SerializeField] AudioSource resultsTheme;
+    [SerializeField] AudioSource countdownSound;
 
     private void Start()
     {
@@ -46,6 +52,8 @@ public class RespawnManager : MonoBehaviour
             //isGameStarted = true;
             InitialiseGame();
         }*/
+
+
 
         // Resetting the game
         if (Input.GetKeyDown(KeyCode.R))
@@ -131,6 +139,7 @@ public class RespawnManager : MonoBehaviour
         GameObject secondTopPlayer = null;
         int highestKills = 0;
         int secondHighestKills = 0;
+        resultsTheme.Play();
 
         for (int i = 0; i < playerList.Length; i++)
         {
@@ -149,6 +158,25 @@ public class RespawnManager : MonoBehaviour
                 Debug.Log("Draw");
             }
         }
+
+        yield return new WaitForSeconds(3f);
+        Time.timeScale = 1f;
+
+        // Find the object by name
+        GameObject playerConfigManager = GameObject.Find("PlayerConfigurationManager");
+
+        // Check if the object was found
+        if (playerConfigManager != null)
+        {
+            SceneTransition.inGame = false;
+            Destroy(playerConfigManager);
+            SceneManager.LoadScene("MainMenu");
+        }
+        else
+        {
+            // Object with the specified name was not found
+            Debug.LogWarning("PlayerConfigurationManager not found.");
+        }
     }
 
     IEnumerator GameCountdown()
@@ -158,10 +186,14 @@ public class RespawnManager : MonoBehaviour
         {
             //Debug.Log("Countdown: " + i);
             titleText.text = (i.ToString());
+            countdownSound.Play();
             yield return new WaitForSeconds(1f);
+            countdownSound.Stop();
 
             if (i == 1)
             {
+                levelTheme.Play();
+                countdownSound.Play();
                 titleText.text = ("FLING!");
                 yield return new WaitForSeconds(1f);
                 titleText.text = null;

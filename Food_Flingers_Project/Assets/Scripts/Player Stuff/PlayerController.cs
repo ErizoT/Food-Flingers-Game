@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Button pauseButton;
     [SerializeField] SkinnedMeshRenderer rend;
     public static bool isPaused = false;
+    [SerializeField] AudioSource pauseSound;
     [HideInInspector] public static GameObject playerPaused;
 
     private void Start()
@@ -220,11 +221,15 @@ public class PlayerController : MonoBehaviour
         }     
         isPaused = true;
 
+        pauseSound.Play();
         Time.timeScale = 0;
         playerPaused = this.gameObject;
         pauseMenu.SetActive(true);
         pauseButton.Select();
-        // Play a pause sound here!
+
+        GameObject matchThemeObject = GameObject.Find("MatchTheme_AS");
+        matchThemeObject.GetComponent<AudioSource>().Pause();
+        
 
     }
 
@@ -236,7 +241,8 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1;
         playerPaused = null;
         pauseMenu.SetActive(false);
-
+        GameObject matchThemeObject = GameObject.Find("MatchTheme_AS");
+        matchThemeObject.GetComponent<AudioSource>().Play();
         // Play a pause sound here!
     }
 

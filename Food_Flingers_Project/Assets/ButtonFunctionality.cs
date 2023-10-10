@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ButtonFunctionality : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
@@ -40,6 +41,7 @@ public class ButtonFunctionality : MonoBehaviour
         // Check if the object was found
         if (playerConfigManager != null)
         {
+            SceneTransition.inGame = false;
             // Destroy the object
             Destroy(playerConfigManager);
         }

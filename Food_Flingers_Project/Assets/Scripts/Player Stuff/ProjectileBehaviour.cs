@@ -229,6 +229,7 @@ public class ProjectileBehaviour : MonoBehaviour
         audioSource.pitch = randomPitch;
         int r = Random.Range(0, splatSounds.Length);
         audioSource.PlayOneShot(splatSounds[r], splatVolume);
+        splatParticle.Play();
         GetComponent<CapsuleCollider>().enabled = false;
 
         foreach (MeshRenderer mesh in meshes) // Just in case it has two meshes

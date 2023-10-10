@@ -10,7 +10,7 @@ public class PlayerConfigurationManager : MonoBehaviour
     // Any scene can access this class to get differnet player configs
     // Is going to contain player control, number, and control method of each player
 
-    private List<PlayerConfiguration> playerConfigs;
+    public List<PlayerConfiguration> playerConfigs;
 
     public static PlayerConfigurationManager Instance { get; set; }
 
@@ -36,6 +36,24 @@ public class PlayerConfigurationManager : MonoBehaviour
             //DontDestroyOnLoad(transitioner);
         }
     }
+    public void HandlePlayerJoin(PlayerInput pi)
+    {
+        Debug.Log("Player " + pi + " is joining");
+        if(!SceneTransition.inGame)
+        {
+            Debug.Log("Player Joined" + pi.playerIndex);
+            pi.transform.SetParent(transform); // Parents the joining player to this PlayerConfigurationManager, so they go along for the ride to the next scene
+
+            if (!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex)) // Checking the player index to check if we haven't already added this player
+            {
+                playerConfigs.Add(new PlayerConfiguration(pi)); // Creates a new PlayerConfig with the incoming player input
+            }
+        }
+        else
+        {
+            Debug.Log("Couldn't make a new player conifg for some reason");
+        }
+    }
 
     public void SetPlayerColor(int index, Material color)
     {
@@ -55,23 +73,18 @@ public class PlayerConfigurationManager : MonoBehaviour
 
         if (playerConfigs.Count >= requiredPlayers && playerConfigs.All(p => p.IsReady == true))
         {
-            sceneTransition.targetSceneName = "SampleScene";
+            
             sceneTransition.LoadScene();
         }
     }
 
-    public void HandlePlayerJoin(PlayerInput pi)
-    {
-        if(!SceneTransition.inGame)
-        {
-            Debug.Log("Player Joined" + pi.playerIndex);
-            pi.transform.SetParent(transform); // Parents the joining player to this PlayerConfigurationManager, so they go along for the ride to the next scene
 
-            if (!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex)) // Checking the player index to check if we haven't already added this player
-            {
-                playerConfigs.Add(new PlayerConfiguration(pi)); // Creates a new PlayerConfig with the incoming player input
-            }
-        }
+
+    public void QuitMatch()
+    {
+        // Clear the playerConfigs list when quitting the match
+        playerConfigs.Clear();
+        // You can also reset other match-related variables here if needed
     }
 
     public List<PlayerConfiguration> GetPlayerConfigs()

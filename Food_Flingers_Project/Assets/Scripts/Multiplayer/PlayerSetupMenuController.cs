@@ -40,7 +40,6 @@ public class PlayerSetupMenuController : MonoBehaviour
         {
             return;
         }
-
         PlayerConfigurationManager.Instance.SetPlayerColor(PlayerIndex, mat);
         readyPanel.SetActive(true);
         readyButton.Select();
@@ -53,7 +52,6 @@ public class PlayerSetupMenuController : MonoBehaviour
         {
             return;
         }
-
         PlayerConfigurationManager.Instance.SetPlayerBackground(PlayerIndex, color);
     }
 

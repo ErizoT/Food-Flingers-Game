@@ -182,6 +182,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPause(InputAction.CallbackContext context)
     {
+        
         controller.Pause();
     }
 }
