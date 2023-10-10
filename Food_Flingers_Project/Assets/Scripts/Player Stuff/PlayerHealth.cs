@@ -68,6 +68,7 @@ public class PlayerHealth : MonoBehaviour
         playerText.transform.LookAt(Camera.main.transform);
         playerText.transform.Rotate(Vector3.up, 180.0f);
 
+        healthText.text = playerHealth.ToString();
         scoreText.text = kills.ToString(); // I hate this, i really dont want to calculate kills every frame, but i cbs changing it cus of deadline
 
         deathEffect.transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 0));
@@ -162,9 +163,9 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Should be invulnerable");
         
         rend.enabled = false;
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.1f);
         rend.enabled = true;
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.1f);
 
         if(invulnerable)
         {

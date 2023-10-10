@@ -51,4 +51,9 @@ public class ButtonFunctionality : MonoBehaviour
             Debug.LogWarning("PlayerConfigurationManager not found.");
         }
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
