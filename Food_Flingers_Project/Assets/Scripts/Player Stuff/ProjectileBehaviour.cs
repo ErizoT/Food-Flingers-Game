@@ -28,6 +28,7 @@ public class ProjectileBehaviour : MonoBehaviour
     private bool hasCollided;
 
     [SerializeField] projectileBehaviour projectileType;
+    [SerializeField] float splashRadius;
 
     [Header("Cool Stuff")]
     [SerializeField] ParticleSystem splatParticle;
@@ -111,6 +112,11 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position + transform.forward * 10);
+
+        if(splashRadius != 0f)
+        {
+            Gizmos.DrawSphere(transform.position, splashRadius);
+        }
     }
 
     private void FixedUpdate ()
@@ -150,7 +156,9 @@ public class ProjectileBehaviour : MonoBehaviour
                     rb.velocity = transform.forward * projectileVelocity;
                     break;
 
-                // Add more switch cases here once more projectile behaviours are developed!
+                case projectileBehaviour.splash:
+                    rb.MovePosition(transform.position + transform.forward * projectileVelocity * Time.deltaTime);
+                    break;
 
                 default:
                     return;
@@ -202,6 +210,20 @@ public class ProjectileBehaviour : MonoBehaviour
 
                 case projectileBehaviour.homing:
                     hasCollided = true;
+                    DefaultDestroy();
+                    break;
+
+                case projectileBehaviour.splash:
+                    hasCollided = true;
+                    Collider[] colliders = Physics.OverlapSphere(transform.position, splashRadius);
+                    foreach (Collider collider in colliders)
+                    {
+                        if(collider.gameObject.tag == "Player")
+                        {
+                            collider.gameObject.GetComponent<PlayerHealth>().OnHit();
+                            collider.gameObject.GetComponent<PlayerInputHandler>().OnHit();
+                        }
+                    }
                     DefaultDestroy();
                     break;
 
