@@ -17,6 +17,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] string holdingBoolName;
     [SerializeField] string runningBoolName;
     [SerializeField] string throwingBoolName;
+    [SerializeField] string dashingBoolName;
     [SerializeField] string hurtBoolName;
     [SerializeField] string deadBoolName;
 
@@ -152,7 +153,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnDash(InputAction.CallbackContext context)
     {
         controller.OnDash();
-        animator.SetTrigger(throwingBoolName);
+        animator.SetTrigger(dashingBoolName);
         animator.SetBool(holdingBoolName, false);
 
         audioSource.volume = dashVolume;

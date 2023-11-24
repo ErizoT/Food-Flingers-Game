@@ -58,6 +58,7 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         userThrowing = this.gameObject;
+        trailRenderer.enabled = false;
     }
 
     public void Update()
@@ -125,6 +126,9 @@ public class ProjectileBehaviour : MonoBehaviour
         {
             gameObject.layer = LayerMask.NameToLayer("Projectiles"); // Changes the layer to the 'Projectile' layer so it doesn't collide with shit on the floor
             animator.SetBool("Throwing", true);
+            trailRenderer.enabled = true;
+            trailRenderer.startColor = userThrowing.GetComponent<PlayerHealth>().playerColor;
+            trailRenderer.endColor = userThrowing.GetComponent<PlayerHealth>().playerColor;
 
             switch (projectileType)
             {
@@ -230,7 +234,7 @@ public class ProjectileBehaviour : MonoBehaviour
             }
         }
 
-        if (isThrown && col.gameObject.tag == "Player")
+        if (isThrown && col.gameObject.tag == "Player" && projectileType != projectileBehaviour.splash)
         {
             col.gameObject.GetComponent<PlayerHealth>().OnHit();
             col.gameObject.GetComponent<PlayerInputHandler>().OnHit();
