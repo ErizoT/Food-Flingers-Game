@@ -108,8 +108,11 @@ MonoBehaviour:
   userThrowing: {fileID: 0}
   spawnZone: {fileID: 0}
   animator: {fileID: 7094007554643475487}
-  neutralMaterial: {fileID: 2100000, guid: 58bec3c49f7b9a74ba8aea891ad48e04, type: 2}
-  selectedMaterial: {fileID: 2100000, guid: 1f5f52aeef94c0a4da7de50fb40ec969, type: 2}
+  model:
+  - {fileID: 1067094688178955013}
+  - {fileID: 3568627719985610627}
+  neutralMaterial: {fileID: 2100000, guid: 264ecda3f00bf654a993f593a86ed8ef, type: 2}
+  selectedMaterial: {fileID: 2100000, guid: 6d9d903f456165c40be350294267a8e8, type: 2}
   targets: []
   rotationSpeed: 50
   meshes:
@@ -426,6 +429,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: mushroom
       objectReference: {fileID: 0}
+    - target: {fileID: 4724526787111008820, guid: 1a1555fb1f7883546aeab9ef4fd228be, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 264ecda3f00bf654a993f593a86ed8ef, type: 2}
+    - target: {fileID: 9140513814911379122, guid: 1a1555fb1f7883546aeab9ef4fd228be, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 264ecda3f00bf654a993f593a86ed8ef, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a1555fb1f7883546aeab9ef4fd228be, type: 3}
 --- !u!23 &1067094688178955013 stripped

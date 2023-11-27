@@ -19,6 +19,8 @@ public class PlayerSetupMenuController : MonoBehaviour
     private float ignoreInputTime = .5f;
     private bool inputEnabled;
 
+    [SerializeField] Animator anim;
+
     public void SetPlayerIndex(int pi)
     {
         PlayerIndex = pi;
@@ -40,10 +42,18 @@ public class PlayerSetupMenuController : MonoBehaviour
         {
             return;
         }
-        PlayerConfigurationManager.Instance.SetPlayerColor(PlayerIndex, mat);
-        readyPanel.SetActive(true);
-        readyButton.Select();
-        menuPanel.SetActive(false);
+
+        if(!ArrayContainsMaterial(PlayerConfigurationManager.Instance.selectedMats, mat))
+        {
+            PlayerConfigurationManager.Instance.SetPlayerColor(PlayerIndex, mat);
+            PlayerConfigurationManager.Instance.selectedMats.Add(mat);
+            readyPanel.SetActive(true);
+            readyButton.Select();
+            menuPanel.SetActive(false);
+        } else
+        {
+            anim.SetTrigger("error");
+        }
     }
 
     public void SetColor(Color color)
@@ -52,7 +62,16 @@ public class PlayerSetupMenuController : MonoBehaviour
         {
             return;
         }
-        PlayerConfigurationManager.Instance.SetPlayerBackground(PlayerIndex, color);
+
+        if (!ArrayContainsColor(PlayerConfigurationManager.Instance.selectedColours, color))
+        {
+            PlayerConfigurationManager.Instance.SetPlayerBackground(PlayerIndex, color);
+            PlayerConfigurationManager.Instance.selectedColours.Add(color);
+        }
+        else
+        {
+            anim.SetTrigger("error");
+        }
     }
 
     public void ReadyPlayer()
@@ -61,5 +80,29 @@ public class PlayerSetupMenuController : MonoBehaviour
 
         PlayerConfigurationManager.Instance.ReadyPlayer(PlayerIndex);
         readyButton.gameObject.SetActive(false);
+    }
+
+    bool ArrayContainsMaterial(List<Material> array, Material material)
+    {
+        foreach (Material arrayMaterial in array)
+        {
+            if (arrayMaterial == material)
+            {
+                return true; // Material found in the array
+            }
+        }
+        return false; // Material not found in the array
+    }
+
+    bool ArrayContainsColor(List<Color> array, Color color)
+    {
+        foreach (Color arrayColor in array)
+        {
+            if (arrayColor == color)
+            {
+                return true; // Material found in the array
+            }
+        }
+        return false; // Material not found in the array
     }
 }

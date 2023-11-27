@@ -22,7 +22,7 @@ public class ButtonFunctionality : MonoBehaviour
     }
 
     public void OnSelect()
-    {
+    {   
         Debug.Log("is selected");
         audioSource.PlayOneShot(confirmSound, buttonVolume);
     }

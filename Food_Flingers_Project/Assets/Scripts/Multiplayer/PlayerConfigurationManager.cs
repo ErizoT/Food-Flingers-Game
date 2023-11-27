@@ -18,6 +18,9 @@ public class PlayerConfigurationManager : MonoBehaviour
     [HideInInspector] public SceneTransition sceneTransition;
 
     [SerializeField] int requiredPlayers;
+
+    public List<Material> selectedMats;
+    public List<Color> selectedColours;
     private void Start()
     {
         if (Instance != null) // Checks if there is another instance in the scene

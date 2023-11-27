@@ -12,6 +12,7 @@ public class ProjectileBehaviour : MonoBehaviour
     [HideInInspector] public GameObject spawnZone;
     public Animator animator;
 
+    [SerializeField] MeshRenderer[] model;
     [SerializeField] Material neutralMaterial;
     [SerializeField] Material selectedMaterial;
 
@@ -67,11 +68,17 @@ public class ProjectileBehaviour : MonoBehaviour
         {
             if (controller.selectedProjectile == this.gameObject)
             {
-                //model.GetComponent<MeshRenderer>().material = selectedMaterial; // Doesn't work, would like to make a select shader
+                foreach (MeshRenderer mesh in model)
+                {
+                    mesh.material = selectedMaterial; // dog shit, but idc
+                }
             }
             else
             {
-                //model.GetComponent<MeshRenderer>().material = neutralMaterial;
+                foreach (MeshRenderer mesh in model)
+                {
+                    mesh.material = neutralMaterial; // dog shit because i already have another array that already has all the materials, but idc
+                }
 
                 if (!isThrown)
                 {
@@ -113,11 +120,6 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position + transform.forward * 10);
-
-        if(splashRadius != 0f)
-        {
-            Gizmos.DrawSphere(transform.position, splashRadius);
-        }
     }
 
     private void FixedUpdate ()

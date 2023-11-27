@@ -108,8 +108,10 @@ MonoBehaviour:
   userThrowing: {fileID: 0}
   spawnZone: {fileID: 0}
   animator: {fileID: 3436630544943666535}
-  neutralMaterial: {fileID: 2100000, guid: 90fdabc80783ffe4d88fcd3bcc22d634, type: 2}
-  selectedMaterial: {fileID: 2100000, guid: 1f5f52aeef94c0a4da7de50fb40ec969, type: 2}
+  model:
+  - {fileID: 3030937928848936697}
+  neutralMaterial: {fileID: 2100000, guid: 3a01add75078d154baa1533fc4e4930c, type: 2}
+  selectedMaterial: {fileID: 2100000, guid: 78e25f79e5dfc73468b55b792818c0ce, type: 2}
   targets: []
   rotationSpeed: 70
   meshes:
@@ -549,6 +551,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: carrot
       objectReference: {fileID: 0}
+    - target: {fileID: 8459083890939604326, guid: 82d9f069132f48d47b533b5bfca61571, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3a01add75078d154baa1533fc4e4930c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82d9f069132f48d47b533b5bfca61571, type: 3}
 --- !u!23 &1195545664563088261 stripped
