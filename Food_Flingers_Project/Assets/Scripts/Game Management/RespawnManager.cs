@@ -26,6 +26,11 @@ public class RespawnManager : MonoBehaviour
     [SerializeField] AudioSource resultsTheme;
     [SerializeField] AudioSource countdownSound;
 
+    [Header("Results")]
+    [SerializeField] GameObject resultsPrefab;
+
+    public List<Player> players = new List<Player>();
+
     private void Start()
     {
         currentTime = totalTime;
@@ -125,6 +130,19 @@ public class RespawnManager : MonoBehaviour
         string seconds = (currentTime % 60).ToString("00");
         timerText.text = minutes + ":" + seconds;
     }
+    public class Player
+    {
+        public GameObject Object;
+        public int Kills;
+        public string Name;
+
+        public Player(GameObject thing, int kills, string name)
+        {
+            Object = thing;
+            Kills = kills;
+            Name = name;
+        }
+    }
 
     IEnumerator EndGame()
     {
@@ -134,7 +152,7 @@ public class RespawnManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        titleText.text = "Game Over!";
+        /*titleText.text = "Game Over!";
         GameObject topPlayer = null;
         GameObject secondTopPlayer = null;
         int highestKills = 0;
@@ -157,8 +175,56 @@ public class RespawnManager : MonoBehaviour
             {
                 Debug.Log("Draw");
             }
+        }*/
+        // ------------------------------------------------------------
+
+        titleText.text = "";
+
+        var rootMenu = GameObject.Find("Results Canvas");
+        
+        for (int i = 0; i < playerList.Length; i++)
+        {
+            PlayerHealth playerHealth = playerList[i].GetComponent<PlayerHealth>();
+            players.Add(new Player(playerList[i], playerHealth.kills, "Player " + (i +1)));
         }
 
+        players.Sort((a, b) => b.Kills.CompareTo(a.Kills));
+
+        for (int i = 0; i < players.Count; i++)
+        {
+            // Use the sorted 'players' list instead of 'playerList'
+            PlayerHealth playerHealth = players[i].Object.GetComponent<PlayerHealth>();
+            var menu = Instantiate(resultsPrefab, rootMenu.transform);
+
+
+            ResultsValues results = menu.GetComponent<ResultsValues>();
+            results.playerName = players[i].Name;
+            results.playerColour = playerHealth.playerColor;
+            results.killCount = playerHealth.kills;
+
+            if (i == 0)
+            {
+                results.position = "1st";
+            }
+            else if (i == 1)
+            {
+                results.position = "2nd";
+            }
+            else if (i == 2)
+            {
+                results.position = "3rd";
+            }
+            else if (playerHealth.kills == players[i - 1].Kills)
+            {
+                results.position = (i).ToString() + "th"; // Handle ties
+            }
+            else
+            {
+                results.position = (i + 1).ToString() + "th";
+            }
+        }
+
+        // --------------------------------------------------
         yield return new WaitForSeconds(3f);
         Time.timeScale = 1f;
 
