@@ -156,7 +156,7 @@ public class PlayerInputHandler : MonoBehaviour
         animator.SetTrigger(dashingBoolName);
         animator.SetBool(holdingBoolName, false);
 
-        healthController.kills += 1; // Debug
+        //healthController.kills += 1; // Debug
 
         audioSource.volume = dashVolume;
         audioSource.pitch = Random.Range(0.7f, 1.3f);

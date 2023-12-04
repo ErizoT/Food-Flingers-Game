@@ -206,7 +206,15 @@ public class RespawnManager : MonoBehaviour
             {
                 results.position = "1st";
             }
+            else if (playerHealth.kills == players[0].Object.GetComponent<PlayerHealth>().kills)
+            {
+                results.position = "1st";
+            }
             else if (i == 1)
+            {
+                results.position = "2nd";
+            }
+            else if (playerHealth.kills == players[1].Object.GetComponent<PlayerHealth>().kills)
             {
                 results.position = "2nd";
             }
@@ -214,9 +222,9 @@ public class RespawnManager : MonoBehaviour
             {
                 results.position = "3rd";
             }
-            else if (playerHealth.kills == players[i - 1].Kills)
+            else if (playerHealth.kills == players[2].Object.GetComponent<PlayerHealth>().kills)
             {
-                results.position = (i).ToString() + "th"; // Handle ties
+                results.position = "3rd";
             }
             else
             {
