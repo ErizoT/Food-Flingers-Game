@@ -10,12 +10,20 @@ public class ResultsValues : MonoBehaviour
     [SerializeField] TextMeshProUGUI positionText;
     [SerializeField] TextMeshProUGUI killCountText;
     [SerializeField] Image playerBackground;
+    [SerializeField] SkinnedMeshRenderer playerModel;
+    [SerializeField] Camera renderCamera;
+    [SerializeField] RenderTexture[] renderTextureArray;
+    [SerializeField] RawImage image;
 
+    [SerializeField] Animator openAnim;
+
+    public Animator raccoonAnim;
     public string playerName;
     public string position;
     public int killCount;
     public Color playerColour;
-
+    public Material playerMaterial;
+    public int playerIndex;
 
     public void Start()
     {
@@ -24,5 +32,12 @@ public class ResultsValues : MonoBehaviour
         playerBackground.color = playerColour;
         killCountText.text = killCount.ToString();
         positionText.text = position;
+        playerModel.material = playerMaterial;
+        //openAnim.Play("resultsAnim");
+
+        renderCamera.targetTexture = renderTextureArray[playerIndex];
+        image.texture = renderTextureArray[playerIndex];
+
+        GameObject.Find("Game Canvas").SetActive(false);
     }
 }

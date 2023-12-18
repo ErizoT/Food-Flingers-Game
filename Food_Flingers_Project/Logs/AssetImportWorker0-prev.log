@@ -15,7 +15,7 @@ D:/(6) Schoolwork/2023/Semester 2/Team Project Studio/Food-Flingers-Game/Food_Fl
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50669
+50259
 Successfully changed project path to: D:/(6) Schoolwork/2023/Semester 2/Team Project Studio/Food-Flingers-Game/Food_Flingers_Project
 D:/(6) Schoolwork/2023/Semester 2/Team Project Studio/Food-Flingers-Game/Food_Flingers_Project
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,11 +47,11 @@ D:/(6) Schoolwork/2023/Semester 2/Team Project Studio/Food-Flingers-Game/Food_Fl
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [3428] Host "[IP] 192.168.0.110 [Port] 0 [Flags] 2 [Guid] 32506711 [EditorId] 32506711 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-397FHFA) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [8536] Host "[IP] 192.168.20.75 [Port] 0 [Flags] 2 [Guid] 2166897709 [EditorId] 2166897709 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-397FHFA) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [3428] Host "[IP] 192.168.0.110 [Port] 0 [Flags] 2 [Guid] 32506711 [EditorId] 32506711 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-397FHFA) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [8536] Host "[IP] 192.168.20.75 [Port] 0 [Flags] 2 [Guid] 2166897709 [EditorId] 2166897709 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-397FHFA) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 125.75 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 145.94 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.15f1 (e8e88683f834)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/Resources/UnitySubsystems
@@ -62,225 +62,49 @@ Direct3D:
     Renderer: Radeon RX 580 Series (ID=0x67df)
     Vendor:   ATI
     VRAM:     8135 MB
-    Driver:   31.0.21902.5
+    Driver:   31.0.21905.1001
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56320
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56772
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.031259 seconds.
+Registered in 0.306676 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 130.13 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 152.07 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.820 seconds
+- Completed reload, in  7.874 seconds
 Domain Reload Profiling:
-	ReloadAssembly (821ms)
-		BeginReloadAssembly (124ms)
+	ReloadAssembly (7875ms)
+		BeginReloadAssembly (5567ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (527ms)
-			LoadAssemblies (117ms)
+		EndReloadAssembly (1386ms)
+			LoadAssemblies (5575ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (112ms)
+			SetupTypeCache (863ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (26ms)
-			SetupLoadedEditorAssemblies (326ms)
+			RebuildScriptCaches (33ms)
+			SetupLoadedEditorAssemblies (395ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (17ms)
+				InitializePlatformSupportModulesInManaged (19ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (130ms)
+				RefreshPlugins (152ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (135ms)
-				ProcessInitializeOnLoadMethodAttributes (42ms)
+				ProcessInitializeOnLoadAttributes (165ms)
+				ProcessInitializeOnLoadMethodAttributes (56ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.007919 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image D:\(6) Schoolwork\2023\Semester 2\Team Project Studio\Food-Flingers-Game\Food_Flingers_Project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image D:\(6) Schoolwork\2023\Semester 2\Team Project Studio\Food-Flingers-Game\Food_Flingers_Project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 139.79 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.691 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1692ms)
-		BeginReloadAssembly (165ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (6ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (20ms)
-		EndReloadAssembly (1359ms)
-			LoadAssemblies (150ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (361ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (68ms)
-			SetupLoadedEditorAssemblies (772ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (13ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (140ms)
-				BeforeProcessingInitializeOnLoad (159ms)
-				ProcessInitializeOnLoadAttributes (348ms)
-				ProcessInitializeOnLoadMethodAttributes (84ms)
-				AfterProcessingInitializeOnLoad (28ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
-Refreshing native plugins compatible for Editor in 1.35 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5891 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 36 unused Assets / (386.7 KB). Loaded Objects now: 6354.
-Memory consumption went from 237.4 MB to 237.1 MB.
-Total: 4.385400 ms (FindLiveObjects: 0.658900 ms CreateObjectMapping: 0.178900 ms MarkObjects: 3.267500 ms  DeleteObjects: 0.278800 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 1596.240576 seconds.
-  path: Assets/Prefabs/Player.prefab
-  artifactKey: Guid(d3d6d34003ad9a343848e0a5f51eec48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Player.prefab using Guid(d3d6d34003ad9a343848e0a5f51eec48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d912bd49e103c5e8ac68744a4aec82b') in 1.444067 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 311.755081 seconds.
-  path: Assets/Animations/UI/ResultsPrefab.controller
-  artifactKey: Guid(f82c7be4b91940f4785a09e4ec58bd17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/UI/ResultsPrefab.controller using Guid(f82c7be4b91940f4785a09e4ec58bd17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '170287c4fde8e1971da587e1f198baf6') in 0.011134 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.355502 seconds.
-  path: Assets/Animations/UI/RacoonResultAnimator.anim
-  artifactKey: Guid(1851bce383e8e034fbcd9992151676cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/UI/RacoonResultAnimator.anim using Guid(1851bce383e8e034fbcd9992151676cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25a4ca1c6bff9fc7b65d87251f1dc506') in 0.010660 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 302.752947 seconds.
-  path: Assets/Animations/RaccoonAnims/raccoonLoss.fbx
-  artifactKey: Guid(a97f2bcd338d8b84b990c192517c18c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/RaccoonAnims/raccoonLoss.fbx using Guid(a97f2bcd338d8b84b990c192517c18c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd49f4ce56eb9358bde7bb5d848d97ccb') in 0.141986 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 18.141055 seconds.
-  path: Assets/Animations/RaccoonAnims/Take 001.anim
-  artifactKey: Guid(4ebc94fd077cb0a449f52df62c0480c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/RaccoonAnims/Take 001.anim using Guid(4ebc94fd077cb0a449f52df62c0480c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b7f7474663848b4a42a38bb7c74b222') in 0.010800 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 10.436535 seconds.
-  path: Assets/Animations/RaccoonAnims/RaccoonWin.anim
-  artifactKey: Guid(4ebc94fd077cb0a449f52df62c0480c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/RaccoonAnims/RaccoonWin.anim using Guid(4ebc94fd077cb0a449f52df62c0480c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7eded7ca3f02294d077308bd5a80d06') in 0.009029 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 28.716649 seconds.
-  path: Assets/Animations/BlackScreen.controller
-  artifactKey: Guid(29acbeaefd986ad469617969e097c1e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/BlackScreen.controller using Guid(29acbeaefd986ad469617969e097c1e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5593520c86ad7bf0fbbea748064bd41c') in 0.011076 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 45.828459 seconds.
-  path: Assets/Prefabs/Player Configuration Stuff/ResultsPrefab.prefab
-  artifactKey: Guid(543682236e051064394ef74875a27a84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Player Configuration Stuff/ResultsPrefab.prefab using Guid(543682236e051064394ef74875a27a84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a3f3fb8f5d18fb0d855978a258ef543') in 0.066375 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 11.679692 seconds.
-  path: Assets/Prefabs/Player Configuration Stuff/ResultsPrefab.prefab
-  artifactKey: Guid(543682236e051064394ef74875a27a84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Player Configuration Stuff/ResultsPrefab.prefab using Guid(543682236e051064394ef74875a27a84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e64ef1c3fa2ebfb754ed2e18f95baea7') in 0.057566 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 30.363579 seconds.
-  path: Assets/Prefabs/Player Configuration Stuff/ResultsPrefab.prefab
-  artifactKey: Guid(543682236e051064394ef74875a27a84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Player Configuration Stuff/ResultsPrefab.prefab using Guid(543682236e051064394ef74875a27a84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2992ab3288ab59140d2a3e54473a7505') in 0.064914 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 23.375570 seconds.
-  path: Assets/Animations/UI/RaccoonResults.controller
-  artifactKey: Guid(f8b662acafc201c45bb6ab50d4153bf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/UI/RaccoonResults.controller using Guid(f8b662acafc201c45bb6ab50d4153bf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '922af88e33d25281f4b94b269f6d5c04') in 0.010099 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 127.610588 seconds.
-  path: Assets/Animations/RaccoonAnims/raccoonRig.controller
-  artifactKey: Guid(81840e4302a8ac64cb3e2518127bf453) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/RaccoonAnims/raccoonRig.controller using Guid(81840e4302a8ac64cb3e2518127bf453) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1376560aaec7cb8f3647b76e238ef9f') in 0.122707 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 101.950821 seconds.
-  path: Assets/Animations/UI/RaccoonRig.controller
-  artifactKey: Guid(f8b662acafc201c45bb6ab50d4153bf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/UI/RaccoonRig.controller using Guid(f8b662acafc201c45bb6ab50d4153bf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b11bdb74732d5e8043d7515044eb8f32') in 0.011224 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 9.728717 seconds.
-  path: Assets/Prefabs/Player Configuration Stuff/ResultsPrefab.prefab
-  artifactKey: Guid(543682236e051064394ef74875a27a84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Player Configuration Stuff/ResultsPrefab.prefab using Guid(543682236e051064394ef74875a27a84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8950d8b6e985042f44043cd5b5a724ac') in 0.060956 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 81.027031 seconds.
-  path: Assets/Animations/UI/raccoonRig.controller
-  artifactKey: Guid(f8b662acafc201c45bb6ab50d4153bf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/UI/raccoonRig.controller using Guid(f8b662acafc201c45bb6ab50d4153bf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b30574436236b60fb26bbb379235991b') in 0.003399 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 47.829965 seconds.
-  path: Assets/Controllers
-  artifactKey: Guid(51a3944b017f26a4db8532223a9a2d61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Controllers using Guid(51a3944b017f26a4db8532223a9a2d61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e83918674462df122c7ef4bc3bf7c5d') in 0.010243 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.340079 seconds.
-  path: Assets/Controllers/NewInput.inputactions
-  artifactKey: Guid(03aea5069d061634a8884367346545da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Controllers/NewInput.inputactions using Guid(03aea5069d061634a8884367346545da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54ccf4491f16f12b1e25759ba6836880') in 0.013890 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5770.173366 seconds.
-  path: Assets/Animations/RaccoonAnims/Take 003.anim
-  artifactKey: Guid(40d7d378c11f0b7418d21557b7676d78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/RaccoonAnims/Take 003.anim using Guid(40d7d378c11f0b7418d21557b7676d78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3d62a685a657be331ec5e953e0c5d93') in 0.017655 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 73.058927 seconds.
-  path: Assets/Animations/RaccoonAnims/Take 001.anim
-  artifactKey: Guid(c2256a7d7e563c64e951cd2c874b0bae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/RaccoonAnims/Take 001.anim using Guid(c2256a7d7e563c64e951cd2c874b0bae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97baf27cfc19d7572e278881d891ef6a') in 0.005357 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 9.098629 seconds.
-  path: Assets/Animations/RaccoonAnims/RaccoonWin_2.anim
-  artifactKey: Guid(c2256a7d7e563c64e951cd2c874b0bae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/RaccoonAnims/RaccoonWin_2.anim using Guid(c2256a7d7e563c64e951cd2c874b0bae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fdcbc04f76b58ed5050f362eecec9ebe') in 0.011132 seconds 
+Registered in 0.009681 seconds.

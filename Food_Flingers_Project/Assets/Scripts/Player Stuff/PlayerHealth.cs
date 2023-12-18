@@ -18,11 +18,12 @@ public class PlayerHealth : MonoBehaviour
 
     [HideInInspector] public int playerIndex;
     [HideInInspector] public Color playerColor;
+    [HideInInspector] public Material playerMat;
 
     private GameObject manager;
 
     [Header("HUD Stuff")]
-    [SerializeField] GameObject playerHUD;
+    public GameObject playerHUD;
     [SerializeField] Image backgroundColor;
     [SerializeField] TextMeshPro playerNumber;
     public TextMeshProUGUI healthText;

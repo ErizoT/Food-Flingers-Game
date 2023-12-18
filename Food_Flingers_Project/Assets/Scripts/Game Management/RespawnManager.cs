@@ -186,6 +186,7 @@ public class RespawnManager : MonoBehaviour
         {
             PlayerHealth playerHealth = playerList[i].GetComponent<PlayerHealth>();
             players.Add(new Player(playerList[i], playerHealth.kills, "Player " + (i +1)));
+            playerHealth.playerHUD.SetActive(false);
         }
 
         players.Sort((a, b) => b.Kills.CompareTo(a.Kills));
@@ -201,14 +202,18 @@ public class RespawnManager : MonoBehaviour
             results.playerName = players[i].Name;
             results.playerColour = playerHealth.playerColor;
             results.killCount = playerHealth.kills;
+            results.playerMaterial = playerHealth.playerMat;
+            results.playerIndex = i;
 
             if (i == 0)
             {
                 results.position = "1st";
+                results.raccoonAnim.SetBool("isFirst", true);
             }
             else if (playerHealth.kills == players[0].Object.GetComponent<PlayerHealth>().kills)
             {
                 results.position = "1st";
+                results.raccoonAnim.SetBool("isFirst", true);
             }
             else if (i == 1)
             {
@@ -230,6 +235,8 @@ public class RespawnManager : MonoBehaviour
             {
                 results.position = (i + 1).ToString() + "th";
             }
+
+            yield return new WaitForSeconds(0.2f);
         }
 
         // --------------------------------------------------

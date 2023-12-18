@@ -60,7 +60,8 @@ public class PlayerInputHandler : MonoBehaviour
     public void InitialisePlayer(PlayerConfiguration pc)
     {
         playerConfig = pc;
-        playerMesh.material = pc.PlayerMaterial; // Will be changed to Outline colour in full version
+        playerMesh.material = pc.PlayerMaterial;
+        healthController.playerMat = pc.PlayerMaterial;
         playerConfig.Input.onActionTriggered += Input_onActionTriggered;
     }
 
@@ -156,7 +157,7 @@ public class PlayerInputHandler : MonoBehaviour
         animator.SetTrigger(dashingBoolName);
         animator.SetBool(holdingBoolName, false);
 
-        //healthController.kills += 1; // Debug
+        healthController.kills += 1; // Debug
 
         audioSource.volume = dashVolume;
         audioSource.pitch = Random.Range(0.7f, 1.3f);
