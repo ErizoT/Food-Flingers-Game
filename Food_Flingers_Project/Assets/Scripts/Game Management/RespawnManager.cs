@@ -283,7 +283,7 @@ public class RespawnManager : MonoBehaviour
                 for (int e = 0; e < playerList.Length; e++)
                 {
                     playerList[e].GetComponent<PlayerController>().canMove = true;
-                    playerList[e].GetComponent<PlayerController>().playerSpeed = 11f; // This is hardcoded and I don't like it
+                    playerList[e].GetComponent<PlayerController>().playerSpeed = 50; // This is hardcoded and I don't like it
                 }
             }
         }

@@ -218,19 +218,22 @@ public class PlayerController : MonoBehaviour
         if (isPaused && playerPaused == this.gameObject)
         {
             Unpause();
-        }     
-        isPaused = true;
+        } else if (!isPaused)
 
-        pauseSound.Play();
-        Time.timeScale = 0;
-        playerPaused = this.gameObject;
-        pauseMenu.SetActive(true);
-        pauseButton.Select();
+        {
+            isPaused = true;
 
-        GameObject matchThemeObject = GameObject.Find("MatchTheme_AS");
-        matchThemeObject.GetComponent<AudioSource>().Pause();
-        
+            pauseSound.Play();
+            Time.timeScale = 0;
+            playerPaused = this.gameObject;
+            pauseMenu.SetActive(true);
+            pauseButton.Select();
 
+            GameObject matchThemeObject = GameObject.Find("MatchTheme_AS");
+            matchThemeObject.GetComponent<AudioSource>().Pause();
+
+
+        }
     }
 
     public void Unpause()

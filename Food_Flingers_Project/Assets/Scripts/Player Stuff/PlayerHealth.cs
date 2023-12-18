@@ -129,7 +129,7 @@ public class PlayerHealth : MonoBehaviour
 
         // Re-enable movement
         GetComponent<PlayerController>().canMove = true;
-        GetComponent<PlayerController>().playerSpeed = 11f;
+        GetComponent<PlayerController>().playerSpeed = 50f;
 
         // Respawn at a random spawn point
         int randomIndex = Random.Range(0, respawnManager.respawnPoints.Length);
