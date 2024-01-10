@@ -120,6 +120,7 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position + transform.forward * 10);
+        //Gizmos.DrawSphere(transform.position, splashRadius);
     }
 
     private void FixedUpdate ()
