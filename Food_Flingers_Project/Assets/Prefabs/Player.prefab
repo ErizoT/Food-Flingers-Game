@@ -614,7 +614,7 @@ MonoBehaviour:
   kills: 0
   deathEffect: {fileID: 8939881827606200437}
   respawnManager: {fileID: 0}
-  rend: {fileID: 6339465040629878294}
+  rend: {fileID: 9143533909067766602}
   playerController: {fileID: 0}
   playerIndex: 0
   playerColor: {r: 0, g: 0, b: 0, a: 0}
@@ -2727,6 +2727,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 2.3150028e-30
       objectReference: {fileID: 0}
+    - target: {fileID: -4687691541051984511, guid: c76594130fc364e46b1aa8548573336e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4354540319537196611, guid: c76594130fc364e46b1aa8548573336e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 28.10866
@@ -3143,6 +3147,11 @@ MonoBehaviour:
 --- !u!137 &6339465040629878294 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7498511960749154083, guid: c76594130fc364e46b1aa8548573336e, type: 3}
+  m_PrefabInstance: {fileID: 4617775957502537419}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9143533909067766602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4687691541051984511, guid: c76594130fc364e46b1aa8548573336e, type: 3}
   m_PrefabInstance: {fileID: 4617775957502537419}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6822944401952838242

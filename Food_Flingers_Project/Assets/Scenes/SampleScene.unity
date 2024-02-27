@@ -1088,7 +1088,7 @@ MonoBehaviour:
   winnerText: {fileID: 17176219}
   playerPrefab: {fileID: 2698453284129532714, guid: d3d6d34003ad9a343848e0a5f51eec48, type: 3}
   isGameStarted: 0
-  totalTime: 999
+  totalTime: 120
   timerText: {fileID: 1716657522}
   levelTheme: {fileID: 1010878076}
   resultsTheme: {fileID: 286739550}
@@ -4980,7 +4980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3277741266010198254, guid: 73d897cd656625749a4ec41f75b203b4, type: 3}
       propertyPath: LikelihoodList.Array.data[0]
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3277741266010198254, guid: 73d897cd656625749a4ec41f75b203b4, type: 3}
       propertyPath: LikelihoodList.Array.data[1]
@@ -8518,7 +8518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3277741266010198254, guid: 73d897cd656625749a4ec41f75b203b4, type: 3}
       propertyPath: LikelihoodList.Array.data[0]
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3277741266010198254, guid: 73d897cd656625749a4ec41f75b203b4, type: 3}
       propertyPath: LikelihoodList.Array.data[1]
@@ -13159,7 +13159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3277741266010198254, guid: 73d897cd656625749a4ec41f75b203b4, type: 3}
       propertyPath: FoodList.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3277741266010198254, guid: 73d897cd656625749a4ec41f75b203b4, type: 3}
       propertyPath: FoodList.Array.data[2]
@@ -13171,11 +13171,11 @@ PrefabInstance:
       objectReference: {fileID: 4385446989848976991, guid: d3e79cf5aaf4f9346a366d890d4f7f85, type: 3}
     - target: {fileID: 3277741266010198254, guid: 73d897cd656625749a4ec41f75b203b4, type: 3}
       propertyPath: LikelihoodList.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3277741266010198254, guid: 73d897cd656625749a4ec41f75b203b4, type: 3}
       propertyPath: LikelihoodList.Array.data[0]
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3277741266010198254, guid: 73d897cd656625749a4ec41f75b203b4, type: 3}
       propertyPath: LikelihoodList.Array.data[1]
@@ -13875,7 +13875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3277741266010198254, guid: 73d897cd656625749a4ec41f75b203b4, type: 3}
       propertyPath: FoodList.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3277741266010198254, guid: 73d897cd656625749a4ec41f75b203b4, type: 3}
       propertyPath: FoodList.Array.data[0]
@@ -13895,11 +13895,11 @@ PrefabInstance:
       objectReference: {fileID: 4385446989848976991, guid: d3e79cf5aaf4f9346a366d890d4f7f85, type: 3}
     - target: {fileID: 3277741266010198254, guid: 73d897cd656625749a4ec41f75b203b4, type: 3}
       propertyPath: LikelihoodList.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3277741266010198254, guid: 73d897cd656625749a4ec41f75b203b4, type: 3}
       propertyPath: LikelihoodList.Array.data[0]
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3277741266010198254, guid: 73d897cd656625749a4ec41f75b203b4, type: 3}
       propertyPath: LikelihoodList.Array.data[1]

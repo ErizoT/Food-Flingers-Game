@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public RespawnManager respawnManager;
     private bool invulnerable;
     
-    [SerializeField] SkinnedMeshRenderer rend;
+    [SerializeField] GameObject rend;
     [HideInInspector] public PlayerController playerController;
 
     [HideInInspector] public int playerIndex;
@@ -79,7 +79,6 @@ public class PlayerHealth : MonoBehaviour
     {
         playerHealth -= 1;
         healthText.text = playerHealth.ToString();
-
         if (playerHealth <= 0)
         {
             OnDeath();
@@ -112,7 +111,7 @@ public class PlayerHealth : MonoBehaviour
 
         // Change to trasnparent material
         //MeshRenderer rend = GetComponent<MeshRenderer>();
-        Material mat = rend.material;
+        Material mat = rend.GetComponent<SkinnedMeshRenderer>().material;
         Color matColor = mat.color;
         matColor.a = 0.5f;
         mat.color = matColor;
@@ -162,10 +161,10 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator InvulnerabilityFlash()
     {
         Debug.Log("Should be invulnerable");
-        
-        rend.enabled = false;
+
+        rend.SetActive(false);
         yield return new WaitForSeconds(0.1f);
-        rend.enabled = true;
+        rend.SetActive(true);
         yield return new WaitForSeconds(0.1f);
 
         if(invulnerable)
