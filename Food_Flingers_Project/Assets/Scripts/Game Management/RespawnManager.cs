@@ -29,12 +29,23 @@ public class RespawnManager : MonoBehaviour
     [Header("Results")]
     [SerializeField] GameObject resultsPrefab;
 
+    [Header("Developer Tools")]
+    [SerializeField] bool unlimitedTime = false;
+    [SerializeField] bool resetButton = false;
+
     public List<Player> players = new List<Player>();
 
     private void Start()
     {
         currentTime = totalTime;
         UpdateTimerDisplay();
+
+        if(unlimitedTime)
+        {
+            totalTime = 999f;
+            currentTime = totalTime;
+            levelTheme.volume = 0f;
+        }
 
         // Initialise player Configurations
         var playerConfigs = PlayerConfigurationManager.Instance.GetPlayerConfigs().ToArray();
@@ -61,7 +72,7 @@ public class RespawnManager : MonoBehaviour
 
 
         // Resetting the game
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && resetButton)
         {
             InitialiseGame();
             isGameStarted = true;

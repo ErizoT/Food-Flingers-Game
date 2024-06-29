@@ -72,7 +72,7 @@ public class PlayerHealth : MonoBehaviour
         healthText.text = playerHealth.ToString();
         scoreText.text = kills.ToString(); // I hate this, i really dont want to calculate kills every frame, but i cbs changing it cus of deadline
 
-        deathEffect.transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 0));
+        //deathEffect.transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 0));
     }
 
     public void OnHit()

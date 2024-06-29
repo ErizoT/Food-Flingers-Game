@@ -5119,9 +5119,9 @@ GameObject:
   - component: {fileID: 6692087723148909769}
   - component: {fileID: 6692087723148909765}
   - component: {fileID: 6692087723148909764}
-  - component: {fileID: 961543664316412368}
   - component: {fileID: 7300648819713077493}
   - component: {fileID: 3503633681307212736}
+  - component: {fileID: 8523641050819670304}
   m_Layer: 3
   m_Name: Homing Projectile
   m_TagString: Food
@@ -5257,20 +5257,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &961543664316412368
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6692087723148909770}
-  m_Material: {fileID: 13400000, guid: 69e8d6dc3a12a324a971443c0b17a11c, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.4
-  m_Height: 1.97
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &7300648819713077493
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5475,6 +5461,20 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!136 &8523641050819670304
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6692087723148909770}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8019818386771594680
 GameObject:
   m_ObjectHideFlags: 0
