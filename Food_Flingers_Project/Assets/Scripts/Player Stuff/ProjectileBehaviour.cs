@@ -7,7 +7,7 @@ public class ProjectileBehaviour : MonoBehaviour
 {
     public float projectileVelocity;
     [HideInInspector] public bool isThrown;
-    [HideInInspector] public Rigidbody rb;
+    [HideInInspector] private Rigidbody rb;
     public GameObject userThrowing;
     [HideInInspector] public GameObject spawnZone;
     public Animator animator;
@@ -129,6 +129,7 @@ public class ProjectileBehaviour : MonoBehaviour
         {
             gameObject.layer = LayerMask.NameToLayer("Projectiles"); // Changes the layer to the 'Projectile' layer so it doesn't collide with shit on the floor
             animator.SetBool("Throwing", true);
+            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
             trailRenderer.enabled = true;
             trailRenderer.startColor = userThrowing.GetComponent<PlayerHealth>().playerColor;
             trailRenderer.endColor = userThrowing.GetComponent<PlayerHealth>().playerColor;
