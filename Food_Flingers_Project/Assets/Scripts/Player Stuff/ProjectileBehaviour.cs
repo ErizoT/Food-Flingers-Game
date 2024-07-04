@@ -11,6 +11,7 @@ public class ProjectileBehaviour : MonoBehaviour
     public GameObject userThrowing;
     [HideInInspector] public GameObject spawnZone;
     public Animator animator;
+    public bool isSelected;
 
     [SerializeField] MeshRenderer[] model;
     [SerializeField] Material neutralMaterial;

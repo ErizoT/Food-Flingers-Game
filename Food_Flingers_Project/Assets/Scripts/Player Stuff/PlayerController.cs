@@ -76,13 +76,12 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.SphereCast(raycastStartPos, sphereRadius, transform.forward, out hit, hitboxDistance, projectiles))
         {
-            selectedProjectile = hit.transform.gameObject;
-            selectedProjectile.GetComponent<ProjectileBehaviour>().userThrowing = this.gameObject;
+            selectedProjectile = hit.transform.gameObject; 
+            selectedProjectile.GetComponent<ProjectileBehaviour>().userThrowing = gameObject;
         }
         else
         {
             selectedProjectile = null;
-            //StartCoroutine(CoyoteGrab());     - See notes under CoyoteGrab() below
         }
     }
 

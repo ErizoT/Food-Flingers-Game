@@ -26,23 +26,21 @@ public class NewProjectileBehaviour : MonoBehaviour
     [Space(10)]
     
     // Materials
-    [SerializeField] MeshRenderer[] meshes;
+    [SerializeField] MeshRenderer[] model;
     [SerializeField] Material neutralMaterial;
     [SerializeField] Material selectedMaterial;
 
     // For Bouncing Projectiles
-    //[Header("For Bouncing Projectiles")]
     [HideInInspector] public int maxBounces; // The maximum number of bounces before the projectile is destroyed. (Only applicable to Bouncing projectiles)
     [HideInInspector] public AudioClip bounceSound;
     private int numberOfBounces; // The number of times the projectile has bounced already.
 
     // For Homing Projectiles
-    //[Header("For Homing Projectiles")]
     [HideInInspector] public float homingSpeed; // How fast the projectile can turn to home into a target
     [HideInInspector] public GameObject[] targets; // List of all players to determine the closest player
     private GameObject closestPlayer; // Variable that stores the closest player. (Only applicable toHoming projectiles)
 
-    //[Header("For Splash Projectiles")]
+    // For splash projectiles
     [HideInInspector] public float splashRadius; // The splash radius of the explosion.
 
     // Hidden Private Tags
@@ -50,10 +48,12 @@ public class NewProjectileBehaviour : MonoBehaviour
     private Rigidbody rb;
     private bool isThrown;
     private Collider objCollider;
+    private bool isSelected;
 
     // Hidden Public Tags
     [HideInInspector] public GameObject userThrowing; // The user holding and throwing the projectile
     [HideInInspector] public GameObject spawnZone; // The zone in which the projectile originates from
+    
 
     private void OnEnable()
     {
@@ -71,7 +71,29 @@ public class NewProjectileBehaviour : MonoBehaviour
 
     private void Update()
     {
-        
+        // Checks from the player controller to see if this projectile IS the selectedProjectile...
+        if (userThrowing.TryGetComponent<PlayerController>(out PlayerController controller))
+        {
+            // If it IS selectedProjectile AND is not currently selected...
+            // Transform all meshes to the selected material.
+            if (controller.selectedProjectile == this.gameObject && !isSelected)
+            {
+                isSelected = true;
+                foreach (MeshRenderer mesh in model)
+                {
+                    mesh.material = selectedMaterial;
+                }
+            }
+            else if (controller.selectedProjectile != gameObject && isSelected)
+            {
+                isSelected = false;
+                foreach (MeshRenderer mesh in model)
+                {
+                    mesh.material = neutralMaterial;
+                }
+            }
+        }
+
         // If the projectile is a homing projectile and is thrown, find the closest player every frame 
         if (projectileType == projectileBehaviour.homing && isThrown)
         {
@@ -162,8 +184,6 @@ public class NewProjectileBehaviour : MonoBehaviour
 
             DefaultDestroy();
         }
-
-        
     }
 
     private void DefaultDestroy()
