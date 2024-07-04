@@ -154,10 +154,10 @@ public class PlayerController : MonoBehaviour
         {
             heldProjectile.transform.SetParent(null);
             heldProjectile.transform.position = raycastStartPos + transform.forward * 2;
-            heldProjectile.GetComponent<CapsuleCollider>().enabled = true;
-            heldProjectile.GetComponent<Rigidbody>().isKinematic = false;
-            heldProjectile.GetComponent<Rigidbody>().useGravity = false;
-            heldProjectile.GetComponent<ProjectileBehaviour>().isThrown = true;
+            heldProjectile.GetComponent<CapsuleCollider>().enabled = true; // Remove for new projectile script - handled in Throw()
+            heldProjectile.GetComponent<Rigidbody>().isKinematic = false; // Remove for new projectile script - handled in Throw()
+            heldProjectile.GetComponent<Rigidbody>().useGravity = false; // Remove for new projectile script - handled in Throw()
+            heldProjectile.GetComponent<ProjectileBehaviour>().isThrown = true; // Change to Throw() in the new projectile behaviour script
 
             heldProjectile = null;
             isHolding = false;

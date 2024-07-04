@@ -129,7 +129,6 @@ public class ProjectileBehaviour : MonoBehaviour
         {
             gameObject.layer = LayerMask.NameToLayer("Projectiles"); // Changes the layer to the 'Projectile' layer so it doesn't collide with shit on the floor
             animator.SetBool("Throwing", true);
-            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
             trailRenderer.enabled = true;
             trailRenderer.startColor = userThrowing.GetComponent<PlayerHealth>().playerColor;
             trailRenderer.endColor = userThrowing.GetComponent<PlayerHealth>().playerColor;
@@ -188,7 +187,7 @@ public class ProjectileBehaviour : MonoBehaviour
                     break;
 
                 case projectileBehaviour.rebound:
-                    if (numberOfBounces < maxBounces)
+                    if (numberOfBounces < maxBounces && col.gameObject.tag != "Player")
                     {
                         direction = Vector3.Reflect(direction, col.contacts[0].normal);
                         numberOfBounces++;
@@ -242,7 +241,7 @@ public class ProjectileBehaviour : MonoBehaviour
         {
             col.gameObject.GetComponent<PlayerHealth>().OnHit();
             col.gameObject.GetComponent<PlayerInputHandler>().OnHit();
-
+            numberOfBounces = 0;
             if (col.gameObject.GetComponent<PlayerHealth>().playerHealth <= 0 && col.gameObject != userThrowing)
             {
                 Debug.Log(userThrowing + " awarded a kill");
@@ -255,6 +254,7 @@ public class ProjectileBehaviour : MonoBehaviour
 
     public void DefaultDestroy()
     {
+        rb.velocity = Vector3.zero;
         float randomPitch = Random.Range(0.8f, 1.2f);
         audioSource.pitch = randomPitch;
         int r = Random.Range(0, splatSounds.Length);

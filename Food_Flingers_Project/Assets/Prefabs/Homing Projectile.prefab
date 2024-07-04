@@ -5137,7 +5137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6692087723148909770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.240246, y: 4.840103, z: -9.9474}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3143682, y: 1.3143682, z: 0.90741354}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5211,7 +5211,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileVelocity: 20
   isThrown: 0
-  rb: {fileID: 0}
   userThrowing: {fileID: 0}
   spawnZone: {fileID: 0}
   animator: {fileID: 6945675025398920391}
