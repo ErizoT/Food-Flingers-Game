@@ -98,7 +98,7 @@ public class FoodSpawner : MonoBehaviour
                     float randomY = Random.Range(rectangleBottomLeft.y, rectangleTopRight.y);   // Get a random Y position
                     Vector3 randomPosition = new Vector3(randomX, transform.position.y, randomY);   // Get those random XYs and turn them into random position
                     instantiatedObject = Instantiate(foodArray.FoodList[i], randomPosition, Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f)));   // Instantiate that random object according to probbability
-                    instantiatedObject.GetComponent<ProjectileBehaviour>().spawnZone = this.gameObject; // Assign the projectile's spawn zone
+                    instantiatedObject.GetComponent<NewProjectileBehaviour>().spawnZone = this.gameObject; // Assign the projectile's spawn zone
                     spawnedProjectiles.Add(instantiatedObject); // Add the projectile to the spawnedProjectiles list
                     spawnCount++;   // Add to the spawn zone's spawncount
                     break;

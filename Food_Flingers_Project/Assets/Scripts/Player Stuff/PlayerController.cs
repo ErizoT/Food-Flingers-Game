@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         if (Physics.SphereCast(raycastStartPos, sphereRadius, transform.forward, out hit, hitboxDistance, projectiles))
         {
             selectedProjectile = hit.transform.gameObject; 
-            selectedProjectile.GetComponent<ProjectileBehaviour>().userThrowing = gameObject;
+            selectedProjectile.GetComponent<NewProjectileBehaviour>().userThrowing = gameObject;
         }
         else
         {
@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
             heldProjectile.GetComponent<Rigidbody>().isKinematic = true;
             heldProjectile.GetComponent<CapsuleCollider>().enabled = false;
 
-            heldProjectile.GetComponent<ProjectileBehaviour>().animator.SetBool("Holding", true);
+            heldProjectile.GetComponent<NewProjectileBehaviour>().animator.SetBool("Holding", true);
 
             isHolding = true;
         } 
@@ -151,12 +151,14 @@ public class PlayerController : MonoBehaviour
     {
         if (heldProjectile != null)
         {
+            
             heldProjectile.transform.SetParent(null);
-            heldProjectile.transform.position = raycastStartPos + transform.forward * 2;
+            heldProjectile.transform.position = raycastStartPos + transform.forward * 2;/*
             heldProjectile.GetComponent<CapsuleCollider>().enabled = true; // Remove for new projectile script - handled in Throw()
             heldProjectile.GetComponent<Rigidbody>().isKinematic = false; // Remove for new projectile script - handled in Throw()
             heldProjectile.GetComponent<Rigidbody>().useGravity = false; // Remove for new projectile script - handled in Throw()
-            heldProjectile.GetComponent<ProjectileBehaviour>().isThrown = true; // Change to Throw() in the new projectile behaviour script
+            heldProjectile.GetComponent<ProjectileBehaviour>().isThrown = true; // Change to Throw() in the new projectile behaviour script*/
+            heldProjectile.GetComponent<NewProjectileBehaviour>().Throw();
 
             heldProjectile = null;
             isHolding = false;

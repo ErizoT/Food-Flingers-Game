@@ -74,7 +74,6 @@ public class PlayerInputHandler : MonoBehaviour
 
         if (obj.action.name == controls.Player.Fire.name && obj.performed)
         {
-            Debug.Log("is firing");
             OnFire(obj);
         }
 

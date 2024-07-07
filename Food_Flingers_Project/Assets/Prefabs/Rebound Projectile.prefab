@@ -4785,7 +4785,7 @@ GameObject:
   - component: {fileID: 6692087723148909767}
   - component: {fileID: 6692087723148909766}
   - component: {fileID: 6692087723148909769}
-  - component: {fileID: 6692087723148909765}
+  - component: {fileID: 7655901857469059552}
   - component: {fileID: 6692087723148909764}
   - component: {fileID: 7016182619025166066}
   - component: {fileID: 1097564554393364205}
@@ -4805,7 +4805,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6692087723148909770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.240246, y: 4.8427653, z: -9.942844}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3143682, y: 1.3143682, z: 1.3143682}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4866,7 +4866,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6692087723148909765
+--- !u!114 &7655901857469059552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4875,35 +4875,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 6692087723148909770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32ea8e0094eb79142aff4d61c4832ddd, type: 3}
+  m_Script: {fileID: 11500000, guid: 902cfc4ab85a0f041b20f28a1787676d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileVelocity: 20
-  isThrown: 0
-  rb: {fileID: 0}
-  userThrowing: {fileID: 0}
-  spawnZone: {fileID: 0}
+  projectileType: 1
+  thrownSpeed: 80
+  splatParticle: {fileID: 6799775058567446295}
+  splatSound: {fileID: 8300000, guid: 5b64ebc4632e6124fbfed382b6fd31d5, type: 3}
   animator: {fileID: 4206146501304317518}
   model:
   - {fileID: 6068011645675729112}
   - {fileID: 7745255156042247262}
   neutralMaterial: {fileID: 2100000, guid: 264ecda3f00bf654a993f593a86ed8ef, type: 2}
   selectedMaterial: {fileID: 2100000, guid: 6d9d903f456165c40be350294267a8e8, type: 2}
-  targets: []
-  rotationSpeed: 50
-  meshes:
-  - {fileID: 6068011645675729112}
-  - {fileID: 7745255156042247262}
-  projectileType: 1
-  splashRadius: 0
-  splatParticle: {fileID: 6799775058567446295}
-  trailRenderer: {fileID: 1314373437564353470}
-  audioSource: {fileID: 1097564554393364205}
+  maxBounces: 3
   bounceSound: {fileID: 8300000, guid: 8d72ec9c986ef80428f9bd0e79bd1a26, type: 3}
-  splatSounds:
-  - {fileID: 8300000, guid: 5b64ebc4632e6124fbfed382b6fd31d5, type: 3}
-  bounceVolume: 0.5
-  splatVolume: 0.5
+  homingSpeed: 0
+  targets: []
+  splashRadius: 0
+  userThrowing: {fileID: 0}
+  spawnZone: {fileID: 0}
 --- !u!54 &6692087723148909764
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4913,8 +4904,8 @@ Rigidbody:
   m_GameObject: {fileID: 6692087723148909770}
   serializedVersion: 2
   m_Mass: 5
-  m_Drag: 1
-  m_AngularDrag: 0.05
+  m_Drag: 0
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -4927,7 +4918,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6692087723148909770}
-  m_Material: {fileID: 13400000, guid: 69e8d6dc3a12a324a971443c0b17a11c, type: 2}
+  m_Material: {fileID: 13400000, guid: 96e2a04a558203a4a9dab4a16c41ee37, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class NewProjectileBehaviour : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class NewProjectileBehaviour : MonoBehaviour
     [HideInInspector] public float splashRadius; // The splash radius of the explosion.
 
     // Hidden Private Tags
-    private bool hasCollided; // Whether the projectile has collided with something or not.
+    //private bool hasCollided; // Whether the projectile has collided with something or not.
     private Rigidbody rb;
     private bool isThrown;
     private Collider objCollider;
@@ -72,33 +73,36 @@ public class NewProjectileBehaviour : MonoBehaviour
     private void Update()
     {
         // Checks from the player controller to see if this projectile IS the selectedProjectile...
-        if (userThrowing.TryGetComponent<PlayerController>(out PlayerController controller))
+        if (userThrowing != null)
         {
-            // If it IS selectedProjectile AND is not currently selected...
-            // Transform all meshes to the selected material.
-            if (controller.selectedProjectile == this.gameObject && !isSelected)
+            if (userThrowing.TryGetComponent<PlayerController>(out PlayerController controller))
             {
-                isSelected = true;
-                foreach (MeshRenderer mesh in model)
+                // If it IS selectedProjectile AND is not currently selected...
+                // Transform all meshes to the selected material.
+                if (controller.selectedProjectile == this.gameObject && !isSelected)
                 {
-                    mesh.material = selectedMaterial;
+                    isSelected = true;
+                    foreach (MeshRenderer mesh in model)
+                    {
+                        mesh.material = selectedMaterial;
+                    }
+                }
+                else if (controller.selectedProjectile != gameObject && isSelected)
+                {
+                    isSelected = false;
+                    foreach (MeshRenderer mesh in model)
+                    {
+                        mesh.material = neutralMaterial;
+                    }
                 }
             }
-            else if (controller.selectedProjectile != gameObject && isSelected)
-            {
-                isSelected = false;
-                foreach (MeshRenderer mesh in model)
-                {
-                    mesh.material = neutralMaterial;
-                }
-            }
-        }
 
-        // If the projectile is a homing projectile and is thrown, find the closest player every frame 
-        if (projectileType == projectileBehaviour.homing && isThrown)
-        {
-            targets = GameObject.FindGameObjectsWithTag("Player");
-            closestPlayer = ClosestPlayer();
+            // If the projectile is a homing projectile and is thrown, find the closest player every frame 
+            if (projectileType == projectileBehaviour.homing && isThrown)
+            {
+                targets = GameObject.FindGameObjectsWithTag("Player");
+                closestPlayer = ClosestPlayer();
+            }
         }
     }
 
@@ -130,8 +134,9 @@ public class NewProjectileBehaviour : MonoBehaviour
         rb.isKinematic = false; // Remove kinematicity
         rb.useGravity = false; // Don't use gravity
         rb.constraints = RigidbodyConstraints.FreezePositionY; // To ensure consistent collisions, the Y position is locked
+        objCollider.enabled = true;
 
-        LayerMask.NameToLayer("Projectiles"); // Changes the layer to the 'Projectile' layer so it doesn't collide with shit on the floor
+        gameObject.layer = LayerMask.NameToLayer("Projectiles"); // Changes the layer to the 'Projectile' layer so it doesn't collide with shit on the floor
         animator.SetBool("Throwing", true); // Initiate the throwing animation.
 
         // Enable the trail renderer and grab the player's player colour to tint it
@@ -169,27 +174,69 @@ public class NewProjectileBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.tag == "Player")
+        if (isThrown)
         {
-            col.gameObject.GetComponent<PlayerHealth>().OnHit();
-            col.gameObject.GetComponent<PlayerInputHandler>().OnHit();
-
-            numberOfBounces = 0;
-
-            if (col.gameObject.GetComponent<PlayerHealth>().playerHealth <= 0 && col.gameObject != userThrowing)
+            if (col.gameObject.tag == "Player")
             {
-                //Debug.Log(userThrowing + " awarded a kill");
-                userThrowing.GetComponent<PlayerHealth>().kills += 1;
+                col.gameObject.GetComponent<PlayerHealth>().OnHit();
+                col.gameObject.GetComponent<PlayerInputHandler>().OnHit();
+
+                numberOfBounces = 0;
+
+                if (col.gameObject.GetComponent<PlayerHealth>().playerHealth <= 0 && col.gameObject != userThrowing)
+                {
+                    //Debug.Log(userThrowing + " awarded a kill");
+                    userThrowing.GetComponent<PlayerHealth>().kills += 1;
+                }
+
+                DefaultDestroy();
             }
 
-            DefaultDestroy();
+            // Code for bouncing projectiles specifically
+            else if (col.gameObject.tag != "Player" && projectileType == projectileBehaviour.rebound)
+            {
+                if (numberOfBounces < maxBounces)
+                {
+                    numberOfBounces++;
+
+                    if (numberOfBounces == 1)
+                    {
+                        audioSource.pitch = 0.6f;
+                    }
+                    else
+                    {
+                        // Increase the pitch by 0.1 after each bounce
+                        audioSource.pitch += 0.1f;
+                    }
+                    audioSource.PlayOneShot(bounceSound, 0.5f);
+                }
+                else
+                {
+                    DefaultDestroy();
+                }
+            }
+
+            else
+            {
+                DefaultDestroy();
+            }
         }
+
     }
 
-    private void DefaultDestroy()
+    public void DefaultDestroy()
     {
+        isThrown = false;
         rb.velocity = Vector3.zero; // Set the projectile velocity to 0
+        rb.angularVelocity = Vector3.zero;
         Destroy(objCollider); // Destroy the collider
+
+        spawnZone.GetComponent<FoodSpawner>().spawnedProjectiles.Remove(gameObject);
+
+        foreach (MeshRenderer mesh in model) // Just in case it has two meshes
+        {
+            mesh.enabled = false;
+        }
 
         // Play the splat sound at a random pitch & volume, play the particle effect
         float randomPitch = Random.Range(0.8f, 1.2f);
