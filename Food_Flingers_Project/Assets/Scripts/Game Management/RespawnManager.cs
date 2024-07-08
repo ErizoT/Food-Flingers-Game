@@ -192,7 +192,8 @@ public class RespawnManager : MonoBehaviour
         titleText.text = "";
 
         var rootMenu = GameObject.Find("Results Canvas");
-        
+        resultsTheme.Play();
+
         for (int i = 0; i < playerList.Length; i++)
         {
             PlayerHealth playerHealth = playerList[i].GetComponent<PlayerHealth>();

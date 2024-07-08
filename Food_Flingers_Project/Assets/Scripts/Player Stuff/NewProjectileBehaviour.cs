@@ -35,6 +35,7 @@ public class NewProjectileBehaviour : MonoBehaviour
     [HideInInspector] public int maxBounces; // The maximum number of bounces before the projectile is destroyed. (Only applicable to Bouncing projectiles)
     [HideInInspector] public AudioClip bounceSound;
     [HideInInspector] public PhysicMaterial bouncyMaterial;
+    public Transform mushroomObj; // The model of the object so we can rotate it upon each bounce
     private int numberOfBounces; // The number of times the projectile has bounced already.
 
     // For Homing Projectiles
@@ -130,6 +131,15 @@ public class NewProjectileBehaviour : MonoBehaviour
         }
         return closestHere;
     }
+    /*
+    private void OnDrawGizmos()
+    {
+        if (projectileType == projectileBehaviour.rebound)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transform.position, transform.forward * 10);
+        }
+    }*/
 
     public void Throw()
     {
@@ -155,6 +165,7 @@ public class NewProjectileBehaviour : MonoBehaviour
             // If the projectile is a bouncy one, apply the bouncy physics material when thrown
             if (projectileType == projectileBehaviour.rebound)
             {
+                Debug.Log("Applied Bouncy Physics");
                 objCollider.material = bouncyMaterial;
             }
         }

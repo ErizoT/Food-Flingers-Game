@@ -2588,6 +2588,14 @@ PrefabInstance:
       propertyPath: moveWithTransform
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5082492166716198578, guid: 6f4099a0ceb8c6a42b5b2a4cbd83164d, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082492166716198578, guid: 6f4099a0ceb8c6a42b5b2a4cbd83164d, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 3.18
+      objectReference: {fileID: 0}
     - target: {fileID: 5082492166716198589, guid: 6f4099a0ceb8c6a42b5b2a4cbd83164d, type: 3}
       propertyPath: m_RootOrder
       value: 5
