@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     public float playerSpeed = 11f;
     [SerializeField] float invulnerabilityTime = 0.5f;
     [SerializeField] private float rotationInterpolation = 10f;
-    [SerializeField] float dashForce = 80f;
     public bool canMove = true;
 
     private Rigidbody rb; // This variable was missing from the original response
@@ -22,6 +21,12 @@ public class PlayerController : MonoBehaviour
 
     // Raycast Stuff
     [HideInInspector] LayerMask projectiles;
+
+    [Header("Dashing")]
+    [SerializeField] float dashForce = 80f;
+    [SerializeField] AudioClip dashSound;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] ParticleSystem dashParticle;
 
     [Header("Spherecast Stuff")]
     [SerializeField] Vector3 offset;
@@ -114,6 +119,7 @@ public class PlayerController : MonoBehaviour
         if (!dashing && rb != null && canMove && !isPaused)
         {
             dashing = true;
+            gameObject.GetComponent<PlayerInputHandler>().animator.SetTrigger("IsDashing");
             StartCoroutine(Dash());
 
             if (isHolding)
@@ -196,20 +202,16 @@ public class PlayerController : MonoBehaviour
 
         Vector3 dashDirection = transform.forward; // Calculate the dash direction (e.g., forward).
         rb.AddForce(dashDirection * dashForce, ForceMode.Impulse); // Apply the dash force to the player's Rigidbody.
-        //gameObject.layer = LayerMask.NameToLayer("Invulnerable");
 
-        //MeshRenderer rend = GetComponent<MeshRenderer>();
-        //Material mat = rend.material;
-        //Color matColor = mat.color;
-        //matColor.a = 0.5f;
-        //mat.color = matColor;
+        dashParticle.Play();
+
+        // Play a dash SFX
+        audioSource.volume = 0.5f;
+        audioSource.pitch = Random.Range(0.7f, 1.3f);
+        audioSource.PlayOneShot(dashSound);
 
         yield return new WaitForSeconds(invulnerabilityTime);
 
-        //matColor.a = 1f;
-        //mat.color = matColor;
-
-        //gameObject.layer = LayerMask.NameToLayer("Default"); // Reset the player's layer
         dashing = false;
     }
 

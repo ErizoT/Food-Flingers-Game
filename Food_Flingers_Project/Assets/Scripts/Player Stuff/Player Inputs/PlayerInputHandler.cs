@@ -13,7 +13,7 @@ public class PlayerInputHandler : MonoBehaviour
     // User configured Material here
 
     [Header("AnimationStuff")]
-    [SerializeField] Animator animator;
+    [SerializeField] public Animator animator;
     [SerializeField] string holdingBoolName;
     [SerializeField] string runningBoolName;
     [SerializeField] string throwingBoolName;
@@ -38,8 +38,8 @@ public class PlayerInputHandler : MonoBehaviour
     [Header("Sound Volumes")]
     [Range(0.1f, 1f)]
     [SerializeField] float pickupVolume = 0.5f;
-    [Range(0.1f, 1f)]
-    [SerializeField] float dashVolume = 0.5f;    
+    //[Range(0.1f, 1f)]
+    //[SerializeField] float dashVolume = 0.5f;    
     [Range(0.1f, 1f)]
     [SerializeField] float knockoutVolume = 0.5f;
     [Range(0.1f, 1f)]
@@ -153,14 +153,8 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnDash(InputAction.CallbackContext context)
     {
         controller.OnDash();
-        animator.SetTrigger(dashingBoolName);
+        //animator.SetTrigger(dashingBoolName);
         animator.SetBool(holdingBoolName, false);
-
-        //healthController.kills += 1; // Debug
-
-        audioSource.volume = dashVolume;
-        audioSource.pitch = Random.Range(0.7f, 1.3f);
-        audioSource.PlayOneShot(dashSound);
     }
 
     public void OnHit()

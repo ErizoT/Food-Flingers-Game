@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] float invulnerabilityTime = 2f;
     public int kills;
     public ParticleSystem deathEffect;
+    public ParticleSystem killEffect;
     public RespawnManager respawnManager;
     private bool invulnerable;
     
@@ -112,9 +113,9 @@ public class PlayerHealth : MonoBehaviour
         // Change to trasnparent material
         //MeshRenderer rend = GetComponent<MeshRenderer>();
         Material mat = rend.GetComponent<SkinnedMeshRenderer>().material;
-        Color matColor = mat.color;
-        matColor.a = 0.5f;
-        mat.color = matColor;
+        //Color matColor = mat.color;
+        //matColor.a = 0.5f;
+        //mat.color = matColor;
         healthText.text = playerHealth.ToString();
         invulnerable = true;
         StartCoroutine(InvulnerabilityFlash());
@@ -138,8 +139,8 @@ public class PlayerHealth : MonoBehaviour
         playerHealth = 2;
 
         // Reset material transparency
-        matColor.a = 1f;
-        mat.color = matColor;
+        //matColor.a = 1f;
+        //mat.color = matColor;
 
         // Resets animation
         GetComponent<PlayerInputHandler>().Respawn();

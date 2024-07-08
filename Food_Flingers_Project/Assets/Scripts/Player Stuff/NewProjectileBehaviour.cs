@@ -34,6 +34,7 @@ public class NewProjectileBehaviour : MonoBehaviour
     // For Bouncing Projectiles
     [HideInInspector] public int maxBounces; // The maximum number of bounces before the projectile is destroyed. (Only applicable to Bouncing projectiles)
     [HideInInspector] public AudioClip bounceSound;
+    [HideInInspector] public PhysicMaterial bouncyMaterial;
     private int numberOfBounces; // The number of times the projectile has bounced already.
 
     // For Homing Projectiles
@@ -82,6 +83,7 @@ public class NewProjectileBehaviour : MonoBehaviour
                 if (controller.selectedProjectile == this.gameObject && !isSelected)
                 {
                     isSelected = true;
+                    Debug.Log("is Selected");
                     foreach (MeshRenderer mesh in model)
                     {
                         mesh.material = selectedMaterial;
@@ -90,6 +92,7 @@ public class NewProjectileBehaviour : MonoBehaviour
                 else if (controller.selectedProjectile != gameObject && isSelected)
                 {
                     isSelected = false;
+                    Debug.Log("isn't selected");
                     foreach (MeshRenderer mesh in model)
                     {
                         mesh.material = neutralMaterial;
@@ -148,6 +151,12 @@ public class NewProjectileBehaviour : MonoBehaviour
         if(projectileType != projectileBehaviour.homing)
         {
             rb.AddForce(transform.forward * thrownSpeed, ForceMode.Impulse);
+
+            // If the projectile is a bouncy one, apply the bouncy physics material when thrown
+            if (projectileType == projectileBehaviour.rebound)
+            {
+                objCollider.material = bouncyMaterial;
+            }
         }
     }
     private void FixedUpdate()
@@ -185,7 +194,7 @@ public class NewProjectileBehaviour : MonoBehaviour
 
                 if (col.gameObject.GetComponent<PlayerHealth>().playerHealth <= 0 && col.gameObject != userThrowing)
                 {
-                    //Debug.Log(userThrowing + " awarded a kill");
+                    userThrowing.GetComponent<PlayerHealth>().killEffect.Play();
                     userThrowing.GetComponent<PlayerHealth>().kills += 1;
                 }
 

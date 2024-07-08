@@ -25,6 +25,7 @@ public class NewProjectileBehaviourEditor : Editor
                 GUILayout.Space(5);
                 projectile.maxBounces = EditorGUILayout.IntField("Max Bounces", projectile.maxBounces);
                 projectile.bounceSound = (AudioClip)EditorGUILayout.ObjectField("Bounce Sound", projectile.bounceSound, typeof(AudioClip), false);
+                projectile.bouncyMaterial = (PhysicMaterial)EditorGUILayout.ObjectField("Bouncy Physics Material", projectile.bouncyMaterial, typeof(PhysicMaterial), false);
                 break;
 
             case NewProjectileBehaviour.projectileBehaviour.homing:
