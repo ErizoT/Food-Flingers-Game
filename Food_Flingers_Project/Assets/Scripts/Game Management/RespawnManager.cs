@@ -118,9 +118,10 @@ public class RespawnManager : MonoBehaviour
         }
     }
 
+    // Where the game starts. SceneTransition calls InitialiseGame() once every player is ready in the player setup screen
     public void InitialiseGame()
     {
-        Debug.Log("game started");
+        //Debug.Log("game started");
         isGameStarted = true;
         winnerText.text = "";
         Time.timeScale = 1;
