@@ -26,7 +26,7 @@ public class NewProjectileBehaviourEditor : Editor
                 projectile.maxBounces = EditorGUILayout.IntField("Max Bounces", projectile.maxBounces);
                 projectile.bounceSound = (AudioClip)EditorGUILayout.ObjectField("Bounce Sound", projectile.bounceSound, typeof(AudioClip), false);
                 projectile.bouncyMaterial = (PhysicMaterial)EditorGUILayout.ObjectField("Bouncy Physics Material", projectile.bouncyMaterial, typeof(PhysicMaterial), false);
-                //projectile.mushroomObj = (GameObject)EditorGUILayout.ObjectField("Mushroom Transform", projectile.mushroomObj, typeof(GameObject), false);
+                //projectile.mesh = (GameObject)EditorGUILayout.ObjectField("Mushroom Model", projectile.mesh, typeof(GameObject), false);
                 break;
 
             case NewProjectileBehaviour.projectileBehaviour.homing:

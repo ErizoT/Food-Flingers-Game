@@ -41,6 +41,7 @@ public class NewProjectileBehaviour : MonoBehaviour
     // For Homing Projectiles
     [HideInInspector] public float homingSpeed; // How fast the projectile can turn to home into a target
     [HideInInspector] public GameObject[] targets; // List of all players to determine the closest player
+    //[HideInInspector] public GameObject mesh; // To store the model of the mushroom so when it bounces, it rotates the model accordingly
     private GameObject closestPlayer; // Variable that stores the closest player. (Only applicable toHoming projectiles)
 
     // For splash projectiles
@@ -131,15 +132,15 @@ public class NewProjectileBehaviour : MonoBehaviour
         }
         return closestHere;
     }
-    /*
+    
     private void OnDrawGizmos()
     {
         if (projectileType == projectileBehaviour.rebound)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawLine(transform.position, transform.forward * 10);
+            Gizmos.DrawLine(transform.position, transform.position + transform.forward * 10);
         }
-    }*/
+    }
 
     public void Throw()
     {
@@ -165,7 +166,7 @@ public class NewProjectileBehaviour : MonoBehaviour
             // If the projectile is a bouncy one, apply the bouncy physics material when thrown
             if (projectileType == projectileBehaviour.rebound)
             {
-                Debug.Log("Applied Bouncy Physics");
+                //rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                 objCollider.material = bouncyMaterial;
             }
         }
@@ -218,6 +219,10 @@ public class NewProjectileBehaviour : MonoBehaviour
                 if (numberOfBounces < maxBounces)
                 {
                     numberOfBounces++;
+                    animator.SetTrigger("Collision");
+                    rb.angularVelocity = Vector3.zero; // So that the rotation of the rigidbody doesn't influence the bounce direction
+                    mushroomObj.rotation = Quaternion.LookRotation(rb.velocity.normalized);
+                    
 
                     if (numberOfBounces == 1)
                     {
