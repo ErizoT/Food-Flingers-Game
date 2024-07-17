@@ -30,6 +30,10 @@ public class PlayerHealth : MonoBehaviour
     public TextMeshProUGUI healthText;
     [SerializeField] TextMeshPro playerText;
     public TextMeshProUGUI scoreText;
+    [SerializeField] GameObject infoObj;
+    [SerializeField] SpriteRenderer heartObj;
+    [SerializeField] Sprite[] heartGraphic;
+    [SerializeField] Animator heartAnim;
 
     public void Start()
     {
@@ -67,8 +71,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {   
-        playerText.transform.LookAt(Camera.main.transform);
-        playerText.transform.Rotate(Vector3.up, 180.0f);
+        //playerText.transform.LookAt(Camera.main.transform);
+        //playerText.transform.Rotate(Vector3.up, 180.0f);
+        infoObj.transform.LookAt(Camera.main.transform, Vector3.up);
 
         healthText.text = playerHealth.ToString();
         scoreText.text = kills.ToString(); // I hate this, i really dont want to calculate kills every frame, but i cbs changing it cus of deadline
@@ -80,6 +85,8 @@ public class PlayerHealth : MonoBehaviour
     {
         playerHealth -= 1;
         healthText.text = playerHealth.ToString();
+        heartAnim.SetTrigger("Hurt");
+
         if (playerHealth <= 0)
         {
             OnDeath();
@@ -90,6 +97,7 @@ public class PlayerHealth : MonoBehaviour
             deathEffect.Stop(); // Stop emitting particles
             deathEffect.Clear(); // Clear existing particles
             deathEffect.Play();
+            heartObj.sprite = heartGraphic[1];
         }
     }
 
@@ -102,7 +110,7 @@ public class PlayerHealth : MonoBehaviour
         playerController.Drop();
 
         gameObject.layer = LayerMask.NameToLayer("Invulnerable");
-
+        heartObj.sprite = heartGraphic[2];
         StartCoroutine(Respawn());
     }
 
@@ -122,6 +130,8 @@ public class PlayerHealth : MonoBehaviour
 
         // Wait 3 seconds before respawning
         yield return new WaitForSeconds(3f);
+
+        heartObj.sprite = heartGraphic[0];
 
         invulnerable = false;
 
