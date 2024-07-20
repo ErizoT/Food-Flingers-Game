@@ -32,6 +32,8 @@ public class NewProjectileBehaviourEditor : Editor
             case NewProjectileBehaviour.projectileBehaviour.homing:
                 GUILayout.Space(5);
                 projectile.homingSpeed = EditorGUILayout.FloatField("Homing Speed:", projectile.homingSpeed);
+                //projectile.trailParticle = (ParticleSystem)EditorGUILayout.ObjectField("Trail Particle", projectile.trailParticle, typeof(ParticleSystem), false);
+                //projectile.reticle = (GameObject)EditorGUILayout.ObjectField("Reticle", projectile.reticle, typeof(GameObject), true);
                 break;
 
             case NewProjectileBehaviour.projectileBehaviour.splash:

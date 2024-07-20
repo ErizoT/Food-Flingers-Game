@@ -24,13 +24,14 @@ public class NewProjectileBehaviour : MonoBehaviour
 
     private AudioSource audioSource;
     private TrailRenderer trailRenderer;
+    public ParticleSystem trailParticle;
     [Space(10)]
     
     // Materials
     [SerializeField] MeshRenderer[] model;
     [SerializeField] Material neutralMaterial;
     [SerializeField] Material selectedMaterial;
-
+    
     // For Bouncing Projectiles
     [HideInInspector] public int maxBounces; // The maximum number of bounces before the projectile is destroyed. (Only applicable to Bouncing projectiles)
     [HideInInspector] public AudioClip bounceSound;
@@ -43,6 +44,9 @@ public class NewProjectileBehaviour : MonoBehaviour
     [HideInInspector] public GameObject[] targets; // List of all players to determine the closest player
     //[HideInInspector] public GameObject mesh; // To store the model of the mushroom so when it bounces, it rotates the model accordingly
     private GameObject closestPlayer; // Variable that stores the closest player. (Only applicable toHoming projectiles)
+    
+    private GameObject reticleHolder;
+    
 
     // For splash projectiles
     [HideInInspector] public float splashRadius; // The splash radius of the explosion.
@@ -149,6 +153,7 @@ public class NewProjectileBehaviour : MonoBehaviour
         rb.useGravity = false; // Don't use gravity
         rb.constraints = RigidbodyConstraints.FreezePositionY; // To ensure consistent collisions, the Y position is locked
         objCollider.enabled = true;
+        
 
         gameObject.layer = LayerMask.NameToLayer("Projectiles"); // Changes the layer to the 'Projectile' layer so it doesn't collide with shit on the floor
         animator.SetBool("Throwing", true); // Initiate the throwing animation.
@@ -157,6 +162,11 @@ public class NewProjectileBehaviour : MonoBehaviour
         trailRenderer.enabled = true;
         trailRenderer.startColor = userThrowing.GetComponent<PlayerHealth>().playerColor;
         trailRenderer.endColor = userThrowing.GetComponent<PlayerHealth>().playerColor;
+
+        if (trailParticle != null)
+        {
+            trailParticle.Play();
+        }
 
         // If the projectile isn't a homing projectile, apply an impulse
         if(projectileType != projectileBehaviour.homing)
@@ -225,6 +235,11 @@ public class NewProjectileBehaviour : MonoBehaviour
                     {
                         collider.gameObject.GetComponent<PlayerHealth>().OnHit();
                         collider.gameObject.GetComponent<PlayerInputHandler>().OnHit();
+
+                        if (collider.gameObject.GetComponent<PlayerHealth>().playerHealth <= 0 && collider.gameObject != userThrowing)
+                        {
+                            userThrowing.GetComponent<PlayerHealth>().killEffect.Play();
+                        }
                     }
                 }
                 DefaultDestroy();
@@ -279,6 +294,11 @@ public class NewProjectileBehaviour : MonoBehaviour
         foreach (MeshRenderer mesh in model) // Just in case it has two meshes
         {
             mesh.enabled = false;
+        }
+
+        if (trailParticle != null)
+        {
+            trailParticle.Stop();
         }
 
         // Play the splat sound at a random pitch & volume, play the particle effect

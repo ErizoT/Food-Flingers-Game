@@ -104,6 +104,7 @@ public class PlayerHealth : MonoBehaviour
     public void OnDeath()
     {
         deathEffect.Play();
+        
 
         playerController.canMove = false;
         playerController.playerSpeed = 0f;
