@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     public static bool isPaused = false;
     [SerializeField] AudioSource pauseSound;
     [HideInInspector] public static GameObject playerPaused;
+    public TutorialPage tutorialPage;
 
     private void Start()
     {
@@ -116,6 +117,12 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash()
     {
+        if (tutorialPage != null)
+        {
+            tutorialPage.Confirm();
+            tutorialPage = null;
+        }
+
         if (!dashing && rb != null && canMove && !isPaused)
         {
             dashing = true;
@@ -155,7 +162,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Throw()
     {
-        if (heldProjectile != null)
+        if (heldProjectile != null )
         {
             
             heldProjectile.transform.SetParent(null);

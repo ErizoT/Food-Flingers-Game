@@ -70,10 +70,10 @@ public class PlayerHealth : MonoBehaviour
     }
 
     private void Update()
-    {   
+    {
         //playerText.transform.LookAt(Camera.main.transform);
         //playerText.transform.Rotate(Vector3.up, 180.0f);
-        infoObj.transform.LookAt(Camera.main.transform, Vector3.up);
+        infoObj.transform.forward = Camera.main.transform.forward * -1;
 
         healthText.text = playerHealth.ToString();
         scoreText.text = kills.ToString(); // I hate this, i really dont want to calculate kills every frame, but i cbs changing it cus of deadline

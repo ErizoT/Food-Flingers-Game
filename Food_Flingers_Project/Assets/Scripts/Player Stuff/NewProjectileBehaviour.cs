@@ -197,6 +197,7 @@ public class NewProjectileBehaviour : MonoBehaviour
     {
         if (isThrown)
         {
+            // Universal code if the projectile hits a player
             if (col.gameObject.tag == "Player")
             {
                 col.gameObject.GetComponent<PlayerHealth>().OnHit();
@@ -210,6 +211,22 @@ public class NewProjectileBehaviour : MonoBehaviour
                     userThrowing.GetComponent<PlayerHealth>().kills += 1;
                 }
 
+                DefaultDestroy();
+            }
+
+            //Code for splash projectiles specifically
+            else if (projectileType == projectileBehaviour.splash)
+            {
+                Debug.Log("Splash Projectile Code");
+                Collider[] colliders = Physics.OverlapSphere(transform.position, splashRadius);
+                foreach (Collider collider in colliders)
+                {
+                    if (collider.gameObject.tag == "Player")
+                    {
+                        collider.gameObject.GetComponent<PlayerHealth>().OnHit();
+                        collider.gameObject.GetComponent<PlayerInputHandler>().OnHit();
+                    }
+                }
                 DefaultDestroy();
             }
 
@@ -241,6 +258,7 @@ public class NewProjectileBehaviour : MonoBehaviour
                 }
             }
 
+            // Unviersal code if the projectile hits a wall
             else
             {
                 DefaultDestroy();

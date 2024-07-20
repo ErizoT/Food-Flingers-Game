@@ -21,6 +21,9 @@ public class RespawnManager : MonoBehaviour
     private bool isCounting = false;
     [SerializeField] TextMeshProUGUI timerText;
 
+    [Header("Tutorial")]
+    public GameObject tutorialPage;
+
     [Header("Music")]
     [SerializeField] AudioSource levelTheme;
     [SerializeField] AudioSource resultsTheme;
@@ -132,7 +135,11 @@ public class RespawnManager : MonoBehaviour
             playerList[i].GetComponent<PlayerController>().playerSpeed = 0f;
         }
 
-        StartCoroutine(GameCountdown());
+        tutorialPage.SetActive(true);
+        tutorialPage.GetComponent<TutorialPage>().rM = GetComponent<RespawnManager>();
+        playerList[0].GetComponent<PlayerController>().tutorialPage = tutorialPage.GetComponent<TutorialPage>();
+
+        //StartCoroutine(GameCountdown());
     }
 
     private void UpdateTimerDisplay()
@@ -273,9 +280,8 @@ public class RespawnManager : MonoBehaviour
         }
     }
 
-    IEnumerator GameCountdown()
+    public IEnumerator GameCountdown()
     {
-
         for (int i = 3; i > 0; i--)
         {
             //Debug.Log("Countdown: " + i);
@@ -283,7 +289,7 @@ public class RespawnManager : MonoBehaviour
             countdownSound.Play();
             yield return new WaitForSeconds(1f);
             countdownSound.Stop();
-
+            
             if (i == 1)
             {
                 levelTheme.Play();
